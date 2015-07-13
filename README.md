@@ -1,0 +1,2 @@
+# BIT
+Our first repository
