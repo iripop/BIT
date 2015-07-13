@@ -1,21 +1,19 @@
 package com.steps;
 
+import static org.junit.Assert.assertTrue;
+
 import com.pages.LogInPage;
+import com.pages.MyRequestsPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import static ch.lambdaj.Lambda.join;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.assertTrue;
 
 public class EndUserSteps extends ScenarioSteps {
 
+	
+	MyRequestsPage myRequestsPage;
     LogInPage page;
-
     @Step
     public void enters_screen_name(String keyword) {
     	page.enter_screen_name(keyword);
@@ -33,7 +31,7 @@ public class EndUserSteps extends ScenarioSteps {
 
     @Step
     public void is_the_home_page() {
-        page.open();
+    	page.open();
     }
 
     @StepGroup
@@ -50,5 +48,12 @@ public class EndUserSteps extends ScenarioSteps {
     public void log_in_with_succes(){
     	boolean found = page.vacation_is_present();
     	assertTrue("VacationMenu not found",found );
+    }
+    @Step
+    public void access_my_requests() {
+    	myRequestsPage.checkIfMyRequestsExists();
+    	myRequestsPage.open_my_requests();
+    	
+
     }
 }
