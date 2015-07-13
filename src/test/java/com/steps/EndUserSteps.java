@@ -1,8 +1,11 @@
 package com.steps;
 
 import com.pages.LogInPage;
+import com.pages.NewVacationRequestPage;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -51,4 +54,5 @@ public class EndUserSteps extends ScenarioSteps {
     	boolean found = page.vacation_is_present();
     	assertTrue("VacationMenu not found",found );
     }
+
 }
