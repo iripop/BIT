@@ -149,6 +149,12 @@ public class NewVacationRequestPage extends PageObject {
 	    		}
 	    	}
 	    }
+	    public boolean my_request_is_present(String startDate,String endDate,String type){
+	    	
+	    	boolean found=false;
+	    	
+	    	return found;
+	    }
 	  
 	  
     }

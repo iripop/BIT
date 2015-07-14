@@ -6,16 +6,20 @@ import org.openqa.selenium.WebDriver;
 
 import com.steps.EndUserSteps;
 
+import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
+import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
-
-@RunWith(ThucydidesRunner.class)
+@RunWith(SerenityParameterizedRunner.class)
+@UseTestDataFrom("/resources/data.csv")
+//@RunWith(ThucydidesRunner.class)
 public class LogInTest {
-
+	String username,password;
+	
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
 
@@ -24,13 +28,13 @@ public class LogInTest {
 
     @Steps
     public EndUserSteps endUser;
- // @Test
+  @Test
     public void log_in() {
         endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
+		endUser.login(username, password);
       
     }
-  // @Test
+   @Test
   public void vacationMenu(){
   	endUser.go_to_vacation_menu();
   	endUser.log_in_with_succes();
