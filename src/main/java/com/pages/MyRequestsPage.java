@@ -14,7 +14,7 @@ public class MyRequestsPage extends PageObject{
 	@FindBy(css="div.carousel-slider li a[href*='menuItem=my-requests']")
 	    private WebElementFacade myRequestsButton;
 	
-	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_HOLIDAYCheckbox']")
+	/*@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_HOLIDAYCheckbox']")
     private WebElementFacade holidayInput;
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_VACATION_WITHOUT_PAYMENTCheckbox']")
@@ -58,14 +58,17 @@ public class MyRequestsPage extends PageObject{
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
     private WebElementFacade withdrawInput;
-	
+	*/
 	@FindBy(css = "div[class='filter-content'] span[class='aui-field aui-field-choice'] label")
 	private List<WebElement> filterList;
 
 
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
     private WebElementFacade applyButton;
-
+	
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']")
+    private WebElementFacade showFutureVacationsInput;
+	
 	public void checkIfMyRequestsExists(){
     	boolean found = false;
     	if(myRequestsButton.isPresent()){
@@ -98,5 +101,10 @@ public class MyRequestsPage extends PageObject{
 		element(applyButton).waitUntilVisible();
 	    applyButton.click();
 	    element(applyButton).waitUntilVisible();
+	}
+	public void showFutureVacations() {
+		element(showFutureVacationsInput).waitUntilVisible();
+		showFutureVacationsInput.click();
+	   
 	}
 }

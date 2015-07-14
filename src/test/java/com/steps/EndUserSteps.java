@@ -75,6 +75,10 @@ public class EndUserSteps extends ScenarioSteps {
     public void apply_filter_requests() {
     	    	myRequestsPage.apply_filters();
     	    }
+    	 @Step
+    public void select_future_vacations() {
+    	    	    	myRequestsPage.showFutureVacations() ;
+    	    	    }
 
 
 }
