@@ -3,10 +3,17 @@ package com.steps;
 import static org.junit.Assert.assertTrue;
 
 import com.pages.LogInPage;
+
 import com.pages.MyRequestsPage;
+
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+
+
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.pages.Pages;
+
 import net.thucydides.core.steps.ScenarioSteps;
 
 public class EndUserSteps extends ScenarioSteps {
@@ -49,6 +56,7 @@ public class EndUserSteps extends ScenarioSteps {
     	boolean found = page.vacation_is_present();
     	assertTrue("VacationMenu not found",found );
     }
+
     @Step
     public void access_my_requests() {
     	myRequestsPage.checkIfMyRequestsExists();
@@ -56,4 +64,6 @@ public class EndUserSteps extends ScenarioSteps {
     	
 
     }
+
+
 }

@@ -7,7 +7,7 @@ import net.thucydides.core.pages.PageObject;
 
 public class LogInPage extends PageObject {
 
-	 @FindBy(name="_58_login")
+	 	@FindBy(name="_58_login")
 	    private WebElementFacade screenName;
 	    
 	    @FindBy(name="_58_password")
