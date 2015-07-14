@@ -21,6 +21,7 @@ public class MyRequestsTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
+
 	@ManagedPages(defaultUrl = Constants.defaultURL)
 	public Pages pages;
 
@@ -30,7 +31,7 @@ public class MyRequestsTest {
 	@Test
 	public void enter_my_requests() {
 		endUser.is_the_home_page();
-		endUser.login(Constants.name, Constants.password);
+		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
 		endUser.access_my_requests();
@@ -50,11 +51,11 @@ public class MyRequestsTest {
 
 	@Test
 	public void check_if_filter_is_correct() {
-		 endUser.is_the_home_page();
-		 endUser.login(Constants.name, Constants.password);
-		 endUser.go_to_vacation_menu();
-		 endUser.log_in_with_succes();
-		 endUser.access_my_requests();
+		 //endUser.is_the_home_page();
+		 //endUser.login(Constants.name, Constants.password);
+		 //endUser.go_to_vacation_menu();
+		 //endUser.log_in_with_succes();
+		 //endUser.access_my_requests();
 		 endUser.filtering_my_requests("Holiday");
 		endUser.apply_filter_requests();
 		endUser.check_filtering_my_requests("Holiday");

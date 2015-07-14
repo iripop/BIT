@@ -97,8 +97,8 @@ public class EndUserSteps extends ScenarioSteps {
 		myRequestsPage.showFutureVacations();
 	}
 
-	@Step
-	public void access_my_free_days() {
+	//@Step
+	/*public void access_my_free_days() {
 		myFreeDaysPage.checkIfMyFreeDaysExists();
 		myFreeDaysPage.open_my_free_days();
 	}
@@ -106,5 +106,5 @@ public class EndUserSteps extends ScenarioSteps {
 	@Step
 	public void go_back_from_free_days() {
 		myFreeDaysPage.goBack();
-	}
+	}*/
 }
