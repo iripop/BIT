@@ -30,7 +30,7 @@ public class MyRequestsTest {
     @Test
     public void enter_my_requests() {
     	endUser.is_the_home_page();
-    	endUser.login(Constants.name, Constants.password);
+    	endUser.login(Constants.DMname, Constants.DMpassword);
     	endUser.go_to_vacation_menu();
     	endUser.log_in_with_succes();
     	endUser.access_my_requests();
