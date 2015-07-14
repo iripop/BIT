@@ -84,6 +84,9 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']")
 	private WebElementFacade showFutureVacationsInput;
 
+	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='type']")
+	private List<WebElement> typeList;
+
 	public void checkIfMyRequestsExists() {
 		boolean found = false;
 		if (myRequestsButton.isPresent()) {
@@ -122,4 +125,22 @@ public class MyRequestsPage extends PageObject {
 		showFutureVacationsInput.click();
 
 	}
+
+	public void checkIfTableIsFiltered(String selection) {
+        boolean found = false;
+		for (WebElement elementtype : typeList) {
+			if (elementtype.getText().contentEquals(selection)) {
+				found = true;
+				break;
+			}
+			Assert.assertTrue("Content does not correspond to desired selection", found);
+		}
+	}
 }
+
+// div[class*='search-container'] div[class='results-grid'] td[headers$='day.number']
+// div[class*='search-container'] div[class='results-grid'] td[headers$='start.number']
+// div[class*='search-container'] div[class='results-grid'] td[headers$='end.number']
+// div[class*='search-container'] div[class='results-grid'] td[headers$='type']
+// div[class*='search-container'] div[class='results-grid'] td[headers$='last.update']
+// div[class*='search-container'] div[class='results-grid'] td[headers$='status']

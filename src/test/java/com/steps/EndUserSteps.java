@@ -2,10 +2,15 @@ package com.steps;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+
 import com.pages.LogInPage;
 import com.pages.MyFreeDaysPage;
 import com.pages.MyRequestsPage;
 
+import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -33,8 +38,9 @@ public class EndUserSteps extends ScenarioSteps {
 
 	@Step
 	public void is_the_home_page() {
+		getDriver().manage().window().maximize();
 		page.open();
-		 getDriver().manage().window().maximize();
+
 	}
 
 	@StepGroup
@@ -69,8 +75,14 @@ public class EndUserSteps extends ScenarioSteps {
 
 	}
 
-	 //@StepGroup
-	//public void filtering_my_requests_group(String filter1, String filter2) {
+	@Step
+	public void check_filtering_my_requests(String selection) {
+			myRequestsPage.checkIfTableIsFiltered(selection);
+		}
+		
+		
+	// @StepGroup
+	// public void filtering_my_requests_group(String filter1, String filter2) {
 	// filtering_my_requests(filter1);
 	// filtering_my_requests(filter2);
 	// }
@@ -90,6 +102,7 @@ public class EndUserSteps extends ScenarioSteps {
 		myFreeDaysPage.checkIfMyFreeDaysExists();
 		myFreeDaysPage.open_my_free_days();
 	}
+
 	@Step
 	public void go_back_from_free_days() {
 		myFreeDaysPage.goBack();
