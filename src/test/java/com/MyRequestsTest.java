@@ -35,4 +35,14 @@ public class MyRequestsTest {
     	endUser.log_in_with_succes();
     	endUser.access_my_requests();
     }
+    @Test
+    public void filter_my_requests() {
+    	endUser.is_the_home_page();
+    	endUser.login(Constants.name, Constants.password);
+    	endUser.go_to_vacation_menu();
+    	endUser.log_in_with_succes();
+    	endUser.access_my_requests();
+    	endUser.filtering_my_requests();
+    	endUser.apply_filter_requests();
+    }
 }

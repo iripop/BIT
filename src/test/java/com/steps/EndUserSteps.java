@@ -2,6 +2,8 @@ package com.steps;
 
 import static org.junit.Assert.assertTrue;
 
+import org.openqa.selenium.WebElement;
+
 import com.pages.LogInPage;
 
 import com.pages.MyRequestsPage;
@@ -61,9 +63,18 @@ public class EndUserSteps extends ScenarioSteps {
     public void access_my_requests() {
     	myRequestsPage.checkIfMyRequestsExists();
     	myRequestsPage.open_my_requests();
-    	
-
     }
+    	 @Step
+    public void filtering_my_requests() {
+    	    	myRequestsPage.selectFiletersFromList("Holiday");
+    	    	//myRequestsPage.selectFiletersFromList("Sick Leave");
+    	    	//myRequestsPage.selectFiletersFromList("Approved");
+    	    	
+    	    	 }
+    	 @Step
+    public void apply_filter_requests() {
+    	    	myRequestsPage.apply_filters();
+    	    }
 
 
 }

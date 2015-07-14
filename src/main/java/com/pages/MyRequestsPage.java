@@ -1,6 +1,9 @@
 package com.pages;
 
+import java.util.List;
+
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -55,7 +58,13 @@ public class MyRequestsPage extends PageObject{
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
     private WebElementFacade withdrawInput;
+	
+	@FindBy(css = "div[class='filter-content'] span[class='aui-field aui-field-choice'] label")
+	private List<WebElement> filterList;
 
+
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
+    private WebElementFacade applyButton;
 
 	public void checkIfMyRequestsExists(){
     	boolean found = false;
@@ -64,16 +73,30 @@ public class MyRequestsPage extends PageObject{
     	}
     	Assert.assertTrue("Element not found", found);
     }
+	
 	public void open_my_requests() {
 		element(myRequestsButton).waitUntilVisible();
 	    myRequestsButton.click();
 	}
-	public void select_type(WebElementFacade fielters){
-		for (int i = 0; i < 15; i++){
-			element(myRequestsButton).waitUntilVisible();
-		    fielters.click();
-		}
 	
-
+	
+	
+	public void selectFiletersFromList(String filter){
+		boolean found = false;
+		for(WebElement element:filterList){
+			if(element.getText().contentEquals(filter)){
+				found=true;
+				element(myRequestsButton).waitUntilVisible();
+				element.click();
+			break;
+			}
+			Assert.assertTrue("Filter was not found", found);
+		}
+		
+	}
+	public void apply_filters() {
+		element(applyButton).waitUntilVisible();
+	    applyButton.click();
+	    element(applyButton).waitUntilVisible();
 	}
 }
