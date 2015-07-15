@@ -2,6 +2,7 @@ package com.steps;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -70,22 +71,18 @@ public class EndUserSteps extends ScenarioSteps {
 	@Step
 	public void filtering_my_requests(String filter) {
 		myRequestsPage.selectFiletersFromList(filter);
-		// myRequestsPage.selectFiletersFromList("Sick Leave");
-		// myRequestsPage.selectFiletersFromList("Approved");
 
 	}
 
+	/*@Step
+	public void filterWithMoreParameters(String... filters) {
+		myRequestsPage.selectManyFiltersFromList(filters);
+	}
+*/
 	@Step
 	public void check_filtering_my_requests(String selection) {
-			myRequestsPage.checkIfTableIsFiltered(selection);
-		}
-		
-		
-	// @StepGroup
-	// public void filtering_my_requests_group(String filter1, String filter2) {
-	// filtering_my_requests(filter1);
-	// filtering_my_requests(filter2);
-	// }
+		myRequestsPage.checkIfTableIsFiltered(selection);
+	}
 
 	@Step
 	public void apply_filter_requests() {
@@ -97,14 +94,12 @@ public class EndUserSteps extends ScenarioSteps {
 		myRequestsPage.showFutureVacations();
 	}
 
-	//@Step
-	/*public void access_my_free_days() {
-		myFreeDaysPage.checkIfMyFreeDaysExists();
-		myFreeDaysPage.open_my_free_days();
-	}
-
-	@Step
-	public void go_back_from_free_days() {
-		myFreeDaysPage.goBack();
-	}*/
+	// @Step
+	/*
+	 * public void access_my_free_days() {
+	 * myFreeDaysPage.checkIfMyFreeDaysExists();
+	 * myFreeDaysPage.open_my_free_days(); }
+	 * 
+	 * @Step public void go_back_from_free_days() { myFreeDaysPage.goBack(); }
+	 */
 }
