@@ -1,5 +1,6 @@
 package com.pages;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -14,67 +15,6 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "div.carousel-slider li a[href*='menuItem=my-requests']")
 	private WebElementFacade myRequestsButton;
 
-	/*
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_HOLIDAYCheckbox']")
-	 * private WebElementFacade holidayInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_VACATION_WITHOUT_PAYMENTCheckbox']")
-	 * private WebElementFacade vacationWithoutPaymentInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_SPECIAL_VACATIONCheckbox']")
-	 * private WebElementFacade specialVacationInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_SICK_LEAVECheckbox']")
-	 * private WebElementFacade sickLeaveInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_MATERNITY_LEAVECheckbox']")
-	 * private WebElementFacade maternityLeaveInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_FIFTHCheckbox']") private
-	 * WebElementFacade fifthInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_TENTHCheckbox']") private
-	 * WebElementFacade tenthInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_TWENTIETHCheckbox']")
-	 * private WebElementFacade twentiethInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_FIFTIETHCheckbox']")
-	 * private WebElementFacade fiftiethInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_RESTCheckbox']") private
-	 * WebElementFacade restInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_PENDINGCheckbox']")
-	 * private WebElementFacade pendingInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_APPROVEDCheckbox']")
-	 * private WebElementFacade approvedInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_CANCELLEDCheckbox']")
-	 * private WebElementFacade cancelledInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_REJECTEDCheckbox']")
-	 * private WebElementFacade rejectInput;
-	 * 
-	 * @FindBy(css=
-	 * "input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
-	 * private WebElementFacade withdrawInput;
-	 */
 	@FindBy(css = "div[class='filter-content'] span[class='aui-field aui-field-choice'] label")
 	private List<WebElement> filterList;
 
@@ -100,19 +40,39 @@ public class MyRequestsPage extends PageObject {
 		myRequestsButton.click();
 	}
 
+	/*public void selectManyFiltersFromList(String... filters) {
+		boolean found = false;
+		for (String filtru : filters) {
+			for (WebElement element : filterList) {
+				if (element.getText().toLowerCase().trim().contains(filtru.toLowerCase().trim())) {
+					System.out.println("Filtrul este: " + element.getText());
+					found = true;
+					element(myRequestsButton).waitUntilVisible();
+					element.click();
+					break;
+				}
+			}
+			Assert.assertTrue("Filter was not found", found);
+			found = false;
+		}
+
+	}
+*/
 	public void selectFiletersFromList(String filter) {
 		boolean found = false;
 		for (WebElement element : filterList) {
-			if (element.getText().contentEquals(filter)) {
+			System.out.println("In FOR");
+			if (element.getText().toLowerCase().trim().contains(filter.toLowerCase().trim())) {
+				System.out.println("Filtrul este: " + element.getText());
 				found = true;
 				element(myRequestsButton).waitUntilVisible();
 				element.click();
 				break;
 			}
-			Assert.assertTrue("Filter was not found", found);
 		}
-
+		Assert.assertTrue("Filter was not found", found);
 	}
+	// }
 
 	public void apply_filters() {
 		element(applyButton).waitUntilVisible();
@@ -127,7 +87,7 @@ public class MyRequestsPage extends PageObject {
 	}
 
 	public void checkIfTableIsFiltered(String selection) {
-        boolean found = false;
+		boolean found = false;
 		for (WebElement elementtype : typeList) {
 			if (elementtype.getText().contentEquals(selection)) {
 				found = true;
@@ -138,9 +98,14 @@ public class MyRequestsPage extends PageObject {
 	}
 }
 
-// div[class*='search-container'] div[class='results-grid'] td[headers$='day.number']
-// div[class*='search-container'] div[class='results-grid'] td[headers$='start.number']
-// div[class*='search-container'] div[class='results-grid'] td[headers$='end.number']
+// div[class*='search-container'] div[class='results-grid']
+// td[headers$='day.number']
+// div[class*='search-container'] div[class='results-grid']
+// td[headers$='start.number']
+// div[class*='search-container'] div[class='results-grid']
+// td[headers$='end.number']
 // div[class*='search-container'] div[class='results-grid'] td[headers$='type']
-// div[class*='search-container'] div[class='results-grid'] td[headers$='last.update']
-// div[class*='search-container'] div[class='results-grid'] td[headers$='status']
+// div[class*='search-container'] div[class='results-grid']
+// td[headers$='last.update']
+// div[class*='search-container'] div[class='results-grid']
+// td[headers$='status']
