@@ -38,23 +38,23 @@ public class MyRequestsTest {
 		endUser.access_my_requests();
 	}
 
-	// @Ignore
+	@Ignore
 	@Test
-	public void filter_my_requests() {
+	public void filter_my_requests_test() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
 		endUser.access_my_requests();
-		endUser.filtering_my_requests("Approved ");
-		endUser.filtering_my_requests("21 - 50 ");
-		endUser.filtering_my_requests("Maternity Leave ");
+		endUser.filter_my_requests_step("Approved ");
+		endUser.filter_my_requests_step("21 - 50 ");
+		endUser.filter_my_requests_step("Maternity Leave ");
 		// endUser.filterWithMoreParameters("Approved", "Maternity Leave","Sick
 		// Leave6");
 		endUser.apply_filter_requests();
 	}
 
-	@Ignore
+	// @Ignore
 	@Test
 	public void check_if_filter_is_correct() {
 		endUser.is_the_home_page();
@@ -62,10 +62,16 @@ public class MyRequestsTest {
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
 		endUser.access_my_requests();
-		endUser.filtering_my_requests("Holiday");
+		endUser.filter_my_requests_step("Holiday");
+		//endUser.filter_my_requests_step("Special Vacation");
+		endUser.filter_my_requests_step("1 - 5");
+		endUser.filter_my_requests_step("Withdrawn");
 		endUser.apply_filter_requests();
-		endUser.check_filtering_my_requests("Holiday");
-
+		//endUser.check_if_my_requests_table_is_filtered_by_type("Holiday");
+		endUser.check_if_my_requests_table_is_filtered_by_days_number("1- 5");
+		//endUser. check_if_my_requests_table_is_filtered_by_status("Withdrawn");
+		//endUser.checkfilterWithMoreParameters("Holiday", "1 - 5", "Withdrawn");
+		
 	}
 
 	@Ignore

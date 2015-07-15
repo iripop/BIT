@@ -69,19 +69,30 @@ public class EndUserSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void filtering_my_requests(String filter) {
-		myRequestsPage.selectFiletersFromList(filter);
+	public void filter_my_requests_step(String filter) {
+		myRequestsPage.selectFiltersFromList(filter);
 
 	}
 
-	/*@Step
-	public void filterWithMoreParameters(String... filters) {
-		myRequestsPage.selectManyFiltersFromList(filters);
-	}
-*/
+	/*
+	 * @Step public void filterWithMoreParameters(String... filters) {
+	 * myRequestsPage.selectManyFiltersFromList(filters); }
+	 */
+
 	@Step
-	public void check_filtering_my_requests(String selection) {
-		myRequestsPage.checkIfTableIsFiltered(selection);
+	public void check_if_my_requests_table_is_filtered_by_type(String selection) {
+		myRequestsPage.checkIfTableIsFilteredByType(selection);
+
+	}
+
+	@Step
+	public void check_if_my_requests_table_is_filtered_by_days_number(String selection) {
+		myRequestsPage.checkIfTableIsFilteredByDaysNumber(selection);
+	}
+
+	@Step
+	public void check_if_my_requests_table_is_filtered_by_status(String selection) {
+		myRequestsPage.checkIfTableIsFilteredByStatus(selection);
 	}
 
 	@Step
