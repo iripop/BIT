@@ -1,6 +1,7 @@
 package com.pages;
 
 
+
 import org.junit.Assert;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -41,18 +43,15 @@ public class MyFreeDaysPage extends PageObject{
 		int myFreeDays = Integer.parseInt(myFreeDaysFromNewVacation.getText());
 		myFreeDaysText.click();
 		int freeDays = Integer.parseInt(myFreeDaysFromMyFreeDays.getText());
-	//	System.out.println("1="+myFreeDays);
-	//	System.out.println("2="+freeDays);
 		boolean isEqual=false;
 		if(myFreeDays == freeDays) isEqual=true;
 		else isEqual=false;
 		return isEqual;
 	}
 	public long getSelectedBusinessDays(){
-		System.out.println("Aici="+selectedBusinesDays.getText());
 		long days=Integer.parseInt(selectedBusinesDays.getText());
 		return days;
-		
+			
 	}
 	public int getMonth(String month){
 		int x=0;
@@ -65,23 +64,23 @@ public class MyFreeDaysPage extends PageObject{
 			x=3;
 			break;
 		case "April": x=4;
-		break;
+			break;
 		case "May": x=5;
-		break;
+			break;
 		case "June": x=6;
-		break;
+			break;
 		case "July": x=7;
-		break;
+			break;
 		case "August": x=8;
 			break;
 		case "September": x=9;
 			break;
 		case "October": x=10;
-		break;
+			break;
 		case "November": x=11;
-		break;
+			break;
 		case "December": x=12;
-		break;
+			break;
 		}
 		return x;
 	}
