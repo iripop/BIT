@@ -49,7 +49,7 @@ public class ReadingEmail extends ScenarioSteps {
 		
 	}
 	@Step
-	public String check_if_user_have_email(String type,String startDate,String endDate){
+	public String check_if_user_has_email(String type,String startDate,String endDate){
 		ReadingEmail email =new ReadingEmail();
 		List<Mail> list = mailPage.read(Constants.mailEvozon,Constants.passwordEvozon);
 		boolean found = false;

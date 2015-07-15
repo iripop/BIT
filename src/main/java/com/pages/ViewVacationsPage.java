@@ -10,7 +10,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 
-public class VacationManagementPage extends PageObject {
+public class ViewVacationsPage extends PageObject {
 
 	@FindBy(css = "div[class='carousel-slider span3'] a[href*='menuItem=inbox']")
 	private WebElementFacade inboxText;
@@ -45,14 +45,14 @@ public class VacationManagementPage extends PageObject {
 	public void access_the_inbox_menu(){
 		inboxText.click();
 	}
-	public void select_one_request(){
+	public void select_first_request(){
 		WebElement check = tableWithRequests.findElement(By.cssSelector("input[name='_evovacation_WAR_EvoVacationportlet_rowIds']"));
 		check.click();
 	}
-	public void approve_request(){
+	public void click_approve_button(){
 		approveButton.click();
 	}
-	public void reject_request(){
+	public void click_reject_button(){
 		rejectButton.click();
 	}
 	public boolean approve_button_is_present(){
@@ -65,9 +65,8 @@ public class VacationManagementPage extends PageObject {
 	}
 	public int getNumberOfRequests(){
 		String text = numberOfRequest.getText();
-		char c = text.charAt(1);
-		int nr = (int)c;
-		return nr-'0';
+		text = text.replace("(", "").replace(")", "");
+		return Integer.parseInt(text);
 	}
 	public void access_the_view_vacations_menu(){
 		viewVacationsText.click();

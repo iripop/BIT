@@ -43,9 +43,9 @@ public class MailTest {
     public ReadingEmail emailSteps;
     
     @Steps
-    public ApproveRejectRequestsSteps approveSteps;
+    public ApproveRejectRequestsSteps approveRejectSteps;
 
-   // @Test
+    @Test
     public void vacation_request_mail(){
     	endUser.is_the_home_page();
     	endUser.login(Constants.Username, Constants.Userpassword);
@@ -54,20 +54,20 @@ public class MailTest {
     	newVacationSteps.access_new_vacation_request_with_success();
     	newVacationSteps.create_a_new_holiday_request(24, "August", 2015, 24, "August", 2015);
     	String msg1 = emailSteps.check_if_the_request_was_made("Vacation Request", "24/08/2015", "24/08/2015");
-    	System.out.println(msg1);
-    	String msg2 = emailSteps.check_if_user_have_email("Vacation Request", "24/08/2015", "24/08/2015");
-    	System.out.println(msg2);
+    //	System.out.println(msg1);
+    	String msg2 = emailSteps.check_if_user_has_email("Vacation Request", "24/08/2015", "24/08/2015");
+    //	System.out.println(msg2);
     }
-  //  @Test
+    @Test
     public void vacation_approved_mail(){
     	endUser.is_the_home_page();
     	endUser.login(Constants.DMname, Constants.DMpassword);
     	endUser.go_to_vacation_menu();
-		approveSteps.view_vacation_requests_assigned_to_me();
-		approveSteps.access_inbox_with_success();
+    	approveRejectSteps.view_vacation_requests_assigned_to_me();
+    	approveRejectSteps.access_inbox_with_success();
 	//	approveUser.approve_the_request();
-		approveSteps.approve_request_is_correct();
-    
+    	approveRejectSteps.approve_request_is_correct();
+		emailSteps.receive_email_when_dm_approve();
 
     }
     @Test
@@ -75,10 +75,11 @@ public class MailTest {
     	endUser.is_the_home_page();
     	endUser.login(Constants.DMname, Constants.DMpassword);
     	endUser.go_to_vacation_menu();
-		approveSteps.view_vacation_requests_assigned_to_me();
-		approveSteps.access_inbox_with_success();
-	//	approveUser.approve_the_request();
-		approveSteps.reject_request_is_correct();
+    	approveRejectSteps.view_vacation_requests_assigned_to_me();
+    	approveRejectSteps.access_inbox_with_success();
+	//	approveRejectSteps.approve_the_request();
+    	approveRejectSteps.reject_request_is_correct();
+		emailSteps.receive_email_when_dm_reject();
     
 
     }

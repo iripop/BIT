@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.pages.LogInPage;
 import com.pages.MyFreeDaysPage;
 import com.pages.MyRequestsPage;
-import com.pages.VacationManagementPage;
+import com.pages.InboxPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.thucydides.core.annotations.Step;
@@ -22,7 +22,7 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 	
 
 	LogInPage page;
-	VacationManagementPage inboxPage;
+	InboxPage inboxPage;
 	@Step
 	public void view_vacation_requests_assigned_to_me(){
 		inboxPage.access_the_inbox_menu();
@@ -35,27 +35,27 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		assertTrue("Approve button not found",found);
 	}
 	@Step
-	public void check_one_request(){
-		inboxPage.select_one_request();
+	public void check_first_request(){
+		inboxPage.select_first_request();
 	}
 	@Step
 	public void click_the_approve_button(){
-		inboxPage.approve_request();
+		inboxPage.click_approve_button();
 	}
 	@Step
 	public void click_the_reject_button(){
-		inboxPage.reject_request();
+		inboxPage.click_reject_button();
 	}
 	@StepGroup
 	public void approve_the_request(){
 	//	view_vacation_requests_assigned_to_me();
-		check_one_request();
+		check_first_request();
 		click_the_approve_button();
 	}
 	@StepGroup
 	public void reject_the_request(){
 	//	view_vacation_requests_assigned_to_me();
-		check_one_request();
+		check_first_request();
 		click_the_reject_button();
 	}
 	@StepGroup

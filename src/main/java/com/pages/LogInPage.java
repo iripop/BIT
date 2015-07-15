@@ -16,7 +16,7 @@ public class LogInPage extends PageObject {
 	    @FindBy(css = "input[class='aui-button-input aui-button-input-submit']")
 	    private WebElementFacade signInButton;
 	    
-	    @FindBy(css = "ul.main-menu li:nth-child(9) a span")
+	    @FindBy(css = "ul.main-menu a[href*='/vacation']")
 	    private WebElementFacade vacationMenu;
 
 	    public void enter_screen_name(String keyword) {
@@ -25,13 +25,13 @@ public class LogInPage extends PageObject {
 	    public void enter_password(String keyword) {
 	        password.type(keyword);
 	    }
-	    public void sign_in() {
+	    public void click_sign_in() {
 	        signInButton.click();
 	    }
-	    public void vacationMenu(){
+	    public void clickVacationMenu(){
 	    	vacationMenu.click();
 	    }
-	    public boolean vacation_is_present(){
+	    public boolean vacation_tab_is_present(){
 	    	if(vacationMenu.isPresent()) return true;
 	    	else return false;
 	    }

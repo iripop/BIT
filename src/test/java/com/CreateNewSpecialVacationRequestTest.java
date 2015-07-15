@@ -12,6 +12,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -40,9 +41,9 @@ public class CreateNewSpecialVacationRequestTest {
 
     @Test
     public void create_a_new_marriage_request(){
-    //	endUser.is_the_home_page();
-    //	endUser.login(Constants.name, Constants.password);
-    //	endUser.go_to_vacation_menu();
+    	endUser.is_the_home_page();
+    	endUser.login(username, password);
+    	endUser.go_to_vacation_menu();
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
         newVacationSteps.create_a_new_special_vacation_request("Marriage", "", 12, "August", 2015, 13, "August", 2015);
@@ -58,7 +59,13 @@ public class CreateNewSpecialVacationRequestTest {
         newVacationSteps.create_a_new_special_vacation_request("Child birth", "", 28, "July", 2015, 29, "July", 2015);
   
     }
-    @Test
+    
+    @After
+    public void close_browser(){
+    	pages.getDriver().close();
+    }
+    
+    //@Test
     public void create_a_new_funeral_request(){
     //	endUser.is_the_home_page();
     //	endUser.login(Constants.name, Constants.password);
@@ -68,7 +75,7 @@ public class CreateNewSpecialVacationRequestTest {
         newVacationSteps.create_a_new_special_vacation_request("Funeral", "", 17, "August", 2015, 18, "August", 2015);
   
     }
-    @Test
+    //@Test
     public void create_a_new_other_request(){
     //	endUser.is_the_home_page();
     //	endUser.login(Constants.name, Constants.password);
