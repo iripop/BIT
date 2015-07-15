@@ -39,7 +39,7 @@ public class MyFreeDaysTest {
 	public EndUserSteps endUser;
 	public NewVacationRequestsSteps newVacationUser;
 
-	// @Test
+	 @Test
 	public void my_free_days() {
 		endUser.is_the_home_page();
 
@@ -50,9 +50,9 @@ public class MyFreeDaysTest {
 
 	@Test
 	public void selected_business_days() {
-		endUser.is_the_home_page();
-		endUser.login(username, password);
-		endUser.go_to_vacation_menu();
+		//endUser.is_the_home_page();
+		//endUser.login(username, password);
+		//endUser.go_to_vacation_menu();
 		newVacationUser.go_to_new_vacation_request_page();
 
 		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);

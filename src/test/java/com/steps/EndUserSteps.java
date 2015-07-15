@@ -34,7 +34,7 @@ public class EndUserSteps extends ScenarioSteps {
 
 	@Step
 	public void starts_login() {
-		page.sign_in();
+		page.click_sign_in();
 	}
 
 	@Step
@@ -53,12 +53,12 @@ public class EndUserSteps extends ScenarioSteps {
 
 	@Step
 	public void go_to_vacation_menu() {
-		page.vacationMenu();
+		page.clickVacationMenu();
 	}
 
 	@Step
 	public void log_in_with_succes() {
-		boolean found = page.vacation_is_present();
+		boolean found = page.vacation_tab_is_present();
 		assertTrue("VacationMenu not found", found);
 	}
 

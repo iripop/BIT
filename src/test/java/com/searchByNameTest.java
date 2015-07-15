@@ -6,8 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
+import com.steps.ReadingEmail;
+import com.steps.vacationReportSearchByName;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
@@ -20,7 +21,7 @@ import tools.Constants;
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 //@RunWith(ThucydidesRunner.class)
-public class ApproveAndRejectRequestsTest {
+public class searchByNameTest {
 
 
 	@Managed(uniqueSession = true)
@@ -33,32 +34,24 @@ public class ApproveAndRejectRequestsTest {
 
 	@Steps
 	public EndUserSteps endUser;
-	
-	@Steps
-	public ApproveRejectRequestsSteps approveUser;
 
- // @Test
-    public void approve_request() {
+	@Steps
+	public vacationReportSearchByName searchUser;
+
+  @Test
+    public void search() {
 		
         endUser.is_the_home_page();
 		endUser.login(username, password);
 		endUser.go_to_vacation_menu();
-		approveUser.view_vacation_requests_assigned_to_me();
-		approveUser.access_inbox_with_success();
-	//	approveUser.approve_the_request();
-		approveUser.approve_request_is_correct();
+		searchUser.view_vacation_report();
+		searchUser.go_to_vacation_report_with_success();
+		searchUser.search_by_last_name_and_first_name("Pop", "Irina");
+		searchUser.check_if_first_name_is_correct("Irina");
+		searchUser.check_if_last_name_is_correct("Pop");
 
 	}
-  	@Test
-  	public void reject_request(){
-  		 endUser.is_the_home_page();
- 		endUser.login(username, password);
- 		endUser.go_to_vacation_menu();
- 		approveUser.view_vacation_requests_assigned_to_me();
- 		approveUser.access_inbox_with_success();
- 	//	approveUser.reject_the_request();
- 		approveUser.reject_request_is_correct();
-  	}
+
 	
    
 }
