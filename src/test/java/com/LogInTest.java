@@ -1,5 +1,7 @@
 package com;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -28,11 +30,14 @@ public class LogInTest {
 
     @Steps
     public EndUserSteps endUser;
+    
+    ReadingEmail email;
   @Test
     public void log_in() {
+		
         endUser.is_the_home_page();
 		endUser.login(username, password);
-      
+	
     }
    @Test
   public void vacationMenu(){

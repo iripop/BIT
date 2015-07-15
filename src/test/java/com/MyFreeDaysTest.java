@@ -47,6 +47,6 @@ public class MyFreeDaysTest {
 		endUser.login(username, password);
 		endUser.go_to_vacation_menu();
 		newVacationUser.go_to_new_vacation_request_page();
-		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 17, "August", 2015);
+		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
     }
 } 
