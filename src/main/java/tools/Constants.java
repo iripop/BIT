@@ -6,6 +6,9 @@ public class Constants {
 	public static final String DMpassword = "cana";
 	public static final String Username = "irinapop";
 	public static final String Userpassword = "frunza11";
-	public static final String mailEvozon = "bianca.ianc@evozon.com";
-	public static final String passwordEvozon = "@Oglinda2";
+	public static final String DMmailEvozon = "bianca.ianc@evozon.com";
+	public static final String DMpasswordEvozon = "@Oglinda2";
+	public static final String mailEvozon = "irina.pop@evozon.com"; 
+	public static final String passwordEvozon = "Frunza.11";
+
 }

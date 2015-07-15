@@ -37,7 +37,7 @@ public class ApproveAndRejectRequestsTest {
 	@Steps
 	public ApproveRejectRequestsSteps approveUser;
 
-  @Test
+ // @Test
     public void approve_request() {
 		
         endUser.is_the_home_page();
@@ -51,8 +51,8 @@ public class ApproveAndRejectRequestsTest {
 	}
   	@Test
   	public void reject_request(){
-  		// endUser.is_the_home_page();
- 	//	endUser.login(username, password);
+  		 endUser.is_the_home_page();
+ 		endUser.login(username, password);
  		endUser.go_to_vacation_menu();
  		approveUser.view_vacation_requests_assigned_to_me();
  		approveUser.access_inbox_with_success();
