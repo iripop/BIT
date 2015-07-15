@@ -19,11 +19,12 @@ import org.openqa.selenium.WebDriver;
 import com.pages.NewVacationRequestPage;
 import com.steps.EndUserSteps;
 import com.steps.NewVacationRequestsSteps;
+import com.steps.ReadingEmail;
 
 //@RunWith(ThucydidesRunner.class)
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-public class WithdrawnAVacationRequestTest {
+public class MailTest {
 	String username,password;
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -37,15 +38,13 @@ public class WithdrawnAVacationRequestTest {
     @Steps
     public NewVacationRequestsSteps newVacationSteps;
    
+    @Steps
+    public ReadingEmail emailSteps;
+
     @Test
-    public void withdrawn_vacation_request() {
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-        newVacationSteps.create_a_new_holiday_request(10, "September", 2015, 11, "September", 2015);
-        
+    public void check_if(){
+    
+    	emailSteps.check_if_the_request_was_made("Vacation Request", "19/08/2015", "19/08/2015");
     }
-  
+ 
 } 
