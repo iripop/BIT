@@ -10,20 +10,28 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 
-
 public class NewVacationRequestPage extends PageObject {
 
-		@FindBy(css = "a[href*='menuItem=new-request']")
-	    private WebElementFacade newVacationRequestText; 
-	 	
-	 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_saveButton']")
-	    private WebElementFacade saveButtonText;  	
+	@FindBy(css = "a[href*='menuItem=new-request']")
+	private WebElementFacade newVacationRequestText;
+
+
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_saveButton']")
+	private WebElementFacade saveButtonText;
+
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_type_CO']")
+	private WebElementFacade holidayRadio;
+
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_type_CF']")
+	private WebElementFacade withoutPaymentRadio;
+
 	
-	    @FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_type_CO']")
-	    private WebElementFacade holidayRadio;
-	    
-	    @FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_type_CF']")
-	    private WebElementFacade withoutPaymentRadio;	    
+
+	@FindBy(css = "div[style*='50.84375px'] table[class='dp_header'] tr td:nth-child(2)")
+	private WebElementFacade monthAndYearAtStartDate;
+
+	
+
 
 	    @FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_type_CM']")
 	    private WebElementFacade sickLeaveRadio;	  
@@ -149,12 +157,16 @@ public class NewVacationRequestPage extends PageObject {
 	    		}
 	    	}
 	    }
+
+
+
 	    public boolean my_request_is_present(String startDate,String endDate,String type){
 	    	
 	    	boolean found=false;
 	    	
 	    	return found;
 	    }
+	    }
 	  
 	  
-    }
+

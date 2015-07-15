@@ -10,43 +10,55 @@ import com.steps.NumberOfFreeDaysSteps;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
+import tools.Constants;
+
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-//@RunWith(ThucydidesRunner.class)
+// @RunWith(ThucydidesRunner.class)
 public class MyFreeDaysTest {
-	String username,password;
-	
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+	String username, password;
 
-    @ManagedPages(defaultUrl = Constants.defaultURL)
-    public Pages pages;
+	@Managed(uniqueSession = true)
+	public WebDriver webdriver;
 
-    @Steps
-    public NumberOfFreeDaysSteps myFreeDay;
-    @Steps
-    public EndUserSteps endUser;
-    @Steps
-    public NewVacationRequestsSteps newVacationUser;
-  //  @Test
-    public void my_free_days() {
-        endUser.is_the_home_page();
+	@ManagedPages(defaultUrl = Constants.defaultURL)
+	public Pages pages;
+
+	@Steps
+	public NumberOfFreeDaysSteps myFreeDay;
+	@Steps
+	public EndUserSteps endUser;
+	public NewVacationRequestsSteps newVacationUser;
+
+	// @Test
+	public void my_free_days() {
+		endUser.is_the_home_page();
+
 		endUser.login(username, password);
 		endUser.go_to_vacation_menu();
 		myFreeDay.my_free_days_are_correct();
-    }
-    @Test
-    public void selected_business_days(){
-    	endUser.is_the_home_page();
+	}
+
+	@Test
+	public void selected_business_days() {
+		endUser.is_the_home_page();
 		endUser.login(username, password);
 		endUser.go_to_vacation_menu();
 		newVacationUser.go_to_new_vacation_request_page();
+
 		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
-    }
-} 
+    
+
+
+	}
+}
+

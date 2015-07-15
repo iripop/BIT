@@ -1,5 +1,19 @@
 package com.pages;
 
+
+
+import org.junit.Assert;
+
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.pages.PageObject;
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -70,5 +84,6 @@ public class MyFreeDaysPage extends PageObject{
 		}
 		return x;
 	}
+
 
 }
