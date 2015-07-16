@@ -69,8 +69,8 @@ public class MyRequestsSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void filtering_my_requests(String filter) {
-		myRequestsPage.selectFiletersFromList(filter);
+	public void filter_my_requests(String filter) {
+		myRequestsPage.selectFiltersFromList( filter);
 
 	}
 
@@ -81,7 +81,7 @@ public class MyRequestsSteps extends ScenarioSteps {
 */
 	@Step
 	public void check_filtering_my_requests(String selection) {
-		myRequestsPage.checkIfTableIsFiltered(selection);
+	//	myRequestsPage.checkIfTableIsFiltered(selection);
 	}
 
 	@Step
@@ -102,4 +102,9 @@ public class MyRequestsSteps extends ScenarioSteps {
 	 * 
 	 * @Step public void go_back_from_free_days() { myFreeDaysPage.goBack(); }
 	 */
+	@Step
+	public void check_if_desired_request_is_present(String type,String startDate,String endDate,String status){
+		boolean found = myRequestsPage.check_if_exists_desired_request(type, startDate, endDate, status);
+		assertTrue("Is not found",found);
+	}
 }

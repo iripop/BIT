@@ -19,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.pages.NewVacationRequestPage;
 import com.steps.EndUserSteps;
+import com.steps.MyRequestsSteps;
 import com.steps.NewVacationRequestsSteps;
 
 //@RunWith(ThucydidesRunner.class)
@@ -38,7 +39,9 @@ public class CreateNewMaternityLeaveVacationRequestTest {
     @Steps
     public NewVacationRequestsSteps newVacationSteps;
    
-
+    @Steps
+    public MyRequestsSteps myRequestsSteps;
+    
     @Test
     public void create_a_new_prenatalPostnatal_request(){
     	endUser.is_the_home_page();
@@ -47,7 +50,8 @@ public class CreateNewMaternityLeaveVacationRequestTest {
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
         newVacationSteps.create_a_new_maternity_leave_request("Prenatal / Postnatal", 12, "August", 2015, 13, "August", 2015);
-  
+        myRequestsSteps.access_my_requests();
+        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "12/08/2015", "13/08/2015", "Pending");
     }
     @Test
     public void create_a_new_concediu_ingrijire_copii_request(){
@@ -57,6 +61,8 @@ public class CreateNewMaternityLeaveVacationRequestTest {
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
         newVacationSteps.create_a_new_maternity_leave_request("Concediu Ingrijire Copil", 28, "July", 2015, 29, "July", 2015);
+        myRequestsSteps.access_my_requests();
+        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "28/07/2015", "29/07/2015", "Pending");
   
     }
     @After

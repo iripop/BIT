@@ -47,11 +47,11 @@ public class ViewVacationsPage extends PageObject {
 		System.out.println(nr);
 		boolean isCorrect = false;
 		while(i<nr){
-			System.out.println(namesFromTheTable.get(i).getText());
-			System.out.println(startDatesFromTheTable.get(i).getText());
-			System.out.println(endDatesFromTheTable.get(i).getText());
-			System.out.println(statusFromTheTable.get(i).getText());
-			System.out.println(typesFromTheTable.get(i).getText());
+		//	System.out.println(namesFromTheTable.get(i).getText());
+			//System.out.println(startDatesFromTheTable.get(i).getText());
+		//	System.out.println(endDatesFromTheTable.get(i).getText());
+		//	System.out.println(statusFromTheTable.get(i).getText());
+		//	System.out.println(typesFromTheTable.get(i).getText());
 			if(namesFromTheTable.get(i).getText().compareTo(employeeName)==0 && startDatesFromTheTable.get(i).getText().compareTo(startDate)==0 && endDatesFromTheTable.get(i).getText().compareTo(endDate)==0 && statusFromTheTable.get(i).getText().compareTo(status)==0 && typesFromTheTable.get(i).getText().compareTo(type)==0)
 				{isCorrect = true;
 				break;}
