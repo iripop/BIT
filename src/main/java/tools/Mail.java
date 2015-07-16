@@ -1,4 +1,4 @@
-package com.pages;
+package tools;
 
 public class Mail {
 	private String subject;

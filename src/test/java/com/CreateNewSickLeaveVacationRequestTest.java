@@ -48,9 +48,9 @@ public class CreateNewSickLeaveVacationRequestTest {
     	endUser.go_to_vacation_menu();
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
-    	newVacationSteps.create_a_new_sick_leave_request(12, "August", 2015, 13, "August", 2015);
+    	newVacationSteps.create_a_new_sick_leave_request(19, "October", 2015, 19, "October", 2015);
         myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Sick Leave", "12/08/2015", "13/08/2015", "Pending");
+        myRequestsSteps.check_if_desired_request_is_present("Sick Leave", "19/10/2015", "19/10/2015", "Sick Leave");
   
     }
  

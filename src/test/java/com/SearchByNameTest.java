@@ -21,7 +21,7 @@ import tools.Constants;
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 //@RunWith(ThucydidesRunner.class)
-public class searchByNameTest {
+public class SearchByNameTest {
 
 
 	@Managed(uniqueSession = true)
