@@ -1,5 +1,6 @@
 package com;
 
+import org.junit.After;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import com.steps.MyRequestsSteps;
 
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.serenitybdd.junit.runners.SerenityRunner;
@@ -31,8 +33,7 @@ public class MyRequestsTest {
 	@Steps
 	public MyRequestsSteps myRequestsSteps;
 
-	@Ignore
-	@Test
+	//@Test
 	public void enter_my_requests() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);
@@ -40,27 +41,25 @@ public class MyRequestsTest {
 		endUser.log_in_with_succes();
 		myRequestsSteps.access_my_requests();
 	}
-
-	@Ignore
-	@Test
+	
+	//@Test
 	public void filter_my_requests_test() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
 		myRequestsSteps.access_my_requests();
-
 		myRequestsSteps.filter_my_requests_step("Approved");
 		myRequestsSteps.filter_my_requests_step("Approved");
 		myRequestsSteps.filter_my_requests_step("Maternity Leave");
 		myRequestsSteps.filter_my_requests_step("21 - 50");
 
-		// endUser.filterWithMoreParameters("Approved", "Maternity Leave","Sick
+		// myRequestsSteps.filterWithMoreParameters("Approved", "Maternity
+		// Leave","Sick
 		// Leave6");
 		myRequestsSteps.apply_filter_requests();
 	}
 
-	// @Ignore
 	@Test
 	public void check_if_filter_is_correct() {
 		endUser.is_the_home_page();
@@ -71,17 +70,16 @@ public class MyRequestsTest {
 		myRequestsSteps.filter_my_requests_step("Holiday");
 		myRequestsSteps.filter_my_requests_step("1 - 5");
 		myRequestsSteps.filter_my_requests_step("Withdrawn");
-	
 		myRequestsSteps.apply_filter_requests();
 		myRequestsSteps.check_filtering_my_requests_by_type("Holiday");
-		myRequestsSteps.check_filtering_my_requests_by_days_number(1 ,5);
-		//endUser. check_filtering_my_requests_by_status("Withdrawn");
-		//endUser.checkfilterWithMoreParameters("Holiday", "1 - 5", "Withdrawn");
-		
+		myRequestsSteps.check_filtering_my_requests_by_days_number(1, 5);
+		myRequestsSteps.check_filtering_my_requests_by_status("Withdrawn");
+		// myRequestsSteps.checkfilterWithMoreParameters("Holiday", "1 - 5",
+		// "Withdrawn");
+
 	}
 
-	@Ignore
-	@Test
+	//@Test
 	public void filter_my_requests_by_future_vacations() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);
@@ -91,5 +89,10 @@ public class MyRequestsTest {
 		myRequestsSteps.select_future_vacations();
 		myRequestsSteps.apply_filter_requests();
 
+	}
+
+	@After
+	public void close_browser() {
+		pages.getDriver().close();
 	}
 }

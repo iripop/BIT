@@ -63,7 +63,7 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "div[style*='50.84375px'] table[class='dp_header'] tr td:nth-child(2)")
 	private WebElementFacade monthAndYearAtEndDate;
 
-	public void click_holiday_input() {
+	public void click_holiday() {
 		holidayInput.click();
 	}
 

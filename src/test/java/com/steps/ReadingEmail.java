@@ -21,7 +21,7 @@ public class ReadingEmail extends ScenarioSteps {
 	NewVacationRequestPage newVacationPage;
 	  LogInPage logInPage;
 	//  MailRequestPage mailPage;
-	  EmailTool tools;
+	  EmailTool tools = new EmailTool();
 	  
 	@Step
 	public String check_if_DM_receives_email_when_a_request_is_made(String type,String startDate,String endDate){
@@ -42,9 +42,11 @@ public class ReadingEmail extends ScenarioSteps {
 	@Step
 	public String check_if_user_receives_email_when_he_makes_a_request(String type,String startDate,String endDate){
 		List<Mail> list = tools.readEmails(Constants.mailEvozon,Constants.passwordEvozon);
-		boolean found = false;
 		int i;
-		String text=null;
+	
+		boolean found = false;
+		//int i;
+		String text="";
 		for(i=0;i<list.size();i++){
 			String subject = list.get(i).getSubject();
 			String msg = list.get(i).getcontent();
@@ -135,18 +137,22 @@ public class ReadingEmail extends ScenarioSteps {
 		return text;
 	}
 	@StepGroup
-	public void check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(String lastName,String startDate,String endDate,String type) throws IOException{
-		System.out.println("Aici=");	
+	public void check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(String lastName,String startDate,String endDate,String type) throws IOException{	
 		String text = tools.emailTemplate(lastName, type, startDate, endDate);
-		System.out.println("Aici=");
 		System.out.println(text);
 		String mail = check_if_user_receives_email_when_he_makes_a_request(type, startDate, endDate);
 		
-		System.out.println("Aic= "+mail);
 		write_emails_in_file(text, mail);
-		boolean check= check_if_two_emails_are_equal();
-		assertTrue("The email is not correct",check);
+	//	System.out.println(mail);
+		String c = mail.replaceAll("\\s", "");
+	//	String c2 = getContent.replaceAll("\\s", "");
+		System.out.println(c);
+		assertTrue("The email is not correct", text.contentEquals(c));
+		//boolean check= check_if_two_emails_are_equal();
+		//System.out.println("Check="+check);
+		//assertTrue("The email is not correct",check);
 	}
+	
 	@Step
 	public void write_emails_in_file(String email1,String email2) throws IOException{
 		tools.writeToFile(email1, "template.txt");
@@ -159,9 +165,10 @@ public class ReadingEmail extends ScenarioSteps {
 		String email1 = tools.readFromFile("template.txt");
 		String email2 = tools.readFromFile("receiveMail.txt");
 		boolean isEqual = true;
-		System.out.println(email1);
-		System.out.println(email2);
-		isEqual = tools.compare(email1, email2);
+	//	System.out.println(email1);
+	//	System.out.println(email2);
+		//isEqual = tools.compare(email1, email2);
+		isEqual = tools.read("template.txt", "receiveMail.txt");
 		return isEqual;
 	}
 

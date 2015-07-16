@@ -70,7 +70,7 @@ public class InboxPage extends PageObject {
 		else return false;
 	}
 
-	public int getNumberOfRequests(){
+	public int showNumberOfRequests(){
 		String text = numberOfRequest.getText();
 		text = text.replace("(", "").replace(")", "");
 		return Integer.parseInt(text);
@@ -83,7 +83,7 @@ public class InboxPage extends PageObject {
 		else return false;
 	}
 
-	public void search_request(String emplyeeName,String startDate,String endDate,String type){
+	public void search_requests_to_approve_or_reject(String emplyeeName,String startDate,String endDate,String type){
 		int i=0;
 		int nr = listOfNames.size();
 		while(i<nr){

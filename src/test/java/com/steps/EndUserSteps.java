@@ -62,26 +62,4 @@ public class EndUserSteps extends ScenarioSteps {
 		assertTrue("VacationMenu not found", found);
 	}
 
-	@Step
-	public void access_my_requests() {
-		myRequestsPage.checkIfMyRequestsButtonExists();
-		myRequestsPage.open_my_requests();
-	}
-
-	@Step
-	public void filter_my_requests_step(String filter) {
-		myRequestsPage.selectFiltersFromList(filter);
-
-	}
-
-	@Step
-	public void apply_filter_requests() {
-		myRequestsPage.clickApplyButtonForFilters();
-	}
-
-	@Step
-	public void select_future_vacations() {
-		myRequestsPage.clickShowFutureVacationsButton();
-	}
-
 }

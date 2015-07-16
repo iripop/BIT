@@ -37,8 +37,8 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		assertTrue("Approve button not found",found);
 	}
 	@Step
-	public void search(String employeeName,String startDate,String endDate,String type){
-		inboxPage.search_request(employeeName, startDate, endDate, type);
+	public void select_vacation_to_approve_or_reject(String employeeName,String startDate,String endDate,String type){
+		inboxPage.search_requests_to_approve_or_reject(employeeName, startDate, endDate, type);
 	}
 	@Step
 	public void click_the_approve_button(){
@@ -49,12 +49,12 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		inboxPage.click_reject_button();
 	}
 	@StepGroup
-	public void approve_the_request(String employeeName,String startDate,String endDate,String type){
-		int beginNr = inboxPage.getNumberOfRequests();
+	public void approve_the_selected_request(String employeeName,String startDate,String endDate,String type){
+		int beginNr = inboxPage.showNumberOfRequests();
 		boolean isEqual;
-		search(employeeName, startDate, endDate, type);
+		select_vacation_to_approve_or_reject(employeeName, startDate, endDate, type);
 		click_the_approve_button();
-		int endNr = inboxPage.getNumberOfRequests();
+		int endNr = inboxPage.showNumberOfRequests();
 		if(beginNr == endNr+1) isEqual = true;
 		else isEqual = false;
 		assertTrue("Is not equal",isEqual);
@@ -62,12 +62,12 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		
 	}
 	@StepGroup
-	public void reject_the_request(String employeeName,String startDate,String endDate,String type){
-		int beginNr = inboxPage.getNumberOfRequests();
-		search(employeeName, startDate, endDate, type);
+	public void reject_the_selected_request(String employeeName,String startDate,String endDate,String type){
+		int beginNr = inboxPage.showNumberOfRequests();
+		select_vacation_to_approve_or_reject(employeeName, startDate, endDate, type);
 		click_the_reject_button();
 		boolean isEqual;
-		int endNr = inboxPage.getNumberOfRequests();
+		int endNr = inboxPage.showNumberOfRequests();
 		if(beginNr == endNr+1) isEqual = true;
 		else isEqual = false;
 		assertTrue("Is not equal",isEqual);

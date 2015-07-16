@@ -39,7 +39,7 @@ public class SearchByNameTest {
 	public VacationReportSearchByName searchUser;
 
   @Test
-    public void search() {
+    public void search_vacation_by_name_in_vacation_report() {
 		
         endUser.is_the_home_page();
 		endUser.login(username, password);

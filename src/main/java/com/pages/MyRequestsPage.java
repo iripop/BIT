@@ -24,37 +24,42 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']")
 	private WebElementFacade showFutureVacationsInput;
 
-//	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='type']")
-//	private List<WebElement> typeList;
+	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
+	// td[headers$='type']")
+	// private List<WebElement> typeList;
 
-//	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='status']")
-//	private List<WebElement> statusList;
+	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
+	// td[headers$='status']")
+	// private List<WebElement> statusList;
 
-//	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='day.number']")
-	@FindBy(css="tr[class*='portlet-section'] td:nth-child(4) a")
+	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
+	// td[headers$='day.number']")
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(4) a")
 	private List<WebElement> daysNumberList;
 
-//	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='start.number']")
-//	private List<WebElement> startDateList;
+	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
+	// td[headers$='start.number']")
+	// private List<WebElement> startDateList;
 
-//	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='end.number']")
-//	private List<WebElement> endDateList;
+	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
+	// td[headers$='end.number']")
+	// private List<WebElement> endDateList;
 
 	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='last.update']")
 	private List<WebElement> lastUpdateList;
-	
-	@FindBy(css="tr[class*='portlet-section'] td:nth-child(1) a")
+
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(1) a")
 	private List<WebElement> startDateList;
-	
-	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
+
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(2) a")
 	private List<WebElement> endDateList;
-	
-	@FindBy(css="tr[class*='portlet-section'] td:nth-child(4) a")
+
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(4) a")
 	private List<WebElement> typeList;
-	
-	@FindBy(css="tr[class*='portlet-section'] td:nth-child(6) a")
+
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(6) a")
 	private List<WebElement> statusList;
-	
+
 	public void checkIfMyRequestsButtonExists() {
 
 		boolean found = false;
@@ -84,9 +89,9 @@ public class MyRequestsPage extends PageObject {
 	public void selectFiltersFromList(String filter) {
 		boolean found = false;
 		for (WebElement element : filterList) {
-			System.out.println("In FOR");
+			//System.out.println("In FOR");
 			if (element.getText().toLowerCase().trim().contains(filter.toLowerCase().trim())) {
-				System.out.println("Filtrul este: " + element.getText());
+				//System.out.println("Filtrul este: " + element.getText());
 				found = true;
 				element(myRequestsButton).waitUntilVisible();
 				element.click();
@@ -95,7 +100,6 @@ public class MyRequestsPage extends PageObject {
 		}
 		Assert.assertTrue("Filter was not found", found);
 	}
-	// }
 
 	public void clickApplyButtonForFilters() {
 		element(applyButton).waitUntilVisible();
@@ -138,7 +142,7 @@ public class MyRequestsPage extends PageObject {
 		boolean found = true;
 		for (WebElement elementdaysnumber : daysNumberList) {
 			int day = Integer.parseInt(elementdaysnumber.getText());
-			while (day<1 && day>5) {
+			while (day < 1 && day > 5) {
 				found = false;
 				System.out.println("Days number filtered correctly");
 				break;
@@ -147,24 +151,24 @@ public class MyRequestsPage extends PageObject {
 		}
 		Assert.assertTrue("Content does not correspond to desired selection", found);
 	}
-	public boolean check_if_exists_desired_request(String type,String startDate,String endDate,String status){
-		int i=0;
+
+	public boolean check_if_desired_request_exists(String type, String startDate, String endDate, String status) {
+		int i = 0;
 		int nr = startDateList.size();
 		boolean exist = false;
 		System.out.println(nr);
-		while(i<nr){
-			//	System.out.println(namesFromTheTable.get(i).getText());
-				//System.out.println(startDatesFromTheTable.get(i).getText());
-			//	System.out.println(endDatesFromTheTable.get(i).getText());
-			//	System.out.println(statusFromTheTable.get(i).getText());
-			//	System.out.println(typesFromTheTable.get(i).getText());
-				if(startDateList.get(i).getText().compareTo(startDate)==0 && endDateList.get(i).getText().compareTo(endDate)==0 && statusList.get(i).getText().compareTo(status)==0 && typeList.get(i).getText().compareTo(type)==0 ){
-					exist = true;
-					break;}
-				i++;
+		while (i < nr) {
+			if (startDateList.get(i).getText().compareTo(startDate) == 0
+					&& endDateList.get(i).getText().compareTo(endDate) == 0
+					&& statusList.get(i).getText().compareTo(status) == 0
+					&& typeList.get(i).getText().compareTo(type) == 0) {
+				exist = true;
+				break;
 			}
-			System.out.println(exist);
-			return exist;
+			i++;
+		}
+		System.out.println(exist);
+		return exist;
 	}
-	
+
 }
