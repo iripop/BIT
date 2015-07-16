@@ -34,9 +34,10 @@ public class ViewVacationsPage extends PageObject {
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> statusFromTheTable;
 	
-	public void access_the_view_vacations_menu(){
+	public void click_the_view_vacations_menu(){
 		viewVacationsText.click();
 	}
+		
 	public boolean apply_button_is_present(){
 		if(applyButton.isPresent()) return true;
 		else return false;

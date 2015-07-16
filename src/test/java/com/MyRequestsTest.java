@@ -8,6 +8,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
 import com.steps.EndUserSteps;
+import com.steps.MyRequestsSteps;
 
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
@@ -27,6 +28,8 @@ public class MyRequestsTest {
 
 	@Steps
 	public EndUserSteps endUser;
+	@Steps
+	public MyRequestsSteps myRequestsSteps;
 
 	@Ignore
 	@Test
@@ -35,7 +38,7 @@ public class MyRequestsTest {
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
-		endUser.access_my_requests();
+		myRequestsSteps.access_my_requests();
 	}
 
 	@Ignore
@@ -45,13 +48,16 @@ public class MyRequestsTest {
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
-		endUser.access_my_requests();
-		endUser.filter_my_requests_step("Approved ");
-		endUser.filter_my_requests_step("21 - 50 ");
-		endUser.filter_my_requests_step("Maternity Leave ");
+		myRequestsSteps.access_my_requests();
+
+		myRequestsSteps.filter_my_requests_step("Approved");
+		myRequestsSteps.filter_my_requests_step("Approved");
+		myRequestsSteps.filter_my_requests_step("Maternity Leave");
+		myRequestsSteps.filter_my_requests_step("21 - 50");
+
 		// endUser.filterWithMoreParameters("Approved", "Maternity Leave","Sick
 		// Leave6");
-		endUser.apply_filter_requests();
+		myRequestsSteps.apply_filter_requests();
 	}
 
 	// @Ignore
@@ -61,15 +67,15 @@ public class MyRequestsTest {
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
-		endUser.access_my_requests();
-		endUser.filter_my_requests_step("Holiday");
-		//endUser.filter_my_requests_step("Special Vacation");
-		endUser.filter_my_requests_step("1 - 5");
-		endUser.filter_my_requests_step("Withdrawn");
-		endUser.apply_filter_requests();
-		//endUser.check_if_my_requests_table_is_filtered_by_type("Holiday");
-		endUser.check_if_my_requests_table_is_filtered_by_days_number("1- 5");
-		//endUser. check_if_my_requests_table_is_filtered_by_status("Withdrawn");
+		myRequestsSteps.access_my_requests();
+		myRequestsSteps.filter_my_requests_step("Holiday");
+		myRequestsSteps.filter_my_requests_step("1 - 5");
+		myRequestsSteps.filter_my_requests_step("Withdrawn");
+	
+		myRequestsSteps.apply_filter_requests();
+		myRequestsSteps.check_filtering_my_requests_by_type("Holiday");
+		myRequestsSteps.check_filtering_my_requests_by_days_number(1 ,5);
+		//endUser. check_filtering_my_requests_by_status("Withdrawn");
 		//endUser.checkfilterWithMoreParameters("Holiday", "1 - 5", "Withdrawn");
 		
 	}
@@ -81,9 +87,9 @@ public class MyRequestsTest {
 		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
 		endUser.log_in_with_succes();
-		endUser.access_my_requests();
-		endUser.select_future_vacations();
-		endUser.apply_filter_requests();
+		myRequestsSteps.access_my_requests();
+		myRequestsSteps.select_future_vacations();
+		myRequestsSteps.apply_filter_requests();
 
 	}
 }

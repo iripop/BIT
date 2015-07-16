@@ -31,7 +31,7 @@ public class VacationReportSearchByName extends ScenarioSteps {
 	}
 	@Step
 	public void search(){
-		reportPage.search_by_name();
+		reportPage.click_search_button();
 	}
 	@StepGroup
 	public void search_by_last_name_and_first_name(String lastName,String firstName){
@@ -51,10 +51,10 @@ public class VacationReportSearchByName extends ScenarioSteps {
 	}
 	@Step
 	public void check_if_last_name_is_correct(String lastName){
-		assertTrue("Last name Is not correct",reportPage.last_name_is_the_same(lastName));
+		assertTrue("Last name Is not correct",reportPage.last_name_from_table_is_the_same_as_introduced(lastName));
 	}
 	@Step
 	public void check_if_first_name_is_correct(String firstName){
-		assertTrue("First name Is not correct",reportPage.first_name_is_the_same(firstName));
+		assertTrue("First name Is not correct",reportPage.last_name_from_table_is_the_same_as_introduced(firstName));
 	}
 }

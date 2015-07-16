@@ -32,7 +32,7 @@ public class ViewVacationsSteps extends ScenarioSteps {
 	}
 	@Step
 	public void go_to_view_vacations_page(){
-		viewVacationsPage.access_the_view_vacations_menu();
+		viewVacationsPage.click_the_view_vacations_menu();
 	}
 	
 }

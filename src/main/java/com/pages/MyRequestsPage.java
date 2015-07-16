@@ -55,7 +55,8 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(6) a")
 	private List<WebElement> statusList;
 	
-	public void checkIfMyRequestsExists() {
+	public void checkIfMyRequestsButtonExists() {
+
 		boolean found = false;
 		if (myRequestsButton.isPresent()) {
 			found = true;
@@ -96,13 +97,13 @@ public class MyRequestsPage extends PageObject {
 	}
 	// }
 
-	public void apply_filters() {
+	public void clickApplyButtonForFilters() {
 		element(applyButton).waitUntilVisible();
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
 	}
 
-	public void showFutureVacations() {
+	public void clickShowFutureVacationsButton() {
 		element(showFutureVacationsInput).waitUntilVisible();
 		showFutureVacationsInput.click();
 
@@ -133,10 +134,11 @@ public class MyRequestsPage extends PageObject {
 		Assert.assertTrue("Content does not correspond to desired selection", found);
 	}
 
-	public void checkIfTableIsFilteredByDaysNumber(String selection) {
+	public void checkIfTableIsFilteredByDaysNumber(int nr1, int nr2) {
 		boolean found = true;
 		for (WebElement elementdaysnumber : daysNumberList) {
-			while (!elementdaysnumber.getText().contentEquals(selection)) {
+			int day = Integer.parseInt(elementdaysnumber.getText());
+			while (day<1 && day>5) {
 				found = false;
 				System.out.println("Days number filtered correctly");
 				break;

@@ -39,50 +39,50 @@ public class NewVacationRequestsSteps extends ScenarioSteps {
     @Step
     public void create_a_new_special_vacation_request(String text,String comment,int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
     	if(text.compareTo("Other")==0){
-    		newVacationPage.enable_special_vacation();
-        	newVacationPage.select_special_vacation(text);
+    		newVacationPage.click_special_vacation();
+        	newVacationPage.select_special_vacation_type(text);
         	newVacationPage.add_comment_required_at_apecial_vacation(comment);
         //	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
         //	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
         //	newVacationPage.save_request();
     	}
     	else{
-    	newVacationPage.enable_special_vacation();
-    	newVacationPage.select_special_vacation(text);
+    	newVacationPage.click_special_vacation();
+    	newVacationPage.select_special_vacation_type(text);
 
     }
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-    	newVacationPage.save_request();
+    	newVacationPage.click_save_button();
     	}
 
     @Step
     public void create_a_new_holiday_request(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.enable_holiday_radio();
+    	newVacationPage.click_holiday_input();
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-    	newVacationPage.save_request();
+    	newVacationPage.click_save_button();
     }
     @Step
     public void create_a_new_vacation_without_payment(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.enable_vacation_without_payment();
+    	newVacationPage.click_vacation_without_payment();
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-    	newVacationPage.save_request();
+    	newVacationPage.click_save_button();
     }
     @Step
     public void create_a_new_sick_leave_request(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.enable_sick_leave();
+    	newVacationPage.click_sick_leave();
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-    	newVacationPage.save_request();
+    	newVacationPage.click_save_button();
     }
     @Step
     public void create_a_new_maternity_leave_request(String text,int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.enable_maternity_leave();
-    	newVacationPage.select_maternity_leave(text);
+    	newVacationPage.click_maternity_leave();
+    	newVacationPage.select_maternity_leave_type(text);
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-    	newVacationPage.save_request();
+    	newVacationPage.click_save_button();
     }
 }

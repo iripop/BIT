@@ -13,13 +13,13 @@ import net.thucydides.core.pages.PageObject;
 public class VacationsReportPage extends PageObject {
 
 	@FindBy(css="div[class='carousel-slider span3'] a[href*='menuItem=vacation-report']")
-	private WebElementFacade vacationsReportText;
+	private WebElementFacade vacationsReportButton;
 
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_reportLastName']")
-	private WebElementFacade lastName;
+	private WebElementFacade lastNameInput;
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_reportFirstName']")
-	private WebElementFacade firstName;
+	private WebElementFacade firstNameInput;
 
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_searchButton")
 	private WebElementFacade searchButton;
@@ -31,29 +31,29 @@ public class VacationsReportPage extends PageObject {
 	private WebElementFacade firstNameFromTable;
 	
 	public void go_to_vacations_report(){
-		vacationsReportText.click();
+		vacationsReportButton.click();
 	}
 	public boolean search_button_is_present(){
 		if(searchButton.isPresent()) return true;
 		else return false;
 	}
 	public String enter_last_name(String name){
-		lastName.type(name);
+		lastNameInput.type(name);
 		return name;
 	}
 	public String enter_first_name(String name){
-		firstName.type(name);
+		firstNameInput.type(name);
 		return name;
 	}
-	public void search_by_name(){
+	public void click_search_button(){
 		searchButton.click();
 	}
-	public boolean last_name_is_the_same(String lastName){
+	public boolean last_name_from_table_is_the_same_as_introduced(String lastName){
 
 		if(lastName.compareTo(lastNameFromTable.getText())==0) return true;
 		else return false;
 	}
-	public boolean first_name_is_the_same(String firstName){
+	public boolean first_name_from_table_is_the_same_as_introduced(String firstName){
 		
 		if(firstName.compareTo(firstNameFromTable.getText())==0) return true;
 		else return false;

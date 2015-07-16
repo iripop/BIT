@@ -64,7 +64,7 @@ public class EndUserSteps extends ScenarioSteps {
 
 	@Step
 	public void access_my_requests() {
-		myRequestsPage.checkIfMyRequestsExists();
+		myRequestsPage.checkIfMyRequestsButtonExists();
 		myRequestsPage.open_my_requests();
 	}
 
@@ -74,43 +74,14 @@ public class EndUserSteps extends ScenarioSteps {
 
 	}
 
-	/*
-	 * @Step public void filterWithMoreParameters(String... filters) {
-	 * myRequestsPage.selectManyFiltersFromList(filters); }
-	 */
-
-	@Step
-	public void check_if_my_requests_table_is_filtered_by_type(String selection) {
-		myRequestsPage.checkIfTableIsFilteredByType(selection);
-
-	}
-
-	@Step
-	public void check_if_my_requests_table_is_filtered_by_days_number(String selection) {
-		myRequestsPage.checkIfTableIsFilteredByDaysNumber(selection);
-	}
-
-	@Step
-	public void check_if_my_requests_table_is_filtered_by_status(String selection) {
-		myRequestsPage.checkIfTableIsFilteredByStatus(selection);
-	}
-
 	@Step
 	public void apply_filter_requests() {
-		myRequestsPage.apply_filters();
+		myRequestsPage.clickApplyButtonForFilters();
 	}
 
 	@Step
 	public void select_future_vacations() {
-		myRequestsPage.showFutureVacations();
+		myRequestsPage.clickShowFutureVacationsButton();
 	}
 
-	// @Step
-	/*
-	 * public void access_my_free_days() {
-	 * myFreeDaysPage.checkIfMyFreeDaysExists();
-	 * myFreeDaysPage.open_my_free_days(); }
-	 * 
-	 * @Step public void go_back_from_free_days() { myFreeDaysPage.goBack(); }
-	 */
 }
