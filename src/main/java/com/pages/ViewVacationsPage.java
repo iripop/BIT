@@ -34,6 +34,12 @@ public class ViewVacationsPage extends PageObject {
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> statusFromTheTable;
 	
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsLastName']")
+	private WebElementFacade lastNameText;
+	
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsFirstName']")
+	private WebElementFacade firstNameText;
+	
 	public void click_the_view_vacations_menu(){
 		viewVacationsText.click();
 	}
@@ -42,10 +48,19 @@ public class ViewVacationsPage extends PageObject {
 		if(applyButton.isPresent()) return true;
 		else return false;
 	}
+	public void click_apply_button(){
+		applyButton.click();
+	}
+	public void enter_last_name(String lastName){
+		lastNameText.type(lastName);
+	}
+	public void enter_first_name(String firstName){
+		firstNameText.type(firstName);
+	}
 	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName,String startDate,String endDate,String type,String status){
 		int i=0;
 		int nr = namesFromTheTable.size();
-		System.out.println(nr);
+	//	System.out.println(nr);
 		boolean isCorrect = false;
 		while(i<nr){
 		
@@ -54,10 +69,22 @@ public class ViewVacationsPage extends PageObject {
 				break;}
 			i++;
 		}
-		System.out.println(isCorrect);
+	//	System.out.println(isCorrect);
 		return isCorrect;
 	}
-	
+	public boolean check_if_all_requests_from_the_table_are_with_the_given_name(String lastName,String firstName){
+		boolean isOk=true;
+		String name = firstName+" " + lastName;
+		int i=0;
+		int nr = namesFromTheTable.size();
+		while(i<nr){
+		//	System.out.println("Name="+namesFromTheTable.get(i).getText());
+			if(!namesFromTheTable.get(i).getText().contains(name)) {isOk=false;
+			}
+			i++;
+		}
+		return isOk;
+	}
 }
 	  
 	  

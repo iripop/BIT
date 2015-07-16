@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
-import mx4j.tools.adaptor.http.SetAttributeCommandProcessor;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -24,8 +22,13 @@ public class VacationsReportPage extends PageObject {
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_searchButton")
 	private WebElementFacade searchButton;
 
-	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:first-child a")
-	private WebElementFacade lastNameFromTable;
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(1) a")
+	private List<WebElement> lastNames;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
+	private List<WebElement> firstNames;
+	
+	
 	
 	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:nth-child(2) a")
 	private WebElementFacade firstNameFromTable;
@@ -37,26 +40,46 @@ public class VacationsReportPage extends PageObject {
 		if(searchButton.isPresent()) return true;
 		else return false;
 	}
-	public String enter_last_name(String name){
+	public void enter_last_name(String name){
 		lastNameInput.type(name);
-		return name;
 	}
-	public String enter_first_name(String name){
+	public void enter_first_name(String name){
 		firstNameInput.type(name);
-		return name;
 	}
 	public void click_search_button(){
 		searchButton.click();
 	}
 	public boolean last_name_from_table_is_the_same_as_introduced(String lastName){
-
-		if(lastName.compareTo(lastNameFromTable.getText())==0) return true;
-		else return false;
+		int i=0;
+		int nr = lastNames.size();
+		System.out.println(lastName);
+		boolean isOk=true;
+		while(i<nr){
+			if(lastNames.get(i).getText().compareTo(lastName)!=0){
+				isOk=false;
+				System.out.println("Nu bun last="+lastNames.get(i).getText());}
+			i++;
+		}
+		System.out.println("last="+isOk);
+		return isOk;
+		
+		
 	}
 	public boolean first_name_from_table_is_the_same_as_introduced(String firstName){
+		int i=0;
+		int nr = firstNames.size();
+		System.out.println(firstName);
+		boolean isOk=true;
+		while(i<nr){
+			if(firstNames.get(i).getText().compareTo(firstName)!=0){
+				isOk=false;
+				System.out.println("Nu bun first="+firstNames.get(i).getText());
+			}
+				i++;
+		}
+		System.out.println("Firs="+isOk);
+		return isOk;
 		
-		if(firstName.compareTo(firstNameFromTable.getText())==0) return true;
-		else return false;
 	}
 }
 	  

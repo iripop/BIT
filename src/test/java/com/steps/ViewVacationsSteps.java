@@ -34,5 +34,29 @@ public class ViewVacationsSteps extends ScenarioSteps {
 	public void go_to_view_vacations_page(){
 		viewVacationsPage.click_the_view_vacations_menu();
 	}
+	@Step
+	public void type_first_name(String firstName){
+		viewVacationsPage.enter_first_name(firstName);
+	}
+	@Step
+	public void type_last_name(String lastName){
+		viewVacationsPage.enter_last_name(lastName);
+	}
+	@Step
+	public void click_apply_button(){
+		viewVacationsPage.click_apply_button();
+	}
+	@StepGroup
+	public void search_vacations_by_employee_name(String lastName,String firstName){
+		type_first_name(firstName);
+		type_last_name(lastName);
+		click_apply_button();
+		check_if_the_requests_are_filtering_correct(lastName, firstName);
+	}
+	@Step
+	public void check_if_the_requests_are_filtering_correct(String lastName,String firstName){
+		boolean isOk = viewVacationsPage.check_if_all_requests_from_the_table_are_with_the_given_name(lastName, firstName);
+		assertTrue("The requests are not filtering correct",isOk);
+	}
 	
 }

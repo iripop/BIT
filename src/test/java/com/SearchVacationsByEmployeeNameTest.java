@@ -2,13 +2,15 @@ package com;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import com.pages.ViewVacationsPage;
+import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
-import com.steps.ReadingEmail;
-import com.steps.VacationReportSearchByName;
+import com.steps.ViewVacationsSteps;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
@@ -21,7 +23,7 @@ import tools.Constants;
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 //@RunWith(ThucydidesRunner.class)
-public class SearchByNameTest {
+public class SearchVacationsByEmployeeNameTest {
 
 
 	@Managed(uniqueSession = true)
@@ -34,24 +36,26 @@ public class SearchByNameTest {
 
 	@Steps
 	public EndUserSteps endUser;
-
+	
+	
 	@Steps
-	public VacationReportSearchByName searchUser;
+	public ViewVacationsSteps vacationsSteps;
 
   @Test
-    public void search_vacation_by_name_in_vacation_report() {
+    public void search_vacations_by_employee_name() {
 		
         endUser.is_the_home_page();
-		endUser.login(username, password);
+		endUser.login(Constants.DMname, Constants.DMpassword);
 		endUser.go_to_vacation_menu();
-		searchUser.view_vacation_report();
-		searchUser.go_to_vacation_report_with_success();
-		searchUser.search_by_last_name_and_first_name("Irina", "Pop");
-		searchUser.check_if_first_name_is_correct("Pop");
-		searchUser.check_if_last_name_is_correct("Irina");
-
+		vacationsSteps.go_to_view_vacations_page();
+		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+  }
+	@After
+	public void close_browser(){
+		   pages.getDriver().close();
 	}
-
+	
+  	
 	
    
 }
