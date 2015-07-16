@@ -1,5 +1,6 @@
 package com;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -50,15 +51,19 @@ public class MyFreeDaysTest {
 
 	@Test
 	public void selected_business_days() {
-		//endUser.is_the_home_page();
-		//endUser.login(username, password);
-		//endUser.go_to_vacation_menu();
+		endUser.is_the_home_page();
+		endUser.login(username, password);
+		endUser.go_to_vacation_menu();
 		newVacationUser.go_to_new_vacation_request_page();
 
 		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
     
 
 
+	}
+	@After
+	public void close_browser(){
+		   pages.getDriver().close();
 	}
 }
 

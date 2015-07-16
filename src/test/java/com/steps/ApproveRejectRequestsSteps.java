@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import com.pages.LogInPage;
 import com.pages.MyFreeDaysPage;
 import com.pages.MyRequestsPage;
+import com.pages.ViewVacationsPage;
 import com.pages.InboxPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -23,6 +24,7 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 
 	LogInPage page;
 	InboxPage inboxPage;
+	ViewVacationsPage viewVacationsPage;
 	@Step
 	public void view_vacation_requests_assigned_to_me(){
 		inboxPage.access_the_inbox_menu();
@@ -35,8 +37,8 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		assertTrue("Approve button not found",found);
 	}
 	@Step
-	public void check_first_request(){
-		inboxPage.select_first_request();
+	public void search(String employeeName,String startDate,String endDate,String type){
+		inboxPage.search_request(employeeName, startDate, endDate, type);
 	}
 	@Step
 	public void click_the_approve_button(){
@@ -47,52 +49,30 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 		inboxPage.click_reject_button();
 	}
 	@StepGroup
-	public void approve_the_request(){
-	//	view_vacation_requests_assigned_to_me();
-		check_first_request();
+	public void approve_the_request(String employeeName,String startDate,String endDate,String type){
+		int beginNr = inboxPage.getNumberOfRequests();
+		boolean isEqual;
+		search(employeeName, startDate, endDate, type);
 		click_the_approve_button();
-	}
-	@StepGroup
-	public void reject_the_request(){
-	//	view_vacation_requests_assigned_to_me();
-		check_first_request();
-		click_the_reject_button();
-	}
-	@StepGroup
-	public void approve_request_is_correct(){
-		int beginNr = inboxPage.getNumberOfRequests();
-		approve_the_request();
-		boolean isEqual;
 		int endNr = inboxPage.getNumberOfRequests();
 		if(beginNr == endNr+1) isEqual = true;
 		else isEqual = false;
 		assertTrue("Is not equal",isEqual);
-		inboxPage.access_the_view_vacations_menu();
-		the_name_is_the_same();
-		the_status_is_correct("Approved");
-	}
-	@StepGroup
-	public void reject_request_is_correct(){
-		int beginNr = inboxPage.getNumberOfRequests();
-		reject_the_request();
-		boolean isEqual;
-		int endNr = inboxPage.getNumberOfRequests();
-		if(beginNr == endNr+1) isEqual = true;
-		else isEqual = false;
-		assertTrue("Is not equal",isEqual);
-		inboxPage.access_the_view_vacations_menu();
-		the_name_is_the_same();
-		the_status_is_correct("Rejected");
+		
 		
 	}
-	@Step
-	public void the_name_is_the_same(){
-		assertTrue("The name is not the same",inboxPage.is_name_the_same());
+	@StepGroup
+	public void reject_the_request(String employeeName,String startDate,String endDate,String type){
+		int beginNr = inboxPage.getNumberOfRequests();
+		search(employeeName, startDate, endDate, type);
+		click_the_reject_button();
+		boolean isEqual;
+		int endNr = inboxPage.getNumberOfRequests();
+		if(beginNr == endNr+1) isEqual = true;
+		else isEqual = false;
+		assertTrue("Is not equal",isEqual);
 	}
-	@Step
-	public void the_status_is_correct(String status){
-		if(status.compareTo("Rejected")==0) assertTrue("The status is not rejected",inboxPage.is_the_status_rejected());
-		else assertTrue("The status is not approved",inboxPage.is_the_status_approved());
-	}
+	
+	
 	
 }

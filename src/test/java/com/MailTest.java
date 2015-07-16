@@ -12,6 +12,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -65,8 +66,7 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-	//	approveUser.approve_the_request();
-    	approveRejectSteps.approve_request_is_correct();
+    	approveRejectSteps.approve_the_request("Pop Irina","08/09/2015","08/09/2015","Vacation Without Payment");
 		emailSteps.receive_email_when_dm_approve();
 
     }
@@ -77,12 +77,15 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-	//	approveRejectSteps.approve_the_request();
-    	approveRejectSteps.reject_request_is_correct();
+    	approveRejectSteps.reject_the_request("Pop Irina","19/10/2015","19/10/2015","Vacation Without Payment");
 		emailSteps.receive_email_when_dm_reject();
     
 
     }
+    @After
+	public void close_browser(){
+		   pages.getDriver().close();
+	}
     
  
 } 

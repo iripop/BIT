@@ -12,62 +12,28 @@ import net.thucydides.core.pages.PageObject;
 
 public class ViewVacationsPage extends PageObject {
 
-	@FindBy(css = "div[class='carousel-slider span3'] a[href*='menuItem=inbox']")
-	private WebElementFacade inboxText;
-	
 	@FindBy(css = "div[class='carousel-slider span3'] a[href*='menuItem=view-vacations']")
 	private WebElementFacade viewVacationsText;
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
 	private WebElementFacade applyButton;
 	
-	@FindBy(css = "table[class='taglib-search-iterator']")
-	private WebElementFacade tableWithRequests;
+
+	@FindBy(css ="tr[class*='portlet-section'] td:nth-child(1) a")
+	private List<WebElement> namesFromTheTable;
 	
-	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_multipleApproveButton']")
-	private WebElementFacade approveButton;
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
+	private List<WebElement> startDatesFromTheTable;
 	
-	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_multipleRejectButton']")
-	private WebElementFacade rejectButton;
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(3) a")
+	private List<WebElement> endDatesFromTheTable;
 	
-	@FindBy(css = "table[class='taglib-search-iterator'] tr:nth-child(3)")
-	private WebElementFacade requestWhichIsChecked;
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(8) a")
+	private List<WebElement> typesFromTheTable;
 	
-	@FindBy(css="div[class='carousel-slider span3'] a[href*='menuItem=inbox'] b")
-	private WebElementFacade numberOfRequest;
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
+	private List<WebElement> statusFromTheTable;
 	
-	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:first-child a")
-	private WebElementFacade nameFromTheTable;
-	
-	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:nth-child(9) a")
-	private WebElementFacade statusFromTheTable;
-	
-	public void access_the_inbox_menu(){
-		inboxText.click();
-	}
-	public void select_first_request(){
-		WebElement check = tableWithRequests.findElement(By.cssSelector("input[name='_evovacation_WAR_EvoVacationportlet_rowIds']"));
-		check.click();
-	}
-	public void click_approve_button(){
-		approveButton.click();
-	}
-	public void click_reject_button(){
-		rejectButton.click();
-	}
-	public boolean approve_button_is_present(){
-		if(approveButton.isPresent()) return true;
-		else return false;
-	}
-	public String getName(){
-		WebElement name = requestWhichIsChecked.findElement(By.cssSelector("td:nth-child(1) a"));
-		return name.getText();
-	}
-	public int getNumberOfRequests(){
-		String text = numberOfRequest.getText();
-		text = text.replace("(", "").replace(")", "");
-		return Integer.parseInt(text);
-	}
 	public void access_the_view_vacations_menu(){
 		viewVacationsText.click();
 	}
@@ -75,20 +41,26 @@ public class ViewVacationsPage extends PageObject {
 		if(applyButton.isPresent()) return true;
 		else return false;
 	}
-	public boolean is_name_the_same(){
-		System.out.println("Name"+getName());
-		System.out.println(nameFromTheTable.getText());
-		if(getName().compareTo(nameFromTheTable.getText())==0) return true;
-		else return false;
+	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName,String startDate,String endDate,String type,String status){
+		int i=0;
+		int nr = namesFromTheTable.size();
+		System.out.println(nr);
+		boolean isCorrect = false;
+		while(i<nr){
+			System.out.println(namesFromTheTable.get(i).getText());
+			System.out.println(startDatesFromTheTable.get(i).getText());
+			System.out.println(endDatesFromTheTable.get(i).getText());
+			System.out.println(statusFromTheTable.get(i).getText());
+			System.out.println(typesFromTheTable.get(i).getText());
+			if(namesFromTheTable.get(i).getText().compareTo(employeeName)==0 && startDatesFromTheTable.get(i).getText().compareTo(startDate)==0 && endDatesFromTheTable.get(i).getText().compareTo(endDate)==0 && statusFromTheTable.get(i).getText().compareTo(status)==0 && typesFromTheTable.get(i).getText().compareTo(type)==0)
+				{isCorrect = true;
+				break;}
+			i++;
+		}
+		System.out.println(isCorrect);
+		return isCorrect;
 	}
-	public boolean is_the_status_approved(){
-		if(statusFromTheTable.getText().compareTo("Approved")==0) return true;
-		else return false;
-	}
-	public boolean is_the_status_rejected(){
-		if(statusFromTheTable.getText().compareTo("Rejected")==0) return true;
-		else return false;
-	}
+	
 }
 	  
 	  

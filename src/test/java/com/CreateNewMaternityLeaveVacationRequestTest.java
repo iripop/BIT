@@ -12,6 +12,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -40,9 +41,9 @@ public class CreateNewMaternityLeaveVacationRequestTest {
 
     @Test
     public void create_a_new_prenatalPostnatal_request(){
-    //	endUser.is_the_home_page();
-    //	endUser.login(Constants.name, Constants.password);
-    //	endUser.go_to_vacation_menu();
+    	endUser.is_the_home_page();
+    	endUser.login(username, password);
+    	endUser.go_to_vacation_menu();
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
         newVacationSteps.create_a_new_maternity_leave_request("Prenatal / Postnatal", 12, "August", 2015, 13, "August", 2015);
@@ -58,7 +59,11 @@ public class CreateNewMaternityLeaveVacationRequestTest {
         newVacationSteps.create_a_new_maternity_leave_request("Concediu Ingrijire Copil", 28, "July", 2015, 29, "July", 2015);
   
     }
-  
+    @After
+	public void close_browser(){
+		   pages.getDriver().close();
+	}
+	
   
  
 } 

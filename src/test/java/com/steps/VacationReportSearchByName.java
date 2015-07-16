@@ -16,7 +16,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class vacationReportSearchByName extends ScenarioSteps {
+public class VacationReportSearchByName extends ScenarioSteps {
 
 	
 	LogInPage page;

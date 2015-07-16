@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.steps.EndUserSteps;
 import com.steps.ReadingEmail;
-import com.steps.vacationReportSearchByName;
+import com.steps.VacationReportSearchByName;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
@@ -36,7 +36,7 @@ public class searchByNameTest {
 	public EndUserSteps endUser;
 
 	@Steps
-	public vacationReportSearchByName searchUser;
+	public VacationReportSearchByName searchUser;
 
   @Test
     public void search() {

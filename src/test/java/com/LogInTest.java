@@ -2,6 +2,7 @@ package com;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -53,6 +54,10 @@ public class LogInTest {
 		endUser.log_in_with_succes();
 
 }
+	 @After
+		public void close_browser(){
+			   pages.getDriver().close();
+		}
    
 }
 

@@ -30,17 +30,27 @@ public class InboxPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_multipleRejectButton']")
 	private WebElementFacade rejectButton;
 	
-	@FindBy(css = "table[class='taglib-search-iterator'] tr:nth-child(3)")
-	private WebElementFacade requestWhichIsChecked;
-	
+
 	@FindBy(css="div[class='carousel-slider span3'] a[href*='menuItem=inbox'] b")
 	private WebElementFacade numberOfRequest;
 	
-	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:first-child a")
-	private WebElementFacade nameFromTheTable;
+
 	
-	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:nth-child(9) a")
-	private WebElementFacade statusFromTheTable;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
+	private List<WebElement> listOfNames;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(3) a")
+	private List<WebElement> listOfStartDates;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(4) a")
+	private List<WebElement> listOfEndDates;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(6) a")
+	private List<WebElement> listOfTypes;
+	
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(1) input ")
+	private List<WebElement> checkBoxes;
 	
 	public void access_the_inbox_menu(){
 		inboxText.click();
@@ -59,10 +69,7 @@ public class InboxPage extends PageObject {
 		if(approveButton.isPresent()) return true;
 		else return false;
 	}
-	public String getName(){
-		WebElement name = requestWhichIsChecked.findElement(By.cssSelector("td:nth-child(1) a"));
-		return name.getText();
-	}
+
 	public int getNumberOfRequests(){
 		String text = numberOfRequest.getText();
 		text = text.replace("(", "").replace(")", "");
@@ -75,20 +82,24 @@ public class InboxPage extends PageObject {
 		if(applyButton.isPresent()) return true;
 		else return false;
 	}
-	public boolean is_name_the_same(){
-		System.out.println("Name"+getName());
-		System.out.println(nameFromTheTable.getText());
-		if(getName().compareTo(nameFromTheTable.getText())==0) return true;
-		else return false;
+
+	public void search_request(String emplyeeName,String startDate,String endDate,String type){
+		int i=0;
+		int nr = listOfNames.size();
+		while(i<nr){
+		
+			if(listOfNames.get(i).getText().compareTo(emplyeeName)==0 && listOfStartDates.get(i).getText().compareTo(startDate)==0 && listOfEndDates.get(i).getText().compareTo(endDate)==0 && listOfTypes.get(i).getText().compareTo(type)==0)
+				{checkBoxes.get(i).click();
+				System.out.println("Da");
+				}
+			i++;
+		}
+		
+		
 	}
-	public boolean is_the_status_approved(){
-		if(statusFromTheTable.getText().compareTo("Approved")==0) return true;
-		else return false;
-	}
-	public boolean is_the_status_rejected(){
-		if(statusFromTheTable.getText().compareTo("Rejected")==0) return true;
-		else return false;
-	}
+	
+	
+	
 }
 	  
 	  
