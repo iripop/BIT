@@ -60,6 +60,9 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(6) a")
 	private List<WebElement> statusList;
 
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_PENDINGCheckbox']")
+	private WebElementFacade pendingCheckBox;
+	
 	public void checkIfMyRequestsButtonExists() {
 
 		boolean found = false;
@@ -155,6 +158,8 @@ public class MyRequestsPage extends PageObject {
 	public boolean check_if_desired_request_exists(String type, String startDate, String endDate, String status) {
 		int i = 0;
 		int nr = startDateList.size();
+		pendingCheckBox.click();
+		applyButton.click();
 		boolean exist = false;
 		System.out.println(nr);
 		while (i < nr) {

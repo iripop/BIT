@@ -137,6 +137,14 @@ public class EmailTool {
 		
 		return te;
 	}
+	public String emailApproveTemplate(String lastName,String type,String startDate,String endDate){
+		String text = "Dear "+lastName+", <br/> <br/>Your "+type+" in interval: <strong>"+startDate+"</strong> - <strong>"+endDate+"</strong> has been <strong>Approved</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team";
+		return text;
+	}
+	public String emailRejectTemplate(String lastName,String type,String startDate,String endDate){
+		String text = "Dear Pop Irina, <br/> <br/>The "+type+" you have submitted for the interval: <strong>"+startDate+"</strong> - <strong>"+endDate+"</strong> has been <strong>Rejected</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team";
+		return text;
+	}
 
 	public String userEmailSubject() {
 		String subject = "You have submitted a new Vacation Request";
