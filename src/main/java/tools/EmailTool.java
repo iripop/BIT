@@ -31,21 +31,10 @@ public class EmailTool {
 			store.connect("mail.evozon.com", userEmail, password);
 			Folder inbox = store.getFolder("INBOX");
 			inbox.open(Folder.READ_ONLY);
-			int nr = inbox.getMessageCount();
-			// System.out.println("Nr="+nr);
 			int i;
 			Message[] messages = inbox.getMessages();
 			for (i = 0; i < messages.length; i++) {
 				Message msg = messages[i];
-				Address[] in = msg.getFrom();
-				for (Address address : in) {
-
-					// System.out.println("FROM:" + address.toString());
-				}
-
-				// System.out.println("SENT DATE:" + msg.getSentDate());
-				// System.out.println("SUBJECT:" + msg.getSubject());
-				// System.out.println("CONTENT:" + msg.getContent());
 				Mail m = new Mail(msg.getSubject(), msg.getContent().toString());
 				email.add(m);
 
@@ -104,7 +93,6 @@ public class EmailTool {
 	            line1 = br1.readLine();
 	            line2 = br2.readLine();
 	        }
-	        String everything = sb.toString();
 	    } finally {
 	        br1.close();
 	        br2.close();
@@ -127,15 +115,15 @@ public class EmailTool {
 	}
 
 	public String emailTemplate(String lastName, String type, String startDate, String endDate) {
-		//String textM = new String();
 		String textM = "Dear"+lastName+",<br/><br/>Youhavesubmittedanew"+type+".Yourholidayintervalis:<strong>"+startDate+"-"+endDate+"</strong>.<br/>Pleasecheckiftherequestwasapprovedbeforegoingonholiday,ifnotpleasecontactyourvacationapprover,<b>BiancaIanc1</b>.<!--<br/><br/>Cheers,<br/>TheEvoPortalTeam--><br/><br/>Cheers,<br/>TheEvoPortalTeam";
-		String te = textM.replaceAll("\\s", "");
-		//"Dear " + lastName + ",\r\n<br /> <br />\r\n\r\n\r\n			You have submitted a new " + type+ ". Your holiday interval is: <strong>" + startDate + " - " + endDate	+ "</strong>.\r\n		<br />\r\n					Please check if the request was approved before going on holiday, if not please contact your vacation approver, <b>Bianca Ianc1</b>.\r\n";
-		//\r\n\r\n\r\n";
+		String text = textM.replaceAll("\\s", "");
+	//	String textM="Dear " + lastName + ",\r\n<br /> <br />\r\n\r\n\r\n";
+		//You have submitted a new " + type+ ". Your holiday interval is: <strong>" + startDate + " - " + endDate	+ "</strong>.\r\n		<br />\r\n					Please check if the request was approved before going on holiday, if not please contact your vacation approver, <b>Bianca Ianc1</b>.\r\n                        ";
+		//\r\n\r\n\r\n<!-- \r\n<br/> <br/> \r\n\r\nCheers, \r\n<br /> \r\nThe EvoPortal Team\r\n--><br/> <br/> Cheers, <br /> The EvoPortal Team\r\n";
 		//\r\n\r\n<";
-		//!--\r\n<br/> <br/> \r\n\r\nCheers,\r\n<br /> \r\nThe EvoPortal Team\r\n--><br/> <br/> Cheers, <br /> The EvoPortal Team\r\n";
 		
-		return te;
+		
+		return text;
 	}
 	public String emailApproveTemplate(String lastName,String type,String startDate,String endDate){
 		String text = "Dear "+lastName+", <br/> <br/>Your "+type+" in interval: <strong>"+startDate+"</strong> - <strong>"+endDate+"</strong> has been <strong>Approved</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team";
@@ -145,7 +133,21 @@ public class EmailTool {
 		String text = "Dear Pop Irina, <br/> <br/>The "+type+" you have submitted for the interval: <strong>"+startDate+"</strong> - <strong>"+endDate+"</strong> has been <strong>Rejected</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team";
 		return text;
 	}
-
+	public String dmEmailNewRequest(String lastName,String type,String startDate,String endDate){
+		String text ="Dear"+lastName+",<br/><br/><b>PopIrina</b>hassubmitteda<i>"+type+"</i>.<br/>Theuserwillbeonvacationinthefollowingperiod:<strong>"+startDate+"-"+endDate+"</strong>.<br/>Pleaseapproveorrejectthis<ahref='http://172.22.4.88:9091/vacation?p_p_auth=l5ZXletH&p_p_id=evovacation_WAR_EvoVacationportlet&p_p_lifecycle=0&_evovacation_WAR_EvoVacationportlet_menuItem=inbox&_evovacation_WAR_EvoVacationportlet_inboxState=inbox-view-vacation&_evovacation_WAR_EvoVacationportlet_backMenuItem=inbox&_evovacation_WAR_EvoVacationportlet_vacationId=20846'>here</a>.<br/><!--<br/><br/>Cheers,<br/>TheEvoPortalTeam--><br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
+	public String dmEmailApprove(String lastName,String type,String startDate,String endDate){
+		String text = "Dear"+lastName+",<br/><br/>The"+type+"submittedby<strong>PopIrina</strong>(ininterval:<strong>"+startDate+"</strong>-<strong>"+endDate+"</strong>)<br/>hasbeen<strong>Approved</strong>.<br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
+	public String dmEmailReject(String lastName,String type,String startDate,String endDate){
+		String text = "Dear"+lastName+",<br/><br/>The"+type+"submittedby<strong>PopIrina</strong>(ininterval:<strong>"+startDate+"</strong>-<strong>"+endDate+"</strong>)hasbeen<strong>Rejected</strong>.<br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
 	public String userEmailSubject() {
 		String subject = "You have submitted a new Vacation Request";
 		return subject;

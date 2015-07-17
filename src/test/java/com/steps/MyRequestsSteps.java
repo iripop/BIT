@@ -70,4 +70,8 @@ public class MyRequestsSteps extends ScenarioSteps {
 		assertTrue("Is not found",found);
 
 	}
+	@Step
+	public void withdrawn_vacation_request(String type,String startDate,String endDate,String status){
+		myRequestsPage.withdrawn_desired_request(type, startDate, endDate, status);
+	}
 }

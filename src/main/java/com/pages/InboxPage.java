@@ -90,7 +90,6 @@ public class InboxPage extends PageObject {
 		
 			if(listOfNames.get(i).getText().compareTo(emplyeeName)==0 && listOfStartDates.get(i).getText().compareTo(startDate)==0 && listOfEndDates.get(i).getText().compareTo(endDate)==0 && listOfTypes.get(i).getText().compareTo(type)==0)
 				{checkBoxes.get(i).click();
-				System.out.println("Da");
 				}
 			i++;
 		}
