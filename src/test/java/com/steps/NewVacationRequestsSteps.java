@@ -58,7 +58,7 @@ public class NewVacationRequestsSteps extends ScenarioSteps {
 
     @Step
     public void create_a_new_holiday_request(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.click_holiday_input();
+    	newVacationPage.click_holiday();
     	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
     	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
     	newVacationPage.click_save_button();

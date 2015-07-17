@@ -40,6 +40,13 @@ public class ViewVacationsPage extends PageObject {
 	
 	//@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> filterList;
+
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsLastName']")
+	private WebElementFacade lastNameText;
+	
+	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsFirstName']")
+	private WebElementFacade firstNameText;
+
 	
 	public void click_the_view_vacations_menu(){
 		viewVacationsText.click();
@@ -63,25 +70,31 @@ public class ViewVacationsPage extends PageObject {
 		}
 		Assert.assertTrue("Filter was not found", found);
 	}
+	public void click_apply_button(){
+		applyButton.click();
+	}
+	public void enter_last_name(String lastName){
+		lastNameText.type(lastName);
+	}
+	public void enter_first_name(String firstName){
+		firstNameText.type(firstName);
+	}
 	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName,String startDate,String endDate,String type,String status){
 		int i=0;
 		int nr = namesFromTheTable.size();
-		System.out.println(nr);
+	//	System.out.println(nr);
 		boolean isCorrect = false;
 		while(i<nr){
-		//	System.out.println(namesFromTheTable.get(i).getText());
-			//System.out.println(startDatesFromTheTable.get(i).getText());
-		//	System.out.println(endDatesFromTheTable.get(i).getText());
-		//	System.out.println(statusFromTheTable.get(i).getText());
-		//	System.out.println(typesFromTheTable.get(i).getText());
+		
 			if(namesFromTheTable.get(i).getText().compareTo(employeeName)==0 && startDatesFromTheTable.get(i).getText().compareTo(startDate)==0 && endDatesFromTheTable.get(i).getText().compareTo(endDate)==0 && statusFromTheTable.get(i).getText().compareTo(status)==0 && typesFromTheTable.get(i).getText().compareTo(type)==0)
 				{isCorrect = true;
 				break;}
 			i++;
 		}
-		System.out.println(isCorrect);
+	//	System.out.println(isCorrect);
 		return isCorrect;
 	}
+
 	public void checkIfTableIsFilteredByTypeInViewVacations(String selection) {
 		boolean found = true;
 		for (WebElement elementtype : typesFromTheTable) {
@@ -124,6 +137,20 @@ public class ViewVacationsPage extends PageObject {
 		element(applyButton).waitUntilVisible();
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
+	}
+	public boolean check_if_all_requests_from_the_table_are_with_the_given_name(String lastName,String firstName){
+		boolean isOk=true;
+		String name = firstName+" " + lastName;
+		int i=0;
+		int nr = namesFromTheTable.size();
+		while(i<nr){
+		//	System.out.println("Name="+namesFromTheTable.get(i).getText());
+			if(!namesFromTheTable.get(i).getText().contains(name)) {isOk=false;
+			}
+			i++;
+		}
+		return isOk;
+
 	}
 }
 	  

@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import com.pages.NewVacationRequestPage;
 import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
+import com.steps.LogOutSteps;
 import com.steps.NewVacationRequestsSteps;
 import com.steps.ReadingEmail;
 
@@ -47,42 +48,65 @@ public class MailTest {
     
     @Steps
     public ApproveRejectRequestsSteps approveRejectSteps;
+    
+
+
+	@Steps
+	LogOutSteps logOutSteps;
+    
 
     @Test
-    public void vacation_request_mail() throws IOException{
+    public void verify_vacation_request_mail() throws IOException{
     	endUser.is_the_home_page();
     	endUser.login(Constants.Username, Constants.Userpassword);
     	endUser.go_to_vacation_menu();
     	newVacationSteps.go_to_new_vacation_request_page();
     	newVacationSteps.access_new_vacation_request_with_success();
     	newVacationSteps.create_a_new_holiday_request(1, "October", 2015, 1, "October", 2015);
-    	String msg1 = emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
-    //	System.out.println(msg1);
-    	String msg2 = emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
-    	emailSteps.check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(Constants.DMlastName, "01/10/2015","01/10/2015", "Vacation Request");
-    //	System.out.println(msg2);
+    	emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
+    	emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
+    	emailSteps.check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(Constants.UserLastName, "01/10/2015","01/10/2015", "Vacation Request");
     }
-  //  @Test
-    public void vacation_approved_mail(){
+    @Test
+    public void verify_if_mail_sent_when_vacation_is_approved(){
+    	endUser.is_the_home_page();
+    	endUser.login(Constants.Username, Constants.Userpassword);
+    	endUser.go_to_vacation_menu();
+    	
+    	newVacationSteps.go_to_new_vacation_request_page();
+    	newVacationSteps.create_a_new_vacation_without_payment(21, "October",2015 , 21, "October", 2015);
+    	
+    	logOutSteps.logOut();
+    	
     	endUser.is_the_home_page();
     	endUser.login(Constants.DMname, Constants.DMpassword);
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-    	approveRejectSteps.approve_the_request("Pop Irina","08/09/2015","08/09/2015","Vacation Without Payment");
+    	approveRejectSteps.approve_the_selected_request("Pop Irina","21/10/2015","21/10/2015","VacationWithoutPayment");
 		emailSteps.receive_email_when_dm_approve("08/09/2015","08/09/2015");
+    	emailSteps.check_if_the_received_mail_is_correct_when_you_has_approved_request("Pop", "21/October/2015", "21/October/2015","Vacation Request");
 
     }
-   // @Test
-    public void vacation_rejected_mail(){
+    @Test
+    public void verify_if_mail_sent_when_vacation_is_rejected(){
+    	endUser.is_the_home_page();
+    	endUser.login(Constants.Username, Constants.Userpassword);
+    	endUser.go_to_vacation_menu();
+    	
+    	newVacationSteps.go_to_new_vacation_request_page();
+    	newVacationSteps.create_a_new_vacation_without_payment(20, "October",2015 , 20, "October", 2015);
+    	
+    	logOutSteps.logOut();
+    	
     	endUser.is_the_home_page();
     	endUser.login(Constants.DMname, Constants.DMpassword);
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-    	approveRejectSteps.reject_the_request("Pop Irina","19/10/2015","19/10/2015","Vacation Without Payment");
-		emailSteps.receive_email_when_dm_reject("19/10/2015","19/10/2015");
-		
+    	approveRejectSteps.reject_the_selected_request("Pop Irina","20/10/2015","20/10/2015","Vacation Without Payment");
+		emailSteps.receive_email_when_dm_reject("20/10/2015","20/10/2015");
+		emailSteps.check_if_the_received_mail_is_correct_when_you_has_rejected_request("Pop", "20/October/2015", "20/October/2015", "Vacation Request");
 
     }
     @After

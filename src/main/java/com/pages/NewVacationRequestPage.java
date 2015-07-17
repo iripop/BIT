@@ -1,5 +1,7 @@
 package com.pages;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -63,7 +65,8 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "div[style*='50.84375px'] table[class='dp_header'] tr td:nth-child(2)")
 	private WebElementFacade monthAndYearAtEndDate;
 
-	public void click_holiday_input() {
+	MyFreeDaysPage freeDaysPage;
+	public void click_holiday() {
 		holidayInput.click();
 	}
 
@@ -168,6 +171,57 @@ public class NewVacationRequestPage extends PageObject {
 			}
 		}
 	}
-
+	 public long dateDiffBetweenStartDateAndEndDate(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
+	    	int selectedDays=0;
+	    	choose_the_start_date(startDay, startMonth, endYear);
+	    	choose_the_end_date(endDay, endMonth, endYear);
+	    	Date start = new GregorianCalendar(startYear, freeDaysPage.getMonth(startMonth), startDay).getTime();
+	    	Date end=new GregorianCalendar(endYear, freeDaysPage.getMonth(endMonth), endDay).getTime();
+	    	long diff = end.getTime()-start.getTime();
+	    	long dif = diff / (1000 * 60 * 60 * 24);
+	    	return dif-1;
+	    }
+	 public String getMonth(int month) {
+			String x = "";
+			switch (month) {
+			case 1:
+				x = "January";
+				break;
+			case 2:
+				x = "February";
+				break;
+			case 3:
+				x = "March";
+				break;
+			case 4:
+				x = "April";
+				break;
+			case 5:
+				x = "May";
+				break;
+			case 6:
+				x = "June";
+				break;
+			case 7:
+				x ="July";
+				break;
+			case 8:
+				x = "August";
+				break;
+			case 9:
+				x = "September";
+				break;
+			case 10:
+				x = "October";
+				break;
+			case 11:
+				x = "November";
+				break;
+			case 12:
+				x = "December";
+				break;
+			}
+			return x;
+		}
 	
 }

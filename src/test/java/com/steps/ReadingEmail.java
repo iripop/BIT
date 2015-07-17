@@ -21,7 +21,7 @@ public class ReadingEmail extends ScenarioSteps {
 	NewVacationRequestPage newVacationPage;
 	  LogInPage logInPage;
 	//  MailRequestPage mailPage;
-	  EmailTool tools;
+	  EmailTool tools = new EmailTool();
 	  
 	@Step
 	public String check_if_DM_receives_email_when_a_request_is_made(String type,String startDate,String endDate){
@@ -42,9 +42,11 @@ public class ReadingEmail extends ScenarioSteps {
 	@Step
 	public String check_if_user_receives_email_when_he_makes_a_request(String type,String startDate,String endDate){
 		List<Mail> list = tools.readEmails(Constants.mailEvozon,Constants.passwordEvozon);
-		boolean found = false;
 		int i;
-		String text=null;
+	
+		boolean found = false;
+		//int i;
+		String text="";
 		for(i=0;i<list.size();i++){
 			String subject = list.get(i).getSubject();
 			String msg = list.get(i).getcontent();
@@ -135,34 +137,34 @@ public class ReadingEmail extends ScenarioSteps {
 		return text;
 	}
 	@StepGroup
-	public void check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(String lastName,String startDate,String endDate,String type) throws IOException{
-		System.out.println("Aici=");	
+	public void check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(String lastName,String startDate,String endDate,String type) throws IOException{	
 		String text = tools.emailTemplate(lastName, type, startDate, endDate);
-		System.out.println("Aici=");
-		System.out.println(text);
+
 		String mail = check_if_user_receives_email_when_he_makes_a_request(type, startDate, endDate);
-		
-		System.out.println("Aic= "+mail);
-		write_emails_in_file(text, mail);
-		boolean check= check_if_two_emails_are_equal();
-		assertTrue("The email is not correct",check);
-	}
-	@Step
-	public void write_emails_in_file(String email1,String email2) throws IOException{
-		tools.writeToFile(email1, "template.txt");
-		tools.writeToFile(email2, "receiveMail.txt");
-		
-		
-	}
-	@Step
-	public boolean check_if_two_emails_are_equal() throws IOException{
-		String email1 = tools.readFromFile("template.txt");
-		String email2 = tools.readFromFile("receiveMail.txt");
-		boolean isEqual = true;
-		System.out.println(email1);
-		System.out.println(email2);
-		isEqual = tools.compare(email1, email2);
-		return isEqual;
+	
+		String c = mail.replaceAll("\\s", "");
+		System.out.println(c);
+		assertTrue("The email is not correct", text.contentEquals(c));
 	}
 
+	@Step
+	public void check_if_the_received_mail_is_correct_when_you_has_approved_request(String lastName,String startDate,String endDate,String type){
+		String mail = user_receives_email_when_dm_approve(startDate, endDate);
+		System.out.println(mail);
+		String template = tools.emailApproveTemplate(lastName, type, startDate, endDate);
+		System.out.println(template);
+		String c = mail.replaceAll("\\s", "");
+		String a = template.replaceAll("\\s", "");
+		assertTrue("The email is not correct",a.contentEquals(c));
+	}
+	@Step
+	public void check_if_the_received_mail_is_correct_when_you_has_rejected_request(String lastName,String startDate,String endDate,String type){
+		String mail = user_receives_email_when_dm_reject(startDate, endDate);
+		System.out.println(mail);
+		String template = tools.emailRejectTemplate(lastName, type, startDate, endDate);
+		System.out.println(template);
+		String c = mail.replaceAll("\\s", "");
+		String a = template.replaceAll("\\s", "");
+		assertTrue("The email is not correct",a.contentEquals(c));	
+	}
 }
