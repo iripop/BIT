@@ -50,7 +50,6 @@ public class MyRequestsTest {
 		endUser.log_in_with_succes();
 		myRequestsSteps.access_my_requests();
 		myRequestsSteps.filter_my_requests_step("Approved");
-		myRequestsSteps.filter_my_requests_step("Approved");
 		myRequestsSteps.filter_my_requests_step("Maternity Leave");
 		myRequestsSteps.filter_my_requests_step("21 - 50");
 

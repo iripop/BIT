@@ -21,7 +21,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 public class ViewVacationsSteps extends ScenarioSteps {
 
 	
-
 	LogInPage page;
 	InboxPage inboxPage;
 	ViewVacationsPage viewVacationsPage;

@@ -38,7 +38,7 @@ public class ViewVacationsPage extends PageObject {
 	//@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> daysnumberFromTheTable;
 	
-	//@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
+	@FindBy(css="div[class='view-vacations-filter-content'] span[class='aui-field aui-field-choice'] label")
 	private List<WebElement> filterList;
 
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsLastName']")

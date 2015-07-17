@@ -24,28 +24,16 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']")
 	private WebElementFacade showFutureVacationsInput;
 
-	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
-	// td[headers$='type']")
-	// private List<WebElement> typeList;
+	/*
+	 * @FindBy(css =
+	 * "div[class*='search-container'] div[class='results-grid'] td[headers$='type']"
+	 * ) private List<WebElement> typeList;
+	 */
 
-	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
-	// td[headers$='status']")
-	// private List<WebElement> statusList;
-
-	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
-	// td[headers$='day.number']")
-	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(4) a")
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(3) a")
 	private List<WebElement> daysNumberList;
 
-	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
-	// td[headers$='start.number']")
-	// private List<WebElement> startDateList;
-
-	// @FindBy(css = "div[class*='search-container'] div[class='results-grid']
-	// td[headers$='end.number']")
-	// private List<WebElement> endDateList;
-
-	@FindBy(css = "div[class*='search-container'] div[class='results-grid'] td[headers$='last.update']")
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(5) a")
 	private List<WebElement> lastUpdateList;
 
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(1) a")
@@ -60,9 +48,9 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(6) a")
 	private List<WebElement> statusList;
 
-	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_PENDINGCheckbox']")
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_PENDINGCheckbox']")
 	private WebElementFacade pendingCheckBox;
-	
+
 	public void checkIfMyRequestsButtonExists() {
 
 		boolean found = false;
@@ -92,9 +80,9 @@ public class MyRequestsPage extends PageObject {
 	public void selectFiltersFromList(String filter) {
 		boolean found = false;
 		for (WebElement element : filterList) {
-			//System.out.println("In FOR");
+			// System.out.println("In FOR");
 			if (element.getText().toLowerCase().trim().contains(filter.toLowerCase().trim())) {
-				//System.out.println("Filtrul este: " + element.getText());
+				// System.out.println("Filtrul este: " + element.getText());
 				found = true;
 				element(myRequestsButton).waitUntilVisible();
 				element.click();
