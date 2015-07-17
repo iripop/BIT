@@ -35,6 +35,32 @@ public class ViewVacationsSteps extends ScenarioSteps {
 		viewVacationsPage.click_the_view_vacations_menu();
 	}
 	@Step
+
+	public void filter_my_requests_step_in_view_vacations(String filter) {
+		 viewVacationsPage.selectFiltersFromListInViewVacations(filter);
+
+	}
+
+	@Step
+	public void check_filtering_my_requests_by_type_in_view_vacations(String selection) {
+         viewVacationsPage. checkIfTableIsFilteredByStatusInViewVacations(selection);
+	}
+
+	@Step
+	public void check_filtering_my_requests_by_status_in_view_vacations(String selection) {
+		viewVacationsPage.checkIfTableIsFilteredByStatusInViewVacations(selection);
+	}
+
+	@Step
+	public void check_filtering_my_requests_by_days_number_in_view_vacations(int nr1, int nr2) {
+		viewVacationsPage.checkIfTableIsFilteredByDaysNumberInViewVacations(nr1, nr2);
+	}
+
+	@Step
+	public void apply_filter_requests() {
+		viewVacationsPage.clickApplyButtonForFiltersInViewVacations();
+	}
+
 	public void type_first_name(String firstName){
 		viewVacationsPage.enter_first_name(firstName);
 	}
@@ -58,5 +84,5 @@ public class ViewVacationsSteps extends ScenarioSteps {
 		boolean isOk = viewVacationsPage.check_if_all_requests_from_the_table_are_with_the_given_name(lastName, firstName);
 		assertTrue("The requests are not filtering correct",isOk);
 	}
-	
+
 }

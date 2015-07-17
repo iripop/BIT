@@ -144,6 +144,7 @@ public class MyRequestsPage extends PageObject {
 	public void checkIfTableIsFilteredByDaysNumber(int nr1, int nr2) {
 		boolean found = true;
 		for (WebElement elementdaysnumber : daysNumberList) {
+			System.out.println("--------------------------" + daysNumberList);
 			int day = Integer.parseInt(elementdaysnumber.getText());
 			while (day < 1 && day > 5) {
 				found = false;
