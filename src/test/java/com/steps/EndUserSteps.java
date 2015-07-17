@@ -68,20 +68,4 @@ public class EndUserSteps extends ScenarioSteps {
 		myRequestsPage.open_my_requests();
 	}
 
-	@Step
-	public void filter_my_requests_step(String filter) {
-		myRequestsPage.selectFiltersFromList(filter);
-
-	}
-
-	@Step
-	public void apply_filter_requests() {
-		myRequestsPage.clickApplyButtonForFilters();
-	}
-
-	@Step
-	public void select_future_vacations() {
-		myRequestsPage.clickShowFutureVacationsButton();
-	}
-
 }

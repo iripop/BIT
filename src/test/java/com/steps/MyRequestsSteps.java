@@ -20,16 +20,11 @@ public class MyRequestsSteps extends ScenarioSteps {
 
 	MyFreeDaysPage myFreeDaysPage;
 	MyRequestsPage myRequestsPage;
-	
 
-	
-
-
-	/*@Step
-	public void filterWithMoreParameters(String... filters) {
-		myRequestsPage.selectManyFiltersFromList(filters);
-	}
-*/
+	/*
+	 * @Step public void filterWithMoreParameters(String... filters) {
+	 * myRequestsPage.selectManyFiltersFromList(filters); }
+	 */
 	@Step
 	public void access_my_requests() {
 		myRequestsPage.checkIfMyRequestsButtonExists();
@@ -46,14 +41,17 @@ public class MyRequestsSteps extends ScenarioSteps {
 	public void check_filtering_my_requests_by_type(String selection) {
 		myRequestsPage.checkIfTableIsFilteredByType(selection);
 	}
+
 	@Step
 	public void check_filtering_my_requests_by_status(String selection) {
 		myRequestsPage.checkIfTableIsFilteredByStatus(selection);
 	}
+
 	@Step
 	public void check_filtering_my_requests_by_days_number(int nr1, int nr2) {
-		myRequestsPage.checkIfTableIsFilteredByDaysNumber(nr1,nr2);
+		myRequestsPage.checkIfTableIsFilteredByDaysNumber(nr1, nr2);
 	}
+
 	@Step
 	public void apply_filter_requests() {
 		myRequestsPage.clickApplyButtonForFilters();
@@ -65,8 +63,8 @@ public class MyRequestsSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void check_if_desired_request_is_present(String type,String startDate,String endDate,String status){
+	public void check_if_desired_request_is_present(String type, String startDate, String endDate, String status) {
 		boolean found = myRequestsPage.check_if_exists_desired_request(type, startDate, endDate, status);
-		assertTrue("Is not found",found);
+		assertTrue("Is not found", found);
 	}
 }

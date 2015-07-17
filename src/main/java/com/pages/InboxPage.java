@@ -13,10 +13,10 @@ import net.thucydides.core.pages.PageObject;
 public class InboxPage extends PageObject {
 
 	@FindBy(css = "div[class='carousel-slider span3'] a[href*='menuItem=inbox']")
-	private WebElementFacade inboxText;
+	private WebElementFacade inboxButton;
 	
 	@FindBy(css = "div[class='carousel-slider span3'] a[href*='menuItem=view-vacations']")
-	private WebElementFacade viewVacationsText;
+	private WebElementFacade viewVacationsButton;
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_applyButton']")
 	private WebElementFacade applyButton;
@@ -53,7 +53,7 @@ public class InboxPage extends PageObject {
 	private List<WebElement> checkBoxes;
 	
 	public void access_the_inbox_menu(){
-		inboxText.click();
+		inboxButton.click();
 	}
 	public void select_first_request(){
 		WebElement check = tableWithRequests.findElement(By.cssSelector("input[name='_evovacation_WAR_EvoVacationportlet_rowIds']"));
@@ -76,7 +76,7 @@ public class InboxPage extends PageObject {
 		return Integer.parseInt(text);
 	}
 	public void access_the_view_vacations_menu(){
-		viewVacationsText.click();
+		viewVacationsButton.click();
 	}
 	public boolean apply_button_is_present(){
 		if(applyButton.isPresent()) return true;
