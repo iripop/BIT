@@ -140,7 +140,6 @@ public class ReadingEmail extends ScenarioSteps {
 		String text = tools.emailTemplate(lastName, type, startDate, endDate);
 
 		String mail = check_if_user_receives_email_when_he_makes_a_request(type, startDate, endDate);
-		System.out.println(text);
 		String c = mail.replaceAll("\\s", "");
 		assertTrue("The email is not correct", text.contentEquals(c));
 	}
@@ -148,9 +147,7 @@ public class ReadingEmail extends ScenarioSteps {
 	@Step
 	public void check_if_the_received_mail_is_correct_when_you_has_approved_request(String lastName,String startDate,String endDate,String type){
 		String mail = user_receives_email_when_dm_approve(startDate, endDate);
-		System.out.println(mail);
 		String template = tools.emailApproveTemplate(lastName, type, startDate, endDate);
-		System.out.println(template);
 		String c = mail.replaceAll("\\s", "");
 		String a = template.replaceAll("\\s", "");
 		assertTrue("The email is not correct",a.contentEquals(c));
@@ -158,9 +155,7 @@ public class ReadingEmail extends ScenarioSteps {
 	@Step
 	public void check_if_the_received_mail_is_correct_when_you_has_rejected_request(String lastName,String startDate,String endDate,String type){
 		String mail = user_receives_email_when_dm_reject(startDate, endDate);
-		System.out.println(mail);
 		String template = tools.emailRejectTemplate(lastName, type, startDate, endDate);
-		System.out.println(template);
 		String c = mail.replaceAll("\\s", "");
 		String a = template.replaceAll("\\s", "");
 		assertTrue("The email is not correct",a.contentEquals(c));	
