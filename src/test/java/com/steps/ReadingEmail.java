@@ -20,7 +20,6 @@ import tools.Mail;
 public class ReadingEmail extends ScenarioSteps {
 	NewVacationRequestPage newVacationPage;
 	  LogInPage logInPage;
-	//  MailRequestPage mailPage;
 	  EmailTool tools = new EmailTool();
 	  
 	@Step
@@ -141,9 +140,8 @@ public class ReadingEmail extends ScenarioSteps {
 		String text = tools.emailTemplate(lastName, type, startDate, endDate);
 
 		String mail = check_if_user_receives_email_when_he_makes_a_request(type, startDate, endDate);
-	
+		System.out.println(text);
 		String c = mail.replaceAll("\\s", "");
-		System.out.println(c);
 		assertTrue("The email is not correct", text.contentEquals(c));
 	}
 
