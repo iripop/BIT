@@ -59,7 +59,7 @@ public class ApproveAndRejectRequestsTest {
 		endUser.go_to_vacation_menu();
 		
 		newVacationsSteps.go_to_new_vacation_request_page();
-		newVacationsSteps.create_a_new_vacation_without_payment(19, "October", 2015, 19, "October", 2015);
+		newVacationsSteps.create_a_new_vacation_without_payment(2, "November", 2015, 2, "November", 2015);
 		
 		logOutSteps.logOut();
 		
@@ -69,9 +69,9 @@ public class ApproveAndRejectRequestsTest {
 		
 		approveUser.view_vacation_requests_assigned_to_me();
 		approveUser.access_inbox_with_success();
-		approveUser.approve_the_selected_request("Pop Irina","19/10/2015","19/10/2015","Vacation Without Payment");
+		approveUser.approve_the_selected_request("Pop Irina","02/11/2015","02/11/2015","Vacation Without Payment");
  		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina","19/10/2015","19/10/2015","Vacation Without Payment","Approved");
+		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina","02/11/2015","02/11/2015","Vacation Without Payment","Approved");
   }
 	@After
 	public void close_browser(){
@@ -85,7 +85,7 @@ public class ApproveAndRejectRequestsTest {
  		endUser.go_to_vacation_menu();
  		
  		newVacationsSteps.go_to_new_vacation_request_page();
-		newVacationsSteps.create_a_new_vacation_without_payment(20, "October", 2015, 20, "October", 2015);
+		newVacationsSteps.create_a_new_vacation_without_payment(4, "November", 2015, 4, "November", 2015);
  		
 		logOutSteps.logOut();
 		
@@ -95,9 +95,9 @@ public class ApproveAndRejectRequestsTest {
 		
 		approveUser.view_vacation_requests_assigned_to_me();
  		approveUser.access_inbox_with_success();
- 		approveUser.reject_the_selected_request("Pop Irina","20/10/2015","20/10/2015","Vacation Without Payment");
+ 		approveUser.reject_the_selected_request("Pop Irina","04/11/2015","04/11/2015","Vacation Without Payment");
  		vacationsSteps.go_to_view_vacations_page();
- 		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina","20/10/2015","20/10/2015","Vacation Without Payment","Rejected");
+ 		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina","04/11/2015","04/11/2015","Vacation Without Payment","Rejected");
   	}
 	
    

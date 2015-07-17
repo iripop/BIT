@@ -56,16 +56,16 @@ public class MailTest {
     
 
     @Test
-    public void verify_vacation_request_mail() throws IOException{
+    public void verify_if_mail_send_when_new_vacation_request_was_made() throws IOException{
     	endUser.is_the_home_page();
     	endUser.login(Constants.Username, Constants.Userpassword);
     	endUser.go_to_vacation_menu();
     	newVacationSteps.go_to_new_vacation_request_page();
     	newVacationSteps.access_new_vacation_request_with_success();
-    	newVacationSteps.create_a_new_holiday_request(1, "October", 2015, 1, "October", 2015);
-    	emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
-    	emailSteps.check_if_user_receives_email_when_he_makes_a_request("Vacation Request", "01/10/2015", "01/10/2015");
-    	emailSteps.check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(Constants.UserLastName, "01/10/2015","01/10/2015", "Vacation Request");
+    	newVacationSteps.create_a_new_holiday_request(8, "December", 2015, 8, "December", 2015);
+    	
+    	emailSteps.check_if_the_receive_mail_is_correct_when_you_make_a_new_vacation_request(Constants.UserLastName, "08/12/2015","08/12/2015", "Vacation Request");
+    	emailSteps.check_if_dm_receives_the_correct_email_when_somebody_makes_a_new_vacation_request(Constants.DMlastName, "08/12/2015", "08/12/2015", "Vacation Request");
     }
     @Test
     public void verify_if_mail_sent_when_vacation_is_approved(){
@@ -74,7 +74,7 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	
     	newVacationSteps.go_to_new_vacation_request_page();
-    	newVacationSteps.create_a_new_vacation_without_payment(21, "October",2015 , 21, "October", 2015);
+    	newVacationSteps.create_a_new_vacation_without_payment(10, "December",2015 , 10, "December", 2015);
     	
     	logOutSteps.logOut();
     	
@@ -83,10 +83,9 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-    	approveRejectSteps.approve_the_selected_request("Pop Irina","21/10/2015","21/10/2015","VacationWithoutPayment");
-		emailSteps.receive_email_when_dm_approve("08/09/2015","08/09/2015");
-    	emailSteps.check_if_the_received_mail_is_correct_when_you_has_approved_request("Pop", "21/October/2015", "21/October/2015","Vacation Request");
-
+    	approveRejectSteps.approve_the_selected_request("Pop Irina","10/12/2015","10/12/2015","Vacation Without Payment");
+    	emailSteps.check_if_the_received_mail_is_correct_when_you_has_approved_request("Pop", "10/December/2015", "10/December/2015","Vacation Request");
+    	emailSteps.check_if_dm_receives_the_correct_email_when_approve_request(Constants.DMlastName, "10/December/2015", "10/December/2015", "Vacation Request");
     }
     @Test
     public void verify_if_mail_sent_when_vacation_is_rejected(){
@@ -95,7 +94,7 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	
     	newVacationSteps.go_to_new_vacation_request_page();
-    	newVacationSteps.create_a_new_vacation_without_payment(20, "October",2015 , 20, "October", 2015);
+    	newVacationSteps.create_a_new_vacation_without_payment(2, "December",2015 , 2, "December", 2015);
     	
     	logOutSteps.logOut();
     	
@@ -104,10 +103,9 @@ public class MailTest {
     	endUser.go_to_vacation_menu();
     	approveRejectSteps.view_vacation_requests_assigned_to_me();
     	approveRejectSteps.access_inbox_with_success();
-    	approveRejectSteps.reject_the_selected_request("Pop Irina","20/10/2015","20/10/2015","Vacation Without Payment");
-		emailSteps.receive_email_when_dm_reject("20/10/2015","20/10/2015");
-		emailSteps.check_if_the_received_mail_is_correct_when_you_has_rejected_request("Pop", "20/October/2015", "20/October/2015", "Vacation Request");
-
+    	approveRejectSteps.reject_the_selected_request("Pop Irina","02/12/2015","02/12/2015","Vacation Without Payment");
+		emailSteps.check_if_the_received_mail_is_correct_when_you_has_rejected_request("Pop", "2/December/2015", "2/December/2015", "Vacation Request");
+    	emailSteps.check_if_dm_receives_the_correct_email_when_reject_request(Constants.DMlastName, "2/December/2015", "2/December/2015", "Vacation Request");
     }
     @After
 	public void close_browser(){

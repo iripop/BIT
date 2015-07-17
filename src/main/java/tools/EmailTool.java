@@ -133,7 +133,21 @@ public class EmailTool {
 		String text = "Dear Pop Irina, <br/> <br/>The "+type+" you have submitted for the interval: <strong>"+startDate+"</strong> - <strong>"+endDate+"</strong> has been <strong>Rejected</strong>.<br/> <br/> Cheers, <br /> The EvoPortal Team";
 		return text;
 	}
-
+	public String dmEmailNewRequest(String lastName,String type,String startDate,String endDate){
+		String text ="Dear"+lastName+",<br/><br/><b>PopIrina</b>hassubmitteda<i>"+type+"</i>.<br/>Theuserwillbeonvacationinthefollowingperiod:<strong>"+startDate+"-"+endDate+"</strong>.<br/>Pleaseapproveorrejectthis<ahref='http://172.22.4.88:9091/vacation?p_p_auth=l5ZXletH&p_p_id=evovacation_WAR_EvoVacationportlet&p_p_lifecycle=0&_evovacation_WAR_EvoVacationportlet_menuItem=inbox&_evovacation_WAR_EvoVacationportlet_inboxState=inbox-view-vacation&_evovacation_WAR_EvoVacationportlet_backMenuItem=inbox&_evovacation_WAR_EvoVacationportlet_vacationId=20846'>here</a>.<br/><!--<br/><br/>Cheers,<br/>TheEvoPortalTeam--><br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
+	public String dmEmailApprove(String lastName,String type,String startDate,String endDate){
+		String text = "Dear"+lastName+",<br/><br/>The"+type+"submittedby<strong>PopIrina</strong>(ininterval:<strong>"+startDate+"</strong>-<strong>"+endDate+"</strong>)<br/>hasbeen<strong>Approved</strong>.<br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
+	public String dmEmailReject(String lastName,String type,String startDate,String endDate){
+		String text = "Dear"+lastName+",<br/><br/>The"+type+"submittedby<strong>PopIrina</strong>(ininterval:<strong>"+startDate+"</strong>-<strong>"+endDate+"</strong>)hasbeen<strong>Rejected</strong>.<br/><br/>Cheers,<br/>TheEvoPortalTeam";
+		String c = text.replaceAll("\\s", "");
+		return c;
+	}
 	public String userEmailSubject() {
 		String subject = "You have submitted a new Vacation Request";
 		return subject;
