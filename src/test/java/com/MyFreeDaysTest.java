@@ -45,7 +45,7 @@ public class MyFreeDaysTest {
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
-		myFreeDay.my_free_days_are_correct();
+		myFreeDay.checkIfMyFreeDaysAreCalculatedCorectly();
 	}
 
 	@After

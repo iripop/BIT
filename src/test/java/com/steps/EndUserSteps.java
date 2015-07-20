@@ -67,8 +67,8 @@ public class EndUserSteps extends ScenarioSteps {
 
 	@Step
 	public void accessMyRequests() {
-		myRequestsPage.checkIfMyRequestsButtonExists();
-		myRequestsPage.open_my_requests();
+		myRequestsPage.checkIfMyRequestsMenuExists();
+		myRequestsPage.clickMyRequests();
 
 	}
 	@Step

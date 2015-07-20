@@ -48,11 +48,11 @@ public class CreateNewOtherVacationRequestTest {
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-        newVacationSteps.create_a_new_special_vacation_request("Other", "I need sleep", 19, "August", 2015, 20, "August", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Special Vacation", "19/08/2015", "20/08/2015", "Pending");
+        newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestWithSuccess();
+        newVacationSteps.createNewSpecialVacationRequest("Other", "I need sleep", 19, "August", 2015, 20, "August", 2015);
+        myRequestsSteps.accessMyRequestsMenu();
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "19/08/2015", "20/08/2015", "Pending");
    
     }
  

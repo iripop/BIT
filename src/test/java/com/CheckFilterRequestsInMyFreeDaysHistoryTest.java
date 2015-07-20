@@ -35,7 +35,7 @@ public class CheckFilterRequestsInMyFreeDaysHistoryTest {
 			endUser.openHomePage();
 	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
 	    	endUser.goToVacationMenu();
-			freeDaysHistorySteps.access_my_free_days_history();
+			freeDaysHistorySteps.accessMyFreeDaysHistory();
 		}
 		
 		
@@ -45,14 +45,14 @@ public class CheckFilterRequestsInMyFreeDaysHistoryTest {
 			endUser.openHomePage();
 	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
 	    	endUser.goToVacationMenu();
-			freeDaysHistorySteps.access_my_free_days_history();
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation days");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("1 - 5");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Added Days");
-			freeDaysHistorySteps.apply_filter_requests_in_my_free_days_history() ;
-			freeDaysHistorySteps.check_filtering_my_requests_by_type_in_my_free_days_history("Vacation days");
-			freeDaysHistorySteps.check_filtering_my_requests_by_days_number_in_my_free_days_history(1, 5);
-			freeDaysHistorySteps.check_filtering_my_requests_by_operation_in_my_free_days_history("Added Days");
+			freeDaysHistorySteps.accessMyFreeDaysHistory();
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation days");
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("1 - 5");
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Added Days");
+			freeDaysHistorySteps.clickApplyButtonForFiltersInMyFreeDaysHistory();
+			freeDaysHistorySteps.checkFilteringRequestsByTypeInMyFreeDaysHistory("Vacation days");
+			freeDaysHistorySteps.checkFilteringRequestsByDaysNumberInMyFreeDaysHistory(1, 5);
+			freeDaysHistorySteps.checkFilteringRequestsByOperationInMyFreeDaysHistory("Added Days");
 			
 
 		}

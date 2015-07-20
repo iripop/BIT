@@ -26,12 +26,12 @@ public class ViewVacationsSteps extends ScenarioSteps {
 	ViewVacationsPage viewVacationsPage;
 	@Step
 	public void check_if_the_desired_vacation_is_present(String employeeName,String startDate,String endDate,String type,String status){
-		boolean isPresent = viewVacationsPage.check_if_the_desired_request_was_approved_or_rejected(employeeName, startDate, endDate, type, status);
+		boolean isPresent = viewVacationsPage.checkIfTheDesiredRequestWasApprovedOrRejected(employeeName, startDate, endDate, type, status);
 		assertTrue("Is not present",isPresent);
 	}
 	@Step
 	public void go_to_view_vacations_page(){
-		viewVacationsPage.click_the_view_vacations_menu();
+		viewVacationsPage.clickViewVacationsMenu();
 	}
 	@Step
 
@@ -61,15 +61,15 @@ public class ViewVacationsSteps extends ScenarioSteps {
 	}
 
 	public void type_first_name(String firstName){
-		viewVacationsPage.enter_first_name(firstName);
+		viewVacationsPage.enterFirstName(firstName);
 	}
 	@Step
 	public void type_last_name(String lastName){
-		viewVacationsPage.enter_last_name(lastName);
+		viewVacationsPage.enterLastName(lastName);
 	}
 	@Step
 	public void click_apply_button(){
-		viewVacationsPage.click_apply_button();
+		viewVacationsPage.clickApplyButton();
 	}
 	@StepGroup
 	public void search_vacations_by_employee_name(String lastName,String firstName){
@@ -80,7 +80,7 @@ public class ViewVacationsSteps extends ScenarioSteps {
 	}
 	@Step
 	public void check_if_the_requests_are_filtering_correct(String lastName,String firstName){
-		boolean isOk = viewVacationsPage.check_if_all_requests_from_the_table_are_with_the_given_name(lastName, firstName);
+		boolean isOk = viewVacationsPage.checkIfAllRequestsFromTheTableAreWithTheGivenName(lastName, firstName);
 		assertTrue("The requests are not filtering correct",isOk);
 	}
 

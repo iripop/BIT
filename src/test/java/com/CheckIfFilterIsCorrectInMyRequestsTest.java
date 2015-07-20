@@ -34,25 +34,25 @@ public class CheckIfFilterIsCorrectInMyRequestsTest {
 	public MyRequestsSteps myRequestsSteps;
 
 	@Test
-	public void check_if_filter_is_correct() {
+	public void checkIfFilterIsCorrect() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		myRequestsSteps.access_my_requests();
-		myRequestsSteps.filter_my_requests_step("Holiday");
-		myRequestsSteps.filter_my_requests_step("1 - 5");
-		myRequestsSteps.filter_my_requests_step("Withdrawn");
-		myRequestsSteps.apply_filter_requests();
-		myRequestsSteps.check_filtering_my_requests_by_type("Holiday");
-		myRequestsSteps.check_filtering_my_requests_by_days_number(1, 5);
-		myRequestsSteps.check_filtering_my_requests_by_status("Withdrawn");
+		myRequestsSteps.accessMyRequestsMenu();
+		myRequestsSteps.filterMyRequestsStep("Holiday");
+		myRequestsSteps.filterMyRequestsStep("1 - 5");
+		myRequestsSteps.filterMyRequestsStep("Withdrawn");
+		myRequestsSteps.applyFilterRequests();
+		myRequestsSteps.checkFilteringMyRequestsByType("Holiday");
+		myRequestsSteps.checkFilteringMyRequestsByDaysNumber(1, 5);
+		myRequestsSteps.checkFilteringMyRequestsByStatus("Withdrawn");
 		// myRequestsSteps.checkfilterWithMoreParameters("Holiday", "1 - 5",
 		// "Withdrawn");
 
 	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 }

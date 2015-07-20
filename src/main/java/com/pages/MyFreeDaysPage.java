@@ -32,11 +32,11 @@ public class MyFreeDaysPage extends PageObject {
 	@FindBy(css = "label[id='_evovacation_WAR_EvoVacationportlet_businessDaysOutput']")
 	private WebElementFacade selectedBusinessDays;
 
-	public void go_to_new_vacation_request_area() {
+	public void clickNewVacationRequestMenu() {
 		newVacationRequestButton.click();
 	}
 
-	public boolean check_if_vacation_days_left_from_new_vacation_request_equal_with_my_free_days_from_my_free_days_menu() {
+	public boolean checkIfVacationDaysLeftFromNewVacationRequestEqualWithMyFreeDaysFromMyFreeDaysMenu() {
 		newVacationRequestButton.click();
 		int myFreeDays = Integer.parseInt(vacationDaysLeftFromNewVacation.getText());
 		myFreeDaysButton.click();
@@ -49,7 +49,7 @@ public class MyFreeDaysPage extends PageObject {
 		return isEqual;
 	}
 
-	public long checkSelectedBusinessDays() {
+	public long checkIfSelectedBusinessDaysCalculatedCorrectly() {
 		long days = Integer.parseInt(selectedBusinessDays.getText());
 		return days;
 

@@ -46,11 +46,11 @@ public class CreateNewVacationWithoutPaymentRequestTest {
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-    	newVacationSteps.create_a_new_vacation_without_payment(23, "November", 2015, 25, "November", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Vacation Without Payment", "23/08/2015", "25/09/2015", "Pending");
+    	newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestWithSuccess();
+    	newVacationSteps.createNewVacationWithoutPayment(23, "November", 2015, 25, "November", 2015);
+        myRequestsSteps.accessMyRequestsMenu();
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Vacation Without Payment", "23/08/2015", "25/09/2015", "Pending");
   
     }
  

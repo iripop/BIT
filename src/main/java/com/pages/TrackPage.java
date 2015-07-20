@@ -48,22 +48,22 @@ public class TrackPage extends PageObject {
 
 	NewVacationRequestPage newVacationPage;
 	
-	public void select_building(String text) {
+	public void selectBuilding(String text) {
 		(buildingsDropDown).selectByVisibleText(text);
 	}
 
-	public void select_deparment(String text) {
+	public void selectDeparment(String text) {
 		(departmentsDropDown).selectByVisibleText(text);
 	}
 
-	public void go_to_track_page(){
+	public void clickTrackMenu(){
 		trackButton.click();
 	}
-	public void click_apply_button(){
+	public void clickApplyButton(){
 		applyButton.click();
 	}
 
-	public boolean apply_button_is_present() {
+	public boolean checkIfApplyButtonIsPresent() {
 		if (applyButton.isPresent())
 			return true;
 		else
@@ -71,7 +71,7 @@ public class TrackPage extends PageObject {
 	}
 
 
-	public void choose_the_start_date(int day, String month, int year) {
+	public void chooseStartDate(int day, String month, int year) {
 		String monthAndYear = month + ", " + year;
 		startDatelocator.click();
 		WebElement date = monthAndYearFromStartDate.findElement(By.cssSelector("td[class='dp_caption']"));
@@ -100,7 +100,7 @@ public class TrackPage extends PageObject {
 
 	}
 
-	public void choose_the_end_date(int day, String month, int year) {
+	public void chooseEndDate(int day, String month, int year) {
 		String monthAndYear = month + ", " + year;
 		endDateLocator.click();
 		WebElement date = monthAndYearFromStartDate.findElement(By.cssSelector("td[class='dp_caption']"));
@@ -127,7 +127,7 @@ public class TrackPage extends PageObject {
 			}
 		}
 	}
-	public boolean check_if_apply_button_makes_filters_correctly(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
+	public boolean checkIfFiltersAreCorrect(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
 		boolean isOk=true;
 		int i=0;
 		int nr = startDates.size();

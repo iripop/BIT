@@ -26,7 +26,7 @@ public class MyRequestsPage extends PageObject {
 	private WebElementFacade showFutureVacationsInput;
 	
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
-	private WebElementFacade withDrawnButton;
+	private WebElementFacade withdrawnButton;
 
 	/*
 	 * @FindBy(css =
@@ -60,10 +60,10 @@ public class MyRequestsPage extends PageObject {
 	
 //	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
 	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
-	private WebElementFacade withDrawnCheckBox;
+	private WebElementFacade withdrawnCheckBox;
 	
 
-	public void checkIfMyRequestsButtonExists() {
+	public void checkIfMyRequestsMenuExists() {
 
 		boolean found = false;
 		if (myRequestsButton.isPresent()) {
@@ -72,7 +72,7 @@ public class MyRequestsPage extends PageObject {
 		Assert.assertTrue("Element not found", found);
 	}
 
-	public void open_my_requests() {
+	public void clickMyRequests() {
 		element(myRequestsButton).waitUntilVisible();
 		myRequestsButton.click();
 	}
@@ -156,14 +156,14 @@ public class MyRequestsPage extends PageObject {
 		Assert.assertTrue("Content does not correspond to desired selection", found);
 	}
 
-	public boolean check_if_desired_request_exists(String type, String startDate, String endDate, String status) {
+	public boolean checkIfDesiredRequestExists(String type, String startDate, String endDate, String status) {
 		int i = 0;
 		int nr = startDateList.size();
 		if(status.compareTo("Pending")==0){
 		pendingCheckBox.click();
 		}
 		if(status.compareTo("Withdrawn")==0){
-			withDrawnCheckBox.click();
+			withdrawnCheckBox.click();
 		}
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
@@ -182,10 +182,10 @@ public class MyRequestsPage extends PageObject {
 		}
 		return exist;
 	}
-	public void withdrawn_desired_request(String type, String startDate, String endDate, String status){
-		boolean cheackIfRequestExists = check_if_desired_request_exists(type, startDate, endDate, status);
+	public void withdrawnDesiredRequest(String type, String startDate, String endDate, String status){
+		boolean cheackIfRequestExists = checkIfDesiredRequestExists(type, startDate, endDate, status);
 		if(cheackIfRequestExists){
-			withDrawnButton.click();
+			withdrawnButton.click();
 		}
 	}
 	

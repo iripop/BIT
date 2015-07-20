@@ -45,13 +45,13 @@ public class CheckIfSelectedBusinessDaysAreCalculatedCorrectlyTest {
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
-		newVacationUser.go_to_new_vacation_request_page();
+		newVacationUser.accessNewVacationRequestPage();
 		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
 
 	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 }

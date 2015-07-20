@@ -48,11 +48,11 @@ public class ViewVacationsPage extends PageObject {
 	private WebElementFacade firstNameText;
 
 	
-	public void click_the_view_vacations_menu(){
+	public void clickViewVacationsMenu(){
 		viewVacationsText.click();
 	}
 		
-	public boolean apply_button_is_present(){
+	public boolean checkIfApplyButtonIsPresent(){
 		if(applyButton.isPresent()) return true;
 		else return false;
 	}
@@ -70,16 +70,16 @@ public class ViewVacationsPage extends PageObject {
 		}
 		Assert.assertTrue("Filter was not found", found);
 	}
-	public void click_apply_button(){
+	public void clickApplyButton(){
 		applyButton.click();
 	}
-	public void enter_last_name(String lastName){
+	public void enterLastName(String lastName){
 		lastNameText.type(lastName);
 	}
-	public void enter_first_name(String firstName){
+	public void enterFirstName(String firstName){
 		firstNameText.type(firstName);
 	}
-	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName,String startDate,String endDate,String type,String status){
+	public boolean checkIfTheDesiredRequestWasApprovedOrRejected(String employeeName,String startDate,String endDate,String type,String status){
 		int i=0;
 		int nr = namesFromTheTable.size();
 	
@@ -138,7 +138,7 @@ public class ViewVacationsPage extends PageObject {
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
 	}
-	public boolean check_if_all_requests_from_the_table_are_with_the_given_name(String lastName,String firstName){
+	public boolean checkIfAllRequestsFromTheTableAreWithTheGivenName(String lastName,String firstName){
 		boolean isOk=true;
 		String name = firstName+" " + lastName;
 		int i=0;

@@ -46,7 +46,7 @@ public class ViewVacationTrackerTest {
 		endUser.openHomePage();
 		endUser.logInAsDM(username, password);
 		endUser.goToVacationMenu();
-		trackSteps.go_to_track_page();
+		trackSteps.goToTrackPage();
 		trackSteps.view_vacation_tracker("Beta Building", "DM Department", 07, "July", 2015, 23, "July", 2015);
 
 	}

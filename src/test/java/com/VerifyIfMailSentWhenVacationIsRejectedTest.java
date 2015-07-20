@@ -60,8 +60,8 @@ public class VerifyIfMailSentWhenVacationIsRejectedTest {
     	endUser.openHomePage();
     	endUser.logInAsUser(Constants.Username, Constants.Userpassword);
     	endUser.goToVacationMenu();
-    	newVacationSteps.go_to_new_vacation_request_page();
-    	newVacationSteps.create_a_new_vacation_without_payment(2, "December",2015 , 2, "December", 2015);
+    	newVacationSteps.accessNewVacationRequestPage();
+    	newVacationSteps.createNewVacationWithoutPayment(2, "December",2015 , 2, "December", 2015);
     	
     	logOutSteps.logOut();
     	

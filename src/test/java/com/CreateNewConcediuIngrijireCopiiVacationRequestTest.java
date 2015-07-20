@@ -48,11 +48,11 @@ public class CreateNewConcediuIngrijireCopiiVacationRequestTest {
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-        newVacationSteps.create_a_new_maternity_leave_request("Concediu Ingrijire Copil", 28, "July", 2015, 29, "July", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "28/07/2015", "29/07/2015", "Pending");
+        newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestWithSuccess();
+        newVacationSteps.createNewMaternityLeaveRequest("Concediu Ingrijire Copil", 28, "July", 2015, 29, "July", 2015);
+        myRequestsSteps.accessMyRequestsMenu();
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Maternity Leave", "28/07/2015", "29/07/2015", "Pending");
   
     }
     @After

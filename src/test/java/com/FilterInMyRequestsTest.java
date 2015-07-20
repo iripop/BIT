@@ -38,15 +38,15 @@ public class FilterInMyRequestsTest {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		myRequestsSteps.access_my_requests();
-		myRequestsSteps.filter_my_requests_step("Approved");
-		myRequestsSteps.filter_my_requests_step("Maternity Leave");
-		myRequestsSteps.filter_my_requests_step("21 - 50");
+		myRequestsSteps.accessMyRequestsMenu();
+		myRequestsSteps. filterMyRequestsStep("Approved");
+		myRequestsSteps.filterMyRequestsStep("Maternity Leave");
+		myRequestsSteps.filterMyRequestsStep("21 - 50");
 
 		// myRequestsSteps.filterWithMoreParameters("Approved", "Maternity
 		// Leave","Sick
 		// Leave6");
-		myRequestsSteps.apply_filter_requests();
+		myRequestsSteps.applyFilterRequests();
 	}
 
 	@After

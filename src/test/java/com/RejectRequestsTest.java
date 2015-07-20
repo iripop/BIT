@@ -63,8 +63,8 @@ public class RejectRequestsTest {
 		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
 		endUser.goToVacationMenu();
 
-		newVacationsSteps.go_to_new_vacation_request_page();
-		newVacationsSteps.create_a_new_vacation_without_payment(4, "November", 2015, 4, "November", 2015);
+		newVacationsSteps.accessNewVacationRequestPage();
+		newVacationsSteps.createNewVacationWithoutPayment(4, "November", 2015, 4, "November", 2015);
 
 		logOutSteps.logOut();
 

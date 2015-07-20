@@ -52,14 +52,14 @@ public class ApproveRequestsTest {
 	LogOutSteps logOutSteps;
 
 	@Test
-	public void approve_chosen_requests() {
+	public void ApproveChosenRequests() {
 
 		endUser.openHomePage();
 		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
 		endUser.goToVacationMenu();
 
-		newVacationsSteps.go_to_new_vacation_request_page();
-		newVacationsSteps.create_a_new_vacation_without_payment(2, "November", 2015, 2, "November", 2015);
+		newVacationsSteps.accessNewVacationRequestPage();
+		newVacationsSteps.createNewVacationWithoutPayment(2, "November", 2015, 2, "November", 2015);
 
 		logOutSteps.logOut();
 
@@ -76,7 +76,7 @@ public class ApproveRequestsTest {
 	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 

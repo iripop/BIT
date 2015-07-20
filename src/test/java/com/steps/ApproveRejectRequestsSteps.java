@@ -26,26 +26,26 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 
 	@Step
 	public void view_vacation_requests_assigned_to_me() {
-		inboxPage.access_the_inbox_menu();
+		inboxPage.clickInboxMenu();
 
 	}
 
 	@Step
 	public void access_inbox_with_success() {
 		boolean found = false;
-		found = inboxPage.approve_button_is_present();
+		found = inboxPage.checkIfApproveButtonIsPresent();
 		assertTrue("Approve button not found", found);
 	}
 
 	@Step
 	public void select_vacation_to_approve_or_reject(String employeeName, String startDate, String endDate,
 			String type) {
-		inboxPage.search_requests_to_approve_or_reject(employeeName, startDate, endDate, type);
+		inboxPage.selectRequestsToApproveOrReject(employeeName, startDate, endDate, type);
 	}
 
 	@Step
 	public void click_the_approve_button() {
-		inboxPage.click_approve_button();
+		inboxPage.clickApproveButton();
 	}
 
 	@Step

@@ -37,11 +37,11 @@ public class FilterRequestsInMyFreeDaysHistoryTest {
 			endUser.openHomePage();
 	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
 	    	endUser.goToVacationMenu();
-			freeDaysHistorySteps.access_my_free_days_history();
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation days");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation Without Payment ");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("21 - 50");
-			freeDaysHistorySteps.apply_filter_requests_in_my_free_days_history() ;
+			freeDaysHistorySteps.accessMyFreeDaysHistory();
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation days");
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation Without Payment ");
+			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("21 - 50");
+			freeDaysHistorySteps.clickApplyButtonForFiltersInMyFreeDaysHistory();
 		}
 
 		

@@ -46,13 +46,13 @@ public class CreateNewHolidayVacationRequestTest {
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
-		newVacationSteps.go_to_new_vacation_request_page();
-		newVacationSteps.access_new_vacation_request_with_success();
+		newVacationSteps.accessNewVacationRequestPage();
+		newVacationSteps.accessNewVacationRequestWithSuccess();
 
-		newVacationSteps.create_a_new_holiday_request(10, "November", 2015, 10, "November", 2015);
-		myRequestsSteps.withdrawn_vacation_request("Holiday", "10/11/2015", "10/11/2015", "Withdrawn");
+		newVacationSteps.createNewHolidayRequest(10, "November", 2015, 10, "November", 2015);
+		myRequestsSteps.withdrawnVacationRequest("Holiday", "10/11/2015", "10/11/2015", "Withdrawn");
 
-		myRequestsSteps.access_my_requests();
+		myRequestsSteps.accessMyRequestsMenu();
 
 		// myRequestsSteps.check_if_desired_request_is_present("Holiday",
 		// "16/10/2015", "16/10/2015", "Pending");

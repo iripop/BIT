@@ -62,8 +62,8 @@ public class VerifyIfMailIsSentWhenVacationIsApprovedTest {
     	endUser.logInAsUser(Constants.Username, Constants.Userpassword);
     	endUser.goToVacationMenu();
     	
-    	newVacationSteps.go_to_new_vacation_request_page();
-    	newVacationSteps.create_a_new_vacation_without_payment(10, "December",2015 , 10, "December", 2015);
+    	newVacationSteps.accessNewVacationRequestPage();
+    	newVacationSteps.createNewVacationWithoutPayment(10, "December",2015 , 10, "December", 2015);
     	
     	logOutSteps.logOut();
     	

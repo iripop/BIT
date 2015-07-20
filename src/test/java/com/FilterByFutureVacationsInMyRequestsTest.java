@@ -38,9 +38,9 @@ public class FilterByFutureVacationsInMyRequestsTest {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		myRequestsSteps.access_my_requests();
-		myRequestsSteps.select_future_vacations();
-		myRequestsSteps.apply_filter_requests();
+		myRequestsSteps.accessMyRequestsMenu();
+		myRequestsSteps.selectFutureVacations();
+		myRequestsSteps.applyFilterRequests();
 
 	}
 
