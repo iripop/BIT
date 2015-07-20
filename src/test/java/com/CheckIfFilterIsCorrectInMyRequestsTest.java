@@ -21,7 +21,7 @@ import tools.Constants;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
-public class MyRequestsTest {
+public class CheckIfFilterIsCorrectInMyRequestsTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
@@ -33,38 +33,11 @@ public class MyRequestsTest {
 	@Steps
 	public MyRequestsSteps myRequestsSteps;
 
-	//@Test
-	public void enter_my_requests() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
-		myRequestsSteps.access_my_requests();
-	}
-	
-	//@Test
-	public void filter_my_requests_test() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
-		myRequestsSteps.access_my_requests();
-		myRequestsSteps.filter_my_requests_step("Approved");
-		myRequestsSteps.filter_my_requests_step("Maternity Leave");
-		myRequestsSteps.filter_my_requests_step("21 - 50");
-
-		// myRequestsSteps.filterWithMoreParameters("Approved", "Maternity
-		// Leave","Sick
-		// Leave6");
-		myRequestsSteps.apply_filter_requests();
-	}
-
 	@Test
 	public void check_if_filter_is_correct() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
+		endUser.openHomePage();
+		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
+		endUser.goToVacationMenu();
 		myRequestsSteps.access_my_requests();
 		myRequestsSteps.filter_my_requests_step("Holiday");
 		myRequestsSteps.filter_my_requests_step("1 - 5");
@@ -75,18 +48,6 @@ public class MyRequestsTest {
 		myRequestsSteps.check_filtering_my_requests_by_status("Withdrawn");
 		// myRequestsSteps.checkfilterWithMoreParameters("Holiday", "1 - 5",
 		// "Withdrawn");
-
-	}
-
-	//@Test
-	public void filter_my_requests_by_future_vacations() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
-		myRequestsSteps.access_my_requests();
-		myRequestsSteps.select_future_vacations();
-		myRequestsSteps.apply_filter_requests();
 
 	}
 

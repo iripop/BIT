@@ -1,58 +1,51 @@
 package com;
 
-import java.util.List;
-
 import org.junit.After;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
-import com.pages.ViewVacationsPage;
-import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
-import com.steps.ViewVacationsSteps;
+import com.steps.MyRequestsSteps;
 
-import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.ManagedPages;
+import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.annotations.UseTestDataFrom;
-import net.thucydides.junit.runners.ThucydidesRunner;
+import net.serenitybdd.junit.runners.SerenityRunner;
 import tools.Constants;
 
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("/resources/data.csv")
-// @RunWith(ThucydidesRunner.class)
-public class SearchVacationsByEmployeeNameTest {
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(SerenityRunner.class)
+public class FilterByFutureVacationsInMyRequestsTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
-
-	String username, password;
 
 	@ManagedPages(defaultUrl = Constants.defaultURL)
 	public Pages pages;
 
 	@Steps
 	public EndUserSteps endUser;
-
 	@Steps
-	public ViewVacationsSteps vacationsSteps;
+	public MyRequestsSteps myRequestsSteps;
 
 	@Test
-	public void search_vacations_by_employee_name() {
-
+	public void filter_my_requests_by_future_vacations() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+		myRequestsSteps.access_my_requests();
+		myRequestsSteps.select_future_vacations();
+		myRequestsSteps.apply_filter_requests();
+
 	}
 
 	@After
 	public void close_browser() {
 		pages.getDriver().close();
 	}
-
 }

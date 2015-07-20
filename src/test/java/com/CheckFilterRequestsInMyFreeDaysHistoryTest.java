@@ -18,7 +18,7 @@ import net.thucydides.core.pages.Pages;
 import tools.Constants;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
-public class MyFreeDaysHistoryTest {
+public class CheckFilterRequestsInMyFreeDaysHistoryTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
@@ -32,32 +32,19 @@ public class MyFreeDaysHistoryTest {
 	
 	//@Test
 		public void enter_my_requests() {
-			endUser.is_the_home_page();
-			endUser.login(Constants.DMname, Constants.DMpassword);
-			endUser.go_to_vacation_menu();
-			endUser.log_in_with_succes();
+			endUser.openHomePage();
+	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
+	    	endUser.goToVacationMenu();
 			freeDaysHistorySteps.access_my_free_days_history();
 		}
 		
-		//@Test
-		public void filter_my_requests_test() {
-			endUser.is_the_home_page();
-			endUser.login(Constants.DMname, Constants.DMpassword);
-			endUser.go_to_vacation_menu();
-			endUser.log_in_with_succes();
-			freeDaysHistorySteps.access_my_free_days_history();
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation days");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation Without Payment ");
-			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("21 - 50");
-			freeDaysHistorySteps.apply_filter_requests_in_my_free_days_history() ;
-		}
+		
 
 		@Test
 		public void check_if_filter_is_correct() {
-			endUser.is_the_home_page();
-			endUser.login(Constants.DMname, Constants.DMpassword);
-			endUser.go_to_vacation_menu();
-			endUser.log_in_with_succes();
+			endUser.openHomePage();
+	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
+	    	endUser.goToVacationMenu();
 			freeDaysHistorySteps.access_my_free_days_history();
 			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("Vacation days");
 			freeDaysHistorySteps.filter_my_requests_step_in_my_free_days_history("1 - 5");

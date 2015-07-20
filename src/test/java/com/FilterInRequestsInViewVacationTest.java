@@ -17,7 +17,7 @@ import net.thucydides.core.pages.Pages;
 import tools.Constants;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
-public class FilterInViewVacationTest {
+public class FilterInRequestsInViewVacationTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
@@ -31,10 +31,9 @@ public class FilterInViewVacationTest {
 	
 	@Test
 	public void filter_my_requests_from_view_vacations_test() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
+		endUser.openHomePage();
+		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
+		endUser.goToVacationMenu();
 		viewVacationsSteps.go_to_view_vacations_page();
 		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Approved");
 		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Maternity Leave");
@@ -42,20 +41,5 @@ public class FilterInViewVacationTest {
 		viewVacationsSteps.apply_filter_requests();
 	}
 
-	//@Test
-	public void check_if_filter_is_correct_in_view_vacation_page() {
-		endUser.is_the_home_page();
-		endUser.login(Constants.DMname, Constants.DMpassword);
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
-		viewVacationsSteps.go_to_view_vacations_page();
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Holiday");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("1 - 5");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Withdrawn");
-		viewVacationsSteps.apply_filter_requests();
-		viewVacationsSteps.check_filtering_my_requests_by_type_in_view_vacations("Holiday");
-		viewVacationsSteps.check_filtering_my_requests_by_days_number_in_view_vacations(1, 5);
-		viewVacationsSteps.check_filtering_my_requests_by_status_in_view_vacations("Withdrawn");
-
-	}
+	
 }

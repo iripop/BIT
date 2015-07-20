@@ -35,7 +35,7 @@ public class ViewVacationsPage extends PageObject {
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> statusFromTheTable;
 	
-	//@FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
+	@FindBy(css="tr[class*='portlet-section'] td:nth-child(7) a")
 	private List<WebElement> daysnumberFromTheTable;
 	
 	@FindBy(css="div[class='view-vacations-filter-content'] span[class='aui-field aui-field-choice'] label")
@@ -82,7 +82,7 @@ public class ViewVacationsPage extends PageObject {
 	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName,String startDate,String endDate,String type,String status){
 		int i=0;
 		int nr = namesFromTheTable.size();
-	//	System.out.println(nr);
+	
 		boolean isCorrect = false;
 		while(i<nr){
 		
@@ -91,15 +91,15 @@ public class ViewVacationsPage extends PageObject {
 				break;}
 			i++;
 		}
-	//	System.out.println(isCorrect);
+	
 		return isCorrect;
 	}
 
 	public void checkIfTableIsFilteredByTypeInViewVacations(String selection) {
-		boolean found = true;
+		boolean found = false;
 		for (WebElement elementtype : typesFromTheTable) {
 			while (!elementtype.getText().contentEquals(selection)) {
-				found = false;
+				found = true;
 				System.out.println("Type filtered correctly");
 				break;
 			}

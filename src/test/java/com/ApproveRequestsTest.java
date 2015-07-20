@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import com.pages.ViewVacationsPage;
 import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
+import com.steps.LogOutSteps;
+import com.steps.NewVacationRequestsSteps;
 import com.steps.ViewVacationsSteps;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
@@ -21,10 +23,10 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("/resources/data.csv")
-// @RunWith(ThucydidesRunner.class)
-public class SearchVacationsByEmployeeNameTest {
+//@RunWith(SerenityParameterizedRunner.class)
+//@UseTestDataFrom("/resources/data.csv")
+@RunWith(ThucydidesRunner.class)
+public class ApproveRequestsTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -38,16 +40,39 @@ public class SearchVacationsByEmployeeNameTest {
 	public EndUserSteps endUser;
 
 	@Steps
+	public ApproveRejectRequestsSteps approveUser;
+
+	@Steps
 	public ViewVacationsSteps vacationsSteps;
 
+	@Steps
+	public NewVacationRequestsSteps newVacationsSteps;
+
+	@Steps
+	LogOutSteps logOutSteps;
+
 	@Test
-	public void search_vacations_by_employee_name() {
+	public void approve_chosen_requests() {
+
+		endUser.openHomePage();
+		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
+		endUser.goToVacationMenu();
+
+		newVacationsSteps.go_to_new_vacation_request_page();
+		newVacationsSteps.create_a_new_vacation_without_payment(2, "November", 2015, 2, "November", 2015);
+
+		logOutSteps.logOut();
 
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
+
+		approveUser.view_vacation_requests_assigned_to_me();
+		approveUser.access_inbox_with_success();
+		approveUser.approve_the_selected_request("Pop Irina", "02/11/2015", "02/11/2015", "Vacation Without Payment");
 		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina", "02/11/2015", "02/11/2015",
+				"Vacation Without Payment", "Approved");
 	}
 
 	@After
@@ -55,4 +80,5 @@ public class SearchVacationsByEmployeeNameTest {
 		pages.getDriver().close();
 	}
 
+	
 }

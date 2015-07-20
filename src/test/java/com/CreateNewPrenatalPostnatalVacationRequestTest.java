@@ -12,6 +12,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +25,7 @@ import com.steps.NewVacationRequestsSteps;
 //@RunWith(ThucydidesRunner.class)
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-public class CreateNewVacationWithoutPaymentRequestTest {
+public class CreateNewPrenatalPostnatalVacationRequestTest {
 	String username,password;
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -42,16 +43,22 @@ public class CreateNewVacationWithoutPaymentRequestTest {
     public MyRequestsSteps myRequestsSteps;
     
     @Test
-    public void create_a_new_vacation_without_payment_request(){
+    public void create_a_new_prenatalPostnatal_request(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
-    	newVacationSteps.create_a_new_vacation_without_payment(23, "November", 2015, 25, "November", 2015);
+        newVacationSteps.create_a_new_maternity_leave_request("Prenatal / Postnatal", 12, "August", 2015, 13, "August", 2015);
         myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Vacation Without Payment", "23/08/2015", "25/09/2015", "Pending");
-  
+        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "12/08/2015", "13/08/2015", "Pending");
     }
+    
+    @After
+	public void close_browser(){
+		   pages.getDriver().close();
+	}
+	
+  
  
 } 

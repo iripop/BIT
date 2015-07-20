@@ -39,9 +39,9 @@ public class NewVacationRequestMenuTest {
    
     @Test
     public void go_to_new_vacation_request() {
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
+    	endUser.openHomePage();
+		endUser.logInAsDM(username,password);
+		endUser.goToVacationMenu();
         newVacationSteps.go_to_new_vacation_request_page();
         newVacationSteps.access_new_vacation_request_with_success();
   

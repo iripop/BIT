@@ -18,7 +18,8 @@ import tools.EmailTool;
 import tools.Mail;
 //@RunWith(ThucydidesRunner.class)
 public class ReadingEmail extends ScenarioSteps {
-	NewVacationRequestPage newVacationPage;
+	
+		NewVacationRequestPage newVacationPage;
 	  LogInPage logInPage;
 	  EmailTool tools = new EmailTool();
 	  

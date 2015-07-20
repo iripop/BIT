@@ -33,10 +33,7 @@ public class InboxPage extends PageObject {
 
 	@FindBy(css="div[class='carousel-slider span3'] a[href*='menuItem=inbox'] b")
 	private WebElementFacade numberOfRequest;
-	
-
-	
-	
+		
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
 	private List<WebElement> listOfNames;
 	

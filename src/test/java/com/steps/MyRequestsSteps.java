@@ -63,8 +63,6 @@ public class MyRequestsSteps extends ScenarioSteps {
 	}
 
 	@Step
-
-
 	public void check_if_desired_request_is_present(String type,String startDate,String endDate,String status){
 		boolean found = myRequestsPage.check_if_desired_request_exists(type, startDate, endDate, status);
 		assertTrue("Is not found",found);
