@@ -10,36 +10,36 @@ public class MyFreeDaysHistorySteps extends ScenarioSteps{
    MyFreeDaysHistoryPage freeDaysHistoryPage;
    LogInPage page;
 	@Step
-	public void access_my_free_days_history() {
-		freeDaysHistoryPage.checkIfMyFreeDaysHistoryButtonExists();
-		freeDaysHistoryPage.open_my_requests();
+	public void accessMyFreeDaysHistory() {
+		freeDaysHistoryPage.checkIfMyFreeDaysHistoryMenuExists();
+		freeDaysHistoryPage.clickMyFreeDaysHistoryMenu();
 	}
 
 	@Step
-	public void filter_my_requests_step_in_my_free_days_history(String filter) {
+	public void filterRequestsInMyFreeDaysHistory(String filter) {
 		freeDaysHistoryPage.selectFiltersFromListInMyFreeDaysHistory(filter);
 
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_type_in_my_free_days_history(String selection) {
+	public void checkFilteringRequestsByTypeInMyFreeDaysHistory(String selection) {
 		freeDaysHistoryPage.checkIfTableIsFilteredByTypeInMyFreeDaysHistory(selection);
 	}
 	
 	@Step
-	public void check_filtering_my_requests_by_operation_in_my_free_days_history(String selection) {
+	public void checkFilteringRequestsByOperationInMyFreeDaysHistory(String selection) {
 		freeDaysHistoryPage.checkIfTableIsFilteredByOperationInMyFreeDaysHistory(selection);
 	}
 
 	
 
 	@Step
-	public void check_filtering_my_requests_by_days_number_in_my_free_days_history(int nr1, int nr2) {
+	public void checkFilteringRequestsByDaysNumberInMyFreeDaysHistory(int nr1, int nr2) {
 		freeDaysHistoryPage.checkIfTableIsFilteredByDaysNumberInMyFreeDaysHistory(nr1, nr2);
 	}
 
 	@Step
-	public void apply_filter_requests_in_my_free_days_history() {
+	public void clickApplyButtonForFiltersInMyFreeDaysHistory() {
 		freeDaysHistoryPage.clickApplyButtonForFilters();
 	}
 

@@ -43,14 +43,14 @@ public class CreateNewSickLeaveVacationRequestTest {
     public MyRequestsSteps myRequestsSteps;
     @Test
     public void create_a_new_sick_leave_request(){
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-    	newVacationSteps.create_a_new_sick_leave_request(19, "November", 2015, 19, "November", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Sick Leave", "19/11/2015", "19/11/2015", "Sick Leave");
+    	endUser.openHomePage();
+    	endUser.logInAsUser(username, password);
+    	endUser.goToVacationMenu();
+    	newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestWithSuccess();
+    	newVacationSteps.createNewSickLeaveRequest(19, "November", 2015, 19, "November", 2015);
+        myRequestsSteps.accessMyRequestsMenu();
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Sick Leave", "19/11/2015", "19/11/2015", "Sick Leave");
   
     }
  

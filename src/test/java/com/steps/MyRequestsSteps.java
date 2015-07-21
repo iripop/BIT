@@ -26,52 +26,50 @@ public class MyRequestsSteps extends ScenarioSteps {
 	 * myRequestsPage.selectManyFiltersFromList(filters); }
 	 */
 	@Step
-	public void access_my_requests() {
-		myRequestsPage.checkIfMyRequestsButtonExists();
-		myRequestsPage.open_my_requests();
+	public void accessMyRequestsMenu() {
+		myRequestsPage.checkIfMyRequestsMenuExists();
+		myRequestsPage.clickMyRequests();
 	}
 
 	@Step
-	public void filter_my_requests_step(String filter) {
+	public void filterMyRequestsStep(String filter) {
 		myRequestsPage.selectFiltersFromList(filter);
 
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_type(String selection) {
+	public void checkFilteringMyRequestsByType(String selection) {
 		myRequestsPage.checkIfTableIsFilteredByType(selection);
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_status(String selection) {
+	public void checkFilteringMyRequestsByStatus(String selection) {
 		myRequestsPage.checkIfTableIsFilteredByStatus(selection);
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_days_number(int nr1, int nr2) {
+	public void checkFilteringMyRequestsByDaysNumber(int nr1, int nr2) {
 		myRequestsPage.checkIfTableIsFilteredByDaysNumber(nr1, nr2);
 	}
 
 	@Step
-	public void apply_filter_requests() {
+	public void applyFilterRequests() {
 		myRequestsPage.clickApplyButtonForFilters();
 	}
 
 	@Step
-	public void select_future_vacations() {
+	public void selectFutureVacations() {
 		myRequestsPage.clickShowFutureVacationsButton();
 	}
 
 	@Step
-
-
-	public void check_if_desired_request_is_present(String type,String startDate,String endDate,String status){
-		boolean found = myRequestsPage.check_if_desired_request_exists(type, startDate, endDate, status);
+	public void checkIfDesiredRequestIsPresent(String type,String startDate,String endDate,String status){
+		boolean found = myRequestsPage.checkIfDesiredRequestExists(type, startDate, endDate, status);
 		assertTrue("Is not found",found);
 
 	}
 	@Step
-	public void withdrawn_vacation_request(String type,String startDate,String endDate,String status){
-		myRequestsPage.withdrawn_desired_request(type, startDate, endDate, status);
+	public void withdrawnVacationRequest(String type,String startDate,String endDate,String status){
+		myRequestsPage.withdrawnDesiredRequest(type, startDate, endDate, status);
 	}
 }

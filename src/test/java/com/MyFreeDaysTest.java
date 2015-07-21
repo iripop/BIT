@@ -40,30 +40,16 @@ public class MyFreeDaysTest {
 	public EndUserSteps endUser;
 	public NewVacationRequestsSteps newVacationUser;
 
-	 @Test
-	public void check_my_free_days_correspond_with_ones_from_new_vacation_request_page() {
-		endUser.is_the_home_page();
-
-		endUser.login(username, password);
-		endUser.go_to_vacation_menu();
-		myFreeDay.my_free_days_are_correct();
-	}
-
 	@Test
-	public void check_selected_business_days() {
-		endUser.is_the_home_page();
-		endUser.login(username, password);
-		endUser.go_to_vacation_menu();
-		newVacationUser.go_to_new_vacation_request_page();
-
-		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
-    
-
-
+	public void check_my_free_days_correspond_with_ones_from_new_vacation_request_page() {
+		endUser.openHomePage();
+		endUser.logInAsUser(username, password);
+		endUser.goToVacationMenu();
+		myFreeDay.checkIfMyFreeDaysAreCalculatedCorectly();
 	}
+
 	@After
-	public void close_browser(){
-		   pages.getDriver().close();
+	public void close_browser() {
+		pages.getDriver().close();
 	}
 }
-

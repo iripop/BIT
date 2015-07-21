@@ -17,7 +17,7 @@ import net.thucydides.core.pages.Pages;
 import tools.Constants;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
-public class FilterInViewVacationTest {
+public class FilterInRequestsInViewVacationTest {
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
 
@@ -41,4 +41,5 @@ public class FilterInViewVacationTest {
 		viewVacationsSteps.apply_filter_requests();
 	}
 
+	
 }

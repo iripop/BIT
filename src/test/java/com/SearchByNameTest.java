@@ -41,9 +41,9 @@ public class SearchByNameTest {
   @Test
     public void search_vacation_by_name_in_vacation_report() {
 		
-        endUser.is_the_home_page();
-		endUser.login(username, password);
-		endUser.go_to_vacation_menu();
+        endUser.openHomePage();
+		endUser.logInAsDM(username,password);
+		endUser.goToVacationMenu();
 		searchUser.view_vacation_report();
 		searchUser.go_to_vacation_report_with_success();
 		searchUser.search_by_last_name_and_first_name("Irina", "Pop");

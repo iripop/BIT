@@ -42,16 +42,16 @@ public class LogInTest {
   @Test
     public void log_in() {
 		
-        endUser.is_the_home_page();
-		endUser.login(username, password);
+        endUser.openHomePage();
+		endUser.logInAsUser(username, password);
 	
 
 	}
 
 	 @Test
 	public void vacationMenu() {
-		endUser.go_to_vacation_menu();
-		endUser.log_in_with_succes();
+		endUser.goToVacationMenu();
+		endUser.logInWithSuccess();
 
 }
 	 @After

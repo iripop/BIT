@@ -23,50 +23,59 @@ public class EndUserSteps extends ScenarioSteps {
 	LogInPage page;
 
 	@Step
-	public void enters_screen_name(String keyword) {
-		page.enter_screen_name(keyword);
+	public void enterUserName(String keyword) {
+		page.insertUserName(keyword);
 	}
 
 	@Step
-	public void enters_password(String keyword) {
-		page.enter_password(keyword);
+	public void enterPassword(String keyword) {
+		page.insertPassword(keyword);
 	}
 
 	@Step
-	public void starts_login() {
-		page.click_sign_in();
+	public void startsLogIn() {
+		page.clickSignInButton();
 	}
 
-	@Step
-	public void is_the_home_page() {
-		getDriver().manage().window().maximize();
-		page.open();
 
+	@StepGroup
+	public void logInAsUser(String name, String pass) {
+		enterUserName(name);
+		enterPassword(pass);
+		startsLogIn();
+		logInWithSuccess();
 	}
 
 	@StepGroup
-	public void login(String name, String pass) {
-		enters_screen_name(name);
-		enters_password(pass);
-		starts_login();
+	public void logInAsDM(String name, String pass) {
+		enterUserName(name);
+		enterPassword(pass);
+		startsLogIn();
+		logInWithSuccess();
 	}
 
 	@Step
-	public void go_to_vacation_menu() {
+	public void goToVacationMenu() {
 		page.clickVacationMenu();
 	}
 
 	@Step
-	public void log_in_with_succes() {
-		boolean found = page.vacation_tab_is_present();
+	public void logInWithSuccess() {
+		boolean found = page.checkIfVacationTabIsPresent();
 		assertTrue("VacationMenu not found", found);
 	}
 
-
 	@Step
-	public void access_my_requests() {
-		myRequestsPage.checkIfMyRequestsButtonExists();
-		myRequestsPage.open_my_requests();
+	public void accessMyRequests() {
+		myRequestsPage.checkIfMyRequestsMenuExists();
+		myRequestsPage.clickMyRequests();
 
+	}
+	@Step
+	public void openHomePage() {
+		getDriver().manage().window().maximize();
+		page.open();
+
+		
 	}
 }

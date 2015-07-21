@@ -13,10 +13,10 @@ public class LogOutPage extends PageObject {
     @FindBy(css = "ul.main-menu a[href*='/vacation']")
     private WebElementFacade vacationMenu;
     
-    public void click_the_sign_out_button(){
+    public void clickSignOutButton(){
     	signOutButton.click();
     }
-    public boolean vacation_tab_is_present(){
+    public boolean checkIfVacationTabIsPresent(){
     	if(vacationMenu.isPresent()) return false;
     	else return true;
     }

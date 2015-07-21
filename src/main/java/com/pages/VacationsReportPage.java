@@ -33,23 +33,23 @@ public class VacationsReportPage extends PageObject {
 	@FindBy(css="table[class='taglib-search-iterator'] tr:nth-child(3) td:nth-child(2) a")
 	private WebElementFacade firstNameFromTable;
 	
-	public void go_to_vacations_report(){
+	public void clickVacationsReportMenu(){
 		vacationsReportButton.click();
 	}
-	public boolean search_button_is_present(){
+	public boolean checkIfSearchButtonIsPresent(){
 		if(searchButton.isPresent()) return true;
 		else return false;
 	}
-	public void enter_last_name(String name){
+	public void enterLastName(String name){
 		lastNameInput.type(name);
 	}
-	public void enter_first_name(String name){
+	public void enterFirstName(String name){
 		firstNameInput.type(name);
 	}
-	public void click_search_button(){
+	public void clickSearchButton(){
 		searchButton.click();
 	}
-	public boolean last_name_from_table_is_the_same_as_introduced(String lastName){
+	public boolean checkIfLastnameFromTableIsTheSameAsIntroduced(String lastName){
 		int i=0;
 		int nr = lastNames.size();
 		System.out.println(lastName);
@@ -65,7 +65,7 @@ public class VacationsReportPage extends PageObject {
 		
 		
 	}
-	public boolean first_name_from_table_is_the_same_as_introduced(String firstName){
+	public boolean checkfIfFirstNameFromTableIsTheSameAsIntroduced(String firstName){
 		int i=0;
 		int nr = firstNames.size();
 		System.out.println(firstName);

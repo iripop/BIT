@@ -54,19 +54,19 @@ public class MailTest {
 
 	@Test
 	public void verify_if_mail_sent_when_new_vacation_request_is_made() throws IOException {
-		endUser.is_the_home_page();
-		endUser.login(Constants.Username, Constants.Userpassword);
-		endUser.go_to_vacation_menu();
-		newVacationSteps.go_to_new_vacation_request_page();
-		newVacationSteps.access_new_vacation_request_with_success();
-		newVacationSteps.create_a_new_holiday_request(8, "December", 2015, 8, "December", 2015);
+		endUser.openHomePage();
+		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
+		endUser.goToVacationMenu();
+		newVacationSteps.accessNewVacationRequestPage();
+		newVacationSteps.accessNewVacationRequestWithSuccess();
+		newVacationSteps.createNewHolidayRequest(8, "December", 2015, 8, "December", 2015);
 
 		emailSteps.check_if_the_received_mail_is_correct_when_you_make_a_new_vacation_request(Constants.UserLastName,
 				"08/12/2015", "08/12/2015", "Vacation Request");
 		emailSteps.check_if_dm_receives_the_correct_email_when_somebody_makes_a_new_vacation_request(
 				Constants.DMlastName, "08/12/2015", "08/12/2015", "Vacation Request");
 	}
-
+/*
 	@Test
 	public void verify_if_mail_sent_when_vacation_is_approved() {
 		endUser.is_the_home_page();
@@ -119,5 +119,5 @@ public class MailTest {
 	public void close_browser() {
 		pages.getDriver().close();
 	}
-
+*/
 }

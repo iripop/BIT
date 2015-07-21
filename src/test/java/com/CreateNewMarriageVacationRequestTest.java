@@ -24,7 +24,7 @@ import com.steps.NewVacationRequestsSteps;
 //@RunWith(ThucydidesRunner.class)
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-public class CreateNewVacationWithoutPaymentRequestTest {
+public class CreateNewMarriageVacationRequestTest {
 	String username,password;
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -38,20 +38,19 @@ public class CreateNewVacationWithoutPaymentRequestTest {
     @Steps
     public NewVacationRequestsSteps newVacationSteps;
    
+
     @Steps
     public MyRequestsSteps myRequestsSteps;
-    
     @Test
-    public void create_a_new_vacation_without_payment_request(){
+    public void create_a_new_marriage_request(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
-    	newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestPage();
         newVacationSteps.accessNewVacationRequestWithSuccess();
-    	newVacationSteps.createNewVacationWithoutPayment(23, "November", 2015, 25, "November", 2015);
+        newVacationSteps.createNewSpecialVacationRequest("Marriage", "", 13, "August", 2015, 14, "August", 2015);
         myRequestsSteps.accessMyRequestsMenu();
-        myRequestsSteps.checkIfDesiredRequestIsPresent("Vacation Without Payment", "23/08/2015", "25/09/2015", "Pending");
-  
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "13/08/2015", "14/08/2015", "Pending");
+   
     }
- 
 } 

@@ -12,6 +12,7 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +25,7 @@ import com.steps.NewVacationRequestsSteps;
 //@RunWith(ThucydidesRunner.class)
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-public class CreateNewVacationWithoutPaymentRequestTest {
+public class CreateNewChildBirthVacationRequestTest {
 	String username,password;
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -40,18 +41,26 @@ public class CreateNewVacationWithoutPaymentRequestTest {
    
     @Steps
     public MyRequestsSteps myRequestsSteps;
-    
+
+   
     @Test
-    public void create_a_new_vacation_without_payment_request(){
+    public void create_a_new_childBirth_request(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
-    	newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestPage();
         newVacationSteps.accessNewVacationRequestWithSuccess();
-    	newVacationSteps.createNewVacationWithoutPayment(23, "November", 2015, 25, "November", 2015);
+        newVacationSteps.createNewSpecialVacationRequest("Child birth", "", 28, "July", 2015, 29, "July", 2015);
         myRequestsSteps.accessMyRequestsMenu();
-        myRequestsSteps.checkIfDesiredRequestIsPresent("Vacation Without Payment", "23/08/2015", "25/09/2015", "Pending");
-  
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "28/07/2015", "29/07/2015", "Pending");
+   
     }
+    
+    @After
+    public void close_browser(){
+    	pages.getDriver().close();
+    }
+    
+    
  
 } 

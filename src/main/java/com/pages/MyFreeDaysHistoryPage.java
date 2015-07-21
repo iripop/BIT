@@ -30,7 +30,7 @@ public class MyFreeDaysHistoryPage extends PageObject {
 
 
 	
-	public void checkIfMyFreeDaysHistoryButtonExists() {
+	public void checkIfMyFreeDaysHistoryMenuExists() {
 
 		boolean found = false;
 		if (freeDaysHistoryButton.isPresent()) {
@@ -39,7 +39,7 @@ public class MyFreeDaysHistoryPage extends PageObject {
 		Assert.assertTrue("Element not found", found);
 	}
 
-	public void open_my_requests() {
+	public void clickMyFreeDaysHistoryMenu() {
 		element(freeDaysHistoryButton).waitUntilVisible();
 		freeDaysHistoryButton.click();
 	}

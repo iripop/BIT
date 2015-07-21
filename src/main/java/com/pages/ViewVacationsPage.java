@@ -35,6 +35,9 @@ public class ViewVacationsPage extends PageObject {
 	private List<WebElement> statusFromTheTable;
 
 	// @FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
+
+	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(7) a")
+
 	private List<WebElement> daysnumberFromTheTable;
 
 	@FindBy(css = "div[class='view-vacations-filter-content'] span[class='aui-field aui-field-choice'] label")
@@ -46,7 +49,8 @@ public class ViewVacationsPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsFirstName']")
 	private WebElementFacade firstNameText;
 
-	public void click_the_view_vacations_menu() {
+	public void clickViewVacationsMenu() {
+
 		viewVacationsText.click();
 	}
 
@@ -55,6 +59,15 @@ public class ViewVacationsPage extends PageObject {
 			return true;
 		else
 			return false;
+
+	}
+
+	public boolean checkIfApplyButtonIsPresent() {
+		if (applyButton.isPresent())
+			return true;
+		else
+			return false;
+
 	}
 
 	public void selectFiltersFromListInViewVacations(String filter) {
@@ -72,23 +85,29 @@ public class ViewVacationsPage extends PageObject {
 		Assert.assertTrue("Filter was not found", found);
 	}
 
-	public void click_apply_button() {
+	public void clickApplyButton() {
+
 		applyButton.click();
 	}
 
-	public void enter_last_name(String lastName) {
+	public void enterLastName(String lastName) {
+
 		lastNameText.type(lastName);
 	}
 
-	public void enter_first_name(String firstName) {
+	public void enterFirstName(String firstName) {
+
 		firstNameText.type(firstName);
 	}
 
-	public boolean check_if_the_desired_request_was_approved_or_rejected(String employeeName, String startDate,
-			String endDate, String type, String status) {
+	public boolean checkIfTheDesiredRequestWasApprovedOrRejected(String employeeName, String startDate, String endDate,
+			String type, String status) {
 		int i = 0;
+
 		int nr = namesFromTheTable.size();
+
 		// System.out.println(nr);
+
 		boolean isCorrect = false;
 		while (i < nr) {
 
@@ -102,15 +121,17 @@ public class ViewVacationsPage extends PageObject {
 			}
 			i++;
 		}
+
 		// System.out.println(isCorrect);
+
 		return isCorrect;
 	}
 
 	public void checkIfTableIsFilteredByTypeInViewVacations(String selection) {
-		boolean found = true;
+		boolean found = false;
 		for (WebElement elementtype : typesFromTheTable) {
 			while (!elementtype.getText().contentEquals(selection)) {
-				found = false;
+				found = true;
 				System.out.println("Type filtered correctly");
 				break;
 			}
@@ -149,12 +170,14 @@ public class ViewVacationsPage extends PageObject {
 		element(applyButton).waitUntilVisible();
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
+
 	}
 
-	public boolean check_if_all_requests_from_the_table_are_with_the_given_name(String lastName, String firstName) {
+	public boolean checkIfAllRequestsFromTheTableAreWithTheGivenName(String lastName, String firstName) {
 		boolean isOk = true;
 		String name = firstName + " " + lastName;
 		int i = 0;
+
 		int nr = namesFromTheTable.size();
 		while (i < nr) {
 			// System.out.println("Name="+namesFromTheTable.get(i).getText());

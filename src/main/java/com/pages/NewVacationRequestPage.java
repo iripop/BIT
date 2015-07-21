@@ -70,23 +70,23 @@ public class NewVacationRequestPage extends PageObject {
 		holidayInput.click();
 	}
 
-	public void click_vacation_without_payment() {
+	public void clickVacationWithoutPayment() {
 		withoutPaymentInput.click();
 	}
 
-	public void click_sick_leave() {
+	public void clickSickLeave() {
 		sickLeaveInput.click();
 	}
 
-	public void click_special_vacation() {
+	public void clickSpecialVacation() {
 		specialVacationInput.click();
 	}
 
-	public void click_maternity_leave() {
+	public void clickMaternityLeave() {
 		maternityLeaveInput.click();
 	}
 
-	public void select_special_vacation_type(String text) {
+	public void selectSpecialVacationType(String text) {
 		(selectSpecialVacationType).selectByVisibleText(text);
 	}
 
@@ -94,28 +94,28 @@ public class NewVacationRequestPage extends PageObject {
 		(selectMaternityLeaveType).selectByVisibleText(text);
 	}
 
-	public void new_vacation_area() {
+	public void clickNewVacationRequest() {
 		newVacationRequestButton.waitUntilVisible();
 		newVacationRequestButton.click();
 	}
 
-	public boolean save_button_is_present() {
+	public boolean checkIfSaveButtonIsPresent() {
 		if (saveButton.isPresent())
 			return true;
 		else
 			return false;
 	}
 
-	public void click_save_button() {
+	public void clickSaveButton() {
 		saveButton.click();
 	}
 
-	public void add_comment_required_at_apecial_vacation(String text) {
+	public void addCommentRequiredAtSpecialVacation(String text) {
 		requiredCommentFromSpecialVacation.click();
 		addComment.type(text);
 	}
 
-	public void choose_the_start_date(int day, String month, int year) {
+	public void chooseStartDate(int day, String month, int year) {
 		String monthAndYear = month + ", " + year;
 		startDatelocator.click();
 		WebElement date = monthAndYearFromStartDate.findElement(By.cssSelector("td[class='dp_caption']"));
@@ -144,7 +144,7 @@ public class NewVacationRequestPage extends PageObject {
 
 	}
 
-	public void choose_the_end_date(int day, String month, int year) {
+	public void chooseEndDate(int day, String month, int year) {
 		String monthAndYear = month + ", " + year;
 		endDateLocator.click();
 		WebElement date = monthAndYearFromStartDate.findElement(By.cssSelector("td[class='dp_caption']"));
@@ -173,8 +173,8 @@ public class NewVacationRequestPage extends PageObject {
 	}
 	 public long dateDiffBetweenStartDateAndEndDate(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
 	    	int selectedDays=0;
-	    	choose_the_start_date(startDay, startMonth, endYear);
-	    	choose_the_end_date(endDay, endMonth, endYear);
+	    	chooseStartDate(startDay, startMonth, endYear);
+	    	chooseEndDate(endDay, endMonth, endYear);
 	    	Date start = new GregorianCalendar(startYear, freeDaysPage.getMonth(startMonth), startDay).getTime();
 	    	Date end=new GregorianCalendar(endYear, freeDaysPage.getMonth(endMonth), endDay).getTime();
 	    	long diff = end.getTime()-start.getTime();

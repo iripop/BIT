@@ -25,7 +25,7 @@ import com.steps.NewVacationRequestsSteps;
 //@RunWith(ThucydidesRunner.class)
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
-public class CreateNewMaternityLeaveVacationRequestTest {
+public class CreateNewPrenatalPostnatalVacationRequestTest {
 	String username,password;
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -44,27 +44,16 @@ public class CreateNewMaternityLeaveVacationRequestTest {
     
     @Test
     public void create_a_new_prenatalPostnatal_request(){
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-        newVacationSteps.create_a_new_maternity_leave_request("Prenatal / Postnatal", 12, "August", 2015, 13, "August", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "12/08/2015", "13/08/2015", "Pending");
+    	endUser.openHomePage();
+    	endUser.logInAsUser(username, password);
+    	endUser.goToVacationMenu();
+        newVacationSteps.accessNewVacationRequestPage();
+        newVacationSteps.accessNewVacationRequestWithSuccess();
+        newVacationSteps.createNewMaternityLeaveRequest("Prenatal / Postnatal", 12, "August", 2015, 13, "August", 2015);
+        myRequestsSteps.accessMyRequestsMenu();
+        myRequestsSteps.checkIfDesiredRequestIsPresent("Maternity Leave", "12/08/2015", "13/08/2015", "Pending");
     }
-    @Test
-    public void create_a_new_concediu_ingrijire_copii_request(){
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
-        newVacationSteps.go_to_new_vacation_request_page();
-        newVacationSteps.access_new_vacation_request_with_success();
-        newVacationSteps.create_a_new_maternity_leave_request("Concediu Ingrijire Copil", 28, "July", 2015, 29, "July", 2015);
-        myRequestsSteps.access_my_requests();
-        myRequestsSteps.check_if_desired_request_is_present("Maternity Leave", "28/07/2015", "29/07/2015", "Pending");
-  
-    }
+    
     @After
 	public void close_browser(){
 		   pages.getDriver().close();

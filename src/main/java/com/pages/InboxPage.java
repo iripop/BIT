@@ -33,10 +33,7 @@ public class InboxPage extends PageObject {
 
 	@FindBy(css="div[class='carousel-slider span3'] a[href*='menuItem=inbox'] b")
 	private WebElementFacade numberOfRequest;
-	
-
-	
-	
+		
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(2) a")
 	private List<WebElement> listOfNames;
 	
@@ -50,22 +47,22 @@ public class InboxPage extends PageObject {
 	private List<WebElement> listOfTypes;
 	
 	@FindBy(css="tr[class*='portlet-section'] td:nth-child(1) input ")
-	private List<WebElement> checkBoxes;
+	private List<WebElement> checkBoxesList;
 	
-	public void access_the_inbox_menu(){
+	public void clickInboxMenu(){
 		inboxButton.click();
 	}
-	public void select_first_request(){
+	public void selectFirstRequest(){
 		WebElement check = tableWithRequests.findElement(By.cssSelector("input[name='_evovacation_WAR_EvoVacationportlet_rowIds']"));
 		check.click();
 	}
-	public void click_approve_button(){
+	public void clickApproveButton(){
 		approveButton.click();
 	}
 	public void click_reject_button(){
 		rejectButton.click();
 	}
-	public boolean approve_button_is_present(){
+	public boolean checkIfApproveButtonIsPresent(){
 		if(approveButton.isPresent()) return true;
 		else return false;
 	}
@@ -75,21 +72,21 @@ public class InboxPage extends PageObject {
 		text = text.replace("(", "").replace(")", "");
 		return Integer.parseInt(text);
 	}
-	public void access_the_view_vacations_menu(){
+	public void clickTheViewVacationsMenu(){
 		viewVacationsButton.click();
 	}
-	public boolean apply_button_is_present(){
+	public boolean checkIfApplyButtonIsPresent(){
 		if(applyButton.isPresent()) return true;
 		else return false;
 	}
 
-	public void search_requests_to_approve_or_reject(String emplyeeName,String startDate,String endDate,String type){
+	public void selectRequestsToApproveOrReject(String emplyeeName,String startDate,String endDate,String type){
 		int i=0;
 		int nr = listOfNames.size();
 		while(i<nr){
 		
 			if(listOfNames.get(i).getText().compareTo(emplyeeName)==0 && listOfStartDates.get(i).getText().compareTo(startDate)==0 && listOfEndDates.get(i).getText().compareTo(endDate)==0 && listOfTypes.get(i).getText().compareTo(type)==0)
-				{checkBoxes.get(i).click();
+				{checkBoxesList.get(i).click();
 				}
 			i++;
 		}

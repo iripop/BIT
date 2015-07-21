@@ -1,63 +1,57 @@
 package com;
 
-import java.util.List;
-
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.pages.ViewVacationsPage;
-import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
-import com.steps.ViewVacationsSteps;
+import com.steps.NewVacationRequestsSteps;
+import com.steps.NumberOfFreeDaysSteps;
 
 import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.annotations.UseTestDataFrom;
-import net.thucydides.junit.runners.ThucydidesRunner;
+import tools.Constants;
 import tools.Constants;
 
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 // @RunWith(ThucydidesRunner.class)
-public class SearchVacationsByEmployeeNameTest {
+public class CheckIfSelectedBusinessDaysAreCalculatedCorrectlyTest {
+	String username, password;
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
-
-	String username, password;
 
 	@ManagedPages(defaultUrl = Constants.defaultURL)
 	public Pages pages;
 
 	@Steps
-	public EndUserSteps endUser;
-
+	public NumberOfFreeDaysSteps myFreeDay;
 	@Steps
-	public ViewVacationsSteps vacationsSteps;
+	public EndUserSteps endUser;
+	public NewVacationRequestsSteps newVacationUser;
 
 	@Test
-	public void search_vacations_by_employee_name() {
-
+	public void check_selected_business_days() {
 		endUser.openHomePage();
-		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
+		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
-		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+		newVacationUser.accessNewVacationRequestPage();
+		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
 
-		vacationsSteps.check_if_the_requests_are_filtering_correct("Irina", "Pop");
-  }
-
-	
-
-
-	@After
-	public void close_browser() {
-		pages.getDriver().close();
 	}
 
+	@After
+	public void closeBrowser() {
+		pages.getDriver().close();
+	}
 }

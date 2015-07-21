@@ -25,12 +25,12 @@ public class LogOutSteps extends ScenarioSteps {
 	
 	@Step
 	public void logOut(){
-		page.click_the_sign_out_button();
+		page.clickSignOutButton();
 	}
 
 	@Step
 	public void log_out_with_succes() {
-		boolean found = page.vacation_tab_is_present();
+		boolean found = page.checkIfVacationTabIsPresent();
 		assertTrue("VacationMenu not found", found);
 	}
 

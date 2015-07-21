@@ -25,30 +25,30 @@ import com.steps.TrackSteps;
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 public class ViewVacationTrackerTest {
-	String username,password;
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+	String username, password;
+	@Managed(uniqueSession = true)
+	public WebDriver webdriver;
 
-    @ManagedPages(defaultUrl = Constants.defaultURL)
-    public Pages pages;
-    
-    @Steps
-    public EndUserSteps endUser;
-    
-    @Steps
-    public TrackSteps trackSteps;
-   
-    @Steps
-    public NewVacationRequestsSteps newVacationSteps;
-   
-    @Test
-    public void go_to_new_vacation_request() {
-    	endUser.is_the_home_page();
-    	endUser.login(username, password);
-    	endUser.go_to_vacation_menu();
-        trackSteps.go_to_track_page();
-        trackSteps.view_vacation_tracker("Beta Building", "DM Department", 07, "July", 2015, 23, "July", 2015);
-       
-    }
-  
-} 
+	@ManagedPages(defaultUrl = Constants.defaultURL)
+	public Pages pages;
+
+	@Steps
+	public EndUserSteps endUser;
+
+	@Steps
+	public TrackSteps trackSteps;
+
+	@Steps
+	public NewVacationRequestsSteps newVacationSteps;
+
+	@Test
+	public void go_to_new_vacation_request() {
+		endUser.openHomePage();
+		endUser.logInAsDM(username, password);
+		endUser.goToVacationMenu();
+		trackSteps.goToTrackPage();
+		trackSteps.view_vacation_tracker("Beta Building", "DM Department", 07, "July", 2015, 23, "July", 2015);
+
+	}
+
+}
