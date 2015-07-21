@@ -25,26 +25,26 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 	ViewVacationsPage viewVacationsPage;
 
 	@Step
-	public void view_vacation_requests_assigned_to_me() {
+	public void viewVacationRequestsAssignedToMe() {
 		inboxPage.clickInboxMenu();
 
 	}
 
 	@Step
-	public void access_inbox_with_success() {
+	public void accessInboxWithSuccess() {
 		boolean found = false;
 		found = inboxPage.checkIfApproveButtonIsPresent();
 		assertTrue("Approve button not found", found);
 	}
 
 	@Step
-	public void select_vacation_to_approve_or_reject(String employeeName, String startDate, String endDate,
+	public void selectVacationToApproveOrReject(String employeeName, String startDate, String endDate,
 			String type) {
 		inboxPage.selectRequestsToApproveOrReject(employeeName, startDate, endDate, type);
 	}
 
 	@Step
-	public void click_the_approve_button() {
+	public void clickTheApproveButton() {
 		inboxPage.clickApproveButton();
 	}
 
@@ -54,11 +54,11 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 	}
 
 	@StepGroup
-	public void approve_the_selected_request(String employeeName, String startDate, String endDate, String type) {
+	public void approveTheSelectedRequest(String employeeName, String startDate, String endDate, String type) {
 		int beginNr = inboxPage.showNumberOfRequests();
 		boolean isEqual;
-		select_vacation_to_approve_or_reject(employeeName, startDate, endDate, type);
-		click_the_approve_button();
+		selectVacationToApproveOrReject(employeeName, startDate, endDate, type);
+		clickTheApproveButton();
 		int endNr = inboxPage.showNumberOfRequests();
 		if (beginNr == endNr + 1)
 			isEqual = true;
@@ -69,9 +69,9 @@ public class ApproveRejectRequestsSteps extends ScenarioSteps {
 	}
 
 	@StepGroup
-	public void reject_the_selected_request(String employeeName, String startDate, String endDate, String type) {
+	public void rejectTheSelectedRequest(String employeeName, String startDate, String endDate, String type) {
 		int beginNr = inboxPage.showNumberOfRequests();
-		select_vacation_to_approve_or_reject(employeeName, startDate, endDate, type);
+		selectVacationToApproveOrReject(employeeName, startDate, endDate, type);
 		click_the_reject_button();
 		boolean isEqual;
 		int endNr = inboxPage.showNumberOfRequests();

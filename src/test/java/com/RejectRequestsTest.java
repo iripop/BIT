@@ -53,12 +53,12 @@ public class RejectRequestsTest {
 
 	
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 
 	@Test
-	public void reject_chosen_requests() {
+	public void rejectChosenRequests() {
 		endUser.openHomePage();
 		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
 		endUser.goToVacationMenu();
@@ -72,11 +72,11 @@ public class RejectRequestsTest {
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
 
-		approveUser.view_vacation_requests_assigned_to_me();
-		approveUser.access_inbox_with_success();
-		approveUser.reject_the_selected_request("Pop Irina", "04/11/2015", "04/11/2015", "Vacation Without Payment");
-		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina", "04/11/2015", "04/11/2015",
+		approveUser.viewVacationRequestsAssignedToMe();
+		approveUser.accessInboxWithSuccess();
+		approveUser.rejectTheSelectedRequest("Pop Irina", "04/11/2015", "04/11/2015", "Vacation Without Payment");
+		vacationsSteps.goToViewVacationsPage();
+		vacationsSteps.checkIfTheDesiredVacationIsPresent("Pop Irina", "04/11/2015", "04/11/2015",
 				"Vacation Without Payment", "Rejected");
 	}
 

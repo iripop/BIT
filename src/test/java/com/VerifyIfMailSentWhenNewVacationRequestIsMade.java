@@ -11,20 +11,25 @@ import net.thucydides.core.annotations.Managed;
 import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
+import tools.ReadingEmail;
 
+import java.io.IOException;
+
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 import com.pages.NewVacationRequestPage;
+import com.steps.ApproveRejectRequestsSteps;
 import com.steps.EndUserSteps;
-import com.steps.MyRequestsSteps;
+import com.steps.LogOutSteps;
 import com.steps.NewVacationRequestsSteps;
 
-//@RunWith(ThucydidesRunner.class)
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("/resources/data.csv")
-public class CreateNewHolidayVacationRequestTest {
+@RunWith(ThucydidesRunner.class)
+// @RunWith(SerenityParameterizedRunner.class)
+// @UseTestDataFrom("/resources/data.csv")
+public class VerifyIfMailSentWhenNewVacationRequestIsMade {
 	String username, password;
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -39,21 +44,26 @@ public class CreateNewHolidayVacationRequestTest {
 	public NewVacationRequestsSteps newVacationSteps;
 
 	@Steps
-	public MyRequestsSteps myRequestsSteps;
+	public ReadingEmail emailSteps;
+
+	@Steps
+	public ApproveRejectRequestsSteps approveRejectSteps;
+
+	@Steps
+	LogOutSteps logOutSteps;
 
 	@Test
-	public void createANewHolidayRequest() {
+	public void verifyIfMailSentWhenNewVacationRequestIsMade() throws IOException {
 		endUser.openHomePage();
-		endUser.logInAsUser(username, password);
+		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
 		endUser.goToVacationMenu();
 		newVacationSteps.accessNewVacationRequestPage();
 		newVacationSteps.accessNewVacationRequestWithSuccess();
+		newVacationSteps.createNewHolidayRequest(8, "December", 2015, 8, "December", 2015);
 
-		newVacationSteps.createNewHolidayRequest(10, "November", 2015, 10, "November", 2015);
-		myRequestsSteps.withdrawnVacationRequest("Holiday", "10/11/2015", "10/11/2015", "Withdrawn");
-
-		myRequestsSteps.accessMyRequestsMenu();
-
+		emailSteps.check_if_the_received_mail_is_correct_when_you_make_a_new_vacation_request(Constants.UserLastName,
+				"08/12/2015", "08/12/2015", "Vacation Request");
+		emailSteps.check_if_dm_receives_the_correct_email_when_somebody_makes_a_new_vacation_request(
+				Constants.DMlastName, "08/12/2015", "08/12/2015", "Vacation Request");
 	}
-
 }

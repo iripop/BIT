@@ -34,23 +34,19 @@ public class FilterInMyRequestsTest {
 	public MyRequestsSteps myRequestsSteps;
 
 	@Test
-	public void filter_my_requests_test() {
+	public void filterMyRequests() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
 		myRequestsSteps.accessMyRequestsMenu();
-		myRequestsSteps. filterMyRequestsStep("Approved");
+		myRequestsSteps.filterMyRequestsStep("Approved");
 		myRequestsSteps.filterMyRequestsStep("Maternity Leave");
 		myRequestsSteps.filterMyRequestsStep("21 - 50");
-
-		// myRequestsSteps.filterWithMoreParameters("Approved", "Maternity
-		// Leave","Sick
-		// Leave6");
 		myRequestsSteps.applyFilterRequests();
 	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 }

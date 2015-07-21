@@ -24,15 +24,9 @@ public class MyRequestsPage extends PageObject {
 
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_futureVacationsCheckbox']")
 	private WebElementFacade showFutureVacationsInput;
-	
-	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
-	private WebElementFacade withdrawnButton;
 
-	/*
-	 * @FindBy(css =
-	 * "div[class*='search-container'] div[class='results-grid'] td[headers$='type']"
-	 * ) private List<WebElement> typeList;
-	 */
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
+	private WebElementFacade withdrawnButton;
 
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(3) a")
 	private List<WebElement> daysNumberList;
@@ -55,13 +49,9 @@ public class MyRequestsPage extends PageObject {
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_PENDINGCheckbox']")
 	private WebElementFacade pendingCheckBox;
 
-
-
-	
-//	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
-	@FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
+	// @FindBy(css="input[id='_evovacation_WAR_EvoVacationportlet_WITHDRAWNCheckbox']")
+	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_withdrawnVacationRequest']")
 	private WebElementFacade withdrawnCheckBox;
-	
 
 	public void checkIfMyRequestsMenuExists() {
 
@@ -159,35 +149,35 @@ public class MyRequestsPage extends PageObject {
 	public boolean checkIfDesiredRequestExists(String type, String startDate, String endDate, String status) {
 		int i = 0;
 		int nr = startDateList.size();
-		if(status.compareTo("Pending")==0){
-		pendingCheckBox.click();
+		if (status.compareTo("Pending") == 0) {
+			pendingCheckBox.click();
 		}
-		if(status.compareTo("Withdrawn")==0){
+		if (status.compareTo("Withdrawn") == 0) {
 			withdrawnCheckBox.click();
 		}
 		applyButton.click();
 		element(applyButton).waitUntilVisible();
 		boolean exist = false;
 		while (i < nr) {
-			
+
 			if (startDateList.get(i).getText().compareTo(startDate) == 0
 					&& endDateList.get(i).getText().compareTo(endDate) == 0
 					&& statusList.get(i).getText().compareTo(status) == 0
 					&& typeList.get(i).getText().compareTo(type) == 0) {
 				exist = true;
-				//startDateList.get(i).click();
+				// startDateList.get(i).click();
 				break;
 			}
 			i++;
 		}
 		return exist;
 	}
-	public void withdrawnDesiredRequest(String type, String startDate, String endDate, String status){
+
+	public void withdrawnDesiredRequest(String type, String startDate, String endDate, String status) {
 		boolean cheackIfRequestExists = checkIfDesiredRequestExists(type, startDate, endDate, status);
-		if(cheackIfRequestExists){
+		if (cheackIfRequestExists) {
 			withdrawnButton.click();
 		}
 	}
-	
 
 }

@@ -42,12 +42,13 @@ public class ViewVacationTrackerTest {
 	public NewVacationRequestsSteps newVacationSteps;
 
 	@Test
-	public void go_to_new_vacation_request() {
+	public void viewVacationTracker() {
 		endUser.openHomePage();
-		endUser.logInAsDM(username, password);
+		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
 		trackSteps.goToTrackPage();
-		trackSteps.view_vacation_tracker("Beta Building", "DM Department", 07, "July", 2015, 23, "July", 2015);
+		trackSteps.accessTrackPageWithSuccess();
+		trackSteps.viewVacationTracker("Beta Building", "DM Department", 07, "July", 2015, 23, "July", 2015);
 
 	}
 

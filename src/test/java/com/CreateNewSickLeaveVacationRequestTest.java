@@ -42,7 +42,7 @@ public class CreateNewSickLeaveVacationRequestTest {
     @Steps
     public MyRequestsSteps myRequestsSteps;
     @Test
-    public void create_a_new_sick_leave_request(){
+    public void createANewSickLeaveRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();

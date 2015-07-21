@@ -41,12 +41,12 @@ public class CheckIfSelectedBusinessDaysAreCalculatedCorrectlyTest {
 	public NewVacationRequestsSteps newVacationUser;
 
 	@Test
-	public void check_selected_business_days() {
+	public void checkSelectedBusinessDays() {
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();
 		newVacationUser.accessNewVacationRequestPage();
-		myFreeDay.selected_business_days_are_correct(14, "August", 2015, 18, "August", 2015);
+		myFreeDay.selectedBusinessDaysAreCorrect(14, "August", 2015, 18, "August", 2015);
 
 	}
 

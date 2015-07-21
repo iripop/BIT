@@ -31,18 +31,18 @@ public class CheckFilterInViewVacationTest {
 	
 	
 	@Test
-	public void check_if_filter_is_correct_in_view_vacation_page() {
+	public void checkIfFilterIsCorrectInViewVacationPage() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		viewVacationsSteps.go_to_view_vacations_page();
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Holiday");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("1 - 5");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Withdrawn");
-		viewVacationsSteps.apply_filter_requests();
-		viewVacationsSteps.check_filtering_my_requests_by_type_in_view_vacations("Holiday");
-		viewVacationsSteps.check_filtering_my_requests_by_days_number_in_view_vacations(1, 5);
-		viewVacationsSteps.check_filtering_my_requests_by_status_in_view_vacations("Withdrawn");
+		viewVacationsSteps.goToViewVacationsPage();
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("Holiday");
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("1 - 5");
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("Withdrawn");
+		viewVacationsSteps.applyFilterRequests();
+		viewVacationsSteps.checkFilteringMyRequestsByTypeInViewVacations("Holiday");
+		viewVacationsSteps.checkFilteringMyRequestsByDaysNumberInViewVacations(1, 5);
+		viewVacationsSteps.checkFilteringMyRequestsByStatusInViewVacations("Withdrawn");
 
 	}
 }

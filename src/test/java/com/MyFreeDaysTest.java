@@ -41,7 +41,7 @@ public class MyFreeDaysTest {
 	public NewVacationRequestsSteps newVacationUser;
 
 	@Test
-	public void check_my_free_days_correspond_with_ones_from_new_vacation_request_page() {
+	public void checkMyFreeDaysCorrespondWithOnesFromNewVacationRequestPage() {
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
 		endUser.goToVacationMenu();

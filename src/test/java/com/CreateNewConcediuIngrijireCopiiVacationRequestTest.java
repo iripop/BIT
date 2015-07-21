@@ -44,7 +44,7 @@ public class CreateNewConcediuIngrijireCopiiVacationRequestTest {
     
     
     @Test
-    public void create_a_new_concediu_ingrijire_copii_request(){
+    public void createANewConcediuIngrijireCopiiRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
@@ -56,7 +56,7 @@ public class CreateNewConcediuIngrijireCopiiVacationRequestTest {
   
     }
     @After
-	public void close_browser(){
+	public void closeBrowser(){
 		   pages.getDriver().close();
 	}
 	

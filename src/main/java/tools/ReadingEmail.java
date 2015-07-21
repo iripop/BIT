@@ -1,4 +1,4 @@
-package com.steps;
+package tools;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,15 +13,10 @@ import com.pages.NewVacationRequestPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.steps.ScenarioSteps;
-import tools.Constants;
-import tools.EmailTool;
-import tools.Mail;
 
 //@RunWith(ThucydidesRunner.class)
 public class ReadingEmail extends ScenarioSteps {
 
-	NewVacationRequestPage newVacationPage;
-	LogInPage logInPage;
 	EmailTool tools = new EmailTool();
 
 	@Step

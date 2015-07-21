@@ -41,22 +41,19 @@ public class SearchVacationsByEmployeeNameTest {
 	public ViewVacationsSteps vacationsSteps;
 
 	@Test
-	public void search_vacations_by_employee_name() {
+	public void searchVacationsByEmployeeName() {
 
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+		vacationsSteps.goToViewVacationsPage();
+		vacationsSteps.searchVacationsByEmployeeName("Irina", "Pop");
 
-		vacationsSteps.check_if_the_requests_are_filtering_correct("Irina", "Pop");
-  }
-
-	
-
+		vacationsSteps.checkIfTheRequestsAreFilteringCorrect("Irina", "Pop");
+	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 
