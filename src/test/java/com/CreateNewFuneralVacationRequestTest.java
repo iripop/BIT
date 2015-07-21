@@ -45,12 +45,12 @@ public class CreateNewFuneralVacationRequestTest {
    
     
     @After
-    public void close_browser(){
+    public void closeBrowser(){
     	pages.getDriver().close();
     }
     
     @Test
-    public void create_a_new_funeral_request(){
+    public void createANewFuneralRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();

@@ -67,11 +67,11 @@ public class ApproveRequestsTest {
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
 
-		approveUser.view_vacation_requests_assigned_to_me();
-		approveUser.access_inbox_with_success();
-		approveUser.approve_the_selected_request("Pop Irina", "02/11/2015", "02/11/2015", "Vacation Without Payment");
-		vacationsSteps.go_to_view_vacations_page();
-		vacationsSteps.check_if_the_desired_vacation_is_present("Pop Irina", "02/11/2015", "02/11/2015",
+		approveUser.viewVacationRequestsAssignedToMe();
+		approveUser.accessInboxWithSuccess();
+		approveUser.approveTheSelectedRequest("Pop Irina", "02/11/2015", "02/11/2015", "Vacation Without Payment");
+		vacationsSteps.goToViewVacationsPage();
+		vacationsSteps.checkIfTheDesiredVacationIsPresent("Pop Irina", "02/11/2015", "02/11/2015",
 				"Vacation Without Payment", "Approved");
 	}
 

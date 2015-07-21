@@ -30,15 +30,15 @@ public class FilterInViewVacationTest {
 	public ViewVacationsSteps viewVacationsSteps;
 	
 	@Test
-	public void filter_my_requests_from_view_vacations_test() {
+	public void filterMyRequestsFromViewVacations() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
-		viewVacationsSteps.go_to_view_vacations_page();
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Approved");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("Maternity Leave");
-		viewVacationsSteps.filter_my_requests_step_in_view_vacations("21 - 50");
-		viewVacationsSteps.apply_filter_requests();
+		viewVacationsSteps.goToViewVacationsPage();
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("Approved");
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("Maternity Leave");
+		viewVacationsSteps.filterMyRequestsStepInViewVacations("21 - 50");
+		viewVacationsSteps.applyFilterRequests();
 	}
 
 }

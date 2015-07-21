@@ -26,41 +26,38 @@ import com.steps.NewVacationRequestsSteps;
 @RunWith(SerenityParameterizedRunner.class)
 @UseTestDataFrom("/resources/data.csv")
 public class CreateNewChildBirthVacationRequestTest {
-	String username,password;
-    @Managed(uniqueSession = true)
-    public WebDriver webdriver;
+	String username, password;
+	@Managed(uniqueSession = true)
+	public WebDriver webdriver;
 
-    @ManagedPages(defaultUrl = Constants.defaultURL)
-    public Pages pages;
-    
-    @Steps
-    public EndUserSteps endUser;
-    
-    @Steps
-    public NewVacationRequestsSteps newVacationSteps;
-   
-    @Steps
-    public MyRequestsSteps myRequestsSteps;
+	@ManagedPages(defaultUrl = Constants.defaultURL)
+	public Pages pages;
 
-   
-    @Test
-    public void create_a_new_childBirth_request(){
-    	endUser.openHomePage();
-    	endUser.logInAsUser(username, password);
-    	endUser.goToVacationMenu();
-        newVacationSteps.accessNewVacationRequestPage();
-        newVacationSteps.accessNewVacationRequestWithSuccess();
-        newVacationSteps.createNewSpecialVacationRequest("Child birth", "", 28, "July", 2015, 29, "July", 2015);
-        myRequestsSteps.accessMyRequestsMenu();
-        myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "28/07/2015", "29/07/2015", "Pending");
-   
-    }
-    
-    @After
-    public void close_browser(){
-    	pages.getDriver().close();
-    }
-    
-    
- 
-} 
+	@Steps
+	public EndUserSteps endUser;
+
+	@Steps
+	public NewVacationRequestsSteps newVacationSteps;
+
+	@Steps
+	public MyRequestsSteps myRequestsSteps;
+
+	@Test
+	public void createANewChildBirthRequest() {
+		endUser.openHomePage();
+		endUser.logInAsUser(username, password);
+		endUser.goToVacationMenu();
+		newVacationSteps.accessNewVacationRequestPage();
+		newVacationSteps.accessNewVacationRequestWithSuccess();
+		newVacationSteps.createNewSpecialVacationRequest("Child birth", "", 28, "July", 2015, 29, "July", 2015);
+		myRequestsSteps.accessMyRequestsMenu();
+		myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "28/07/2015", "29/07/2015", "Pending");
+
+	}
+
+	@After
+	public void closeBrowser() {
+		pages.getDriver().close();
+	}
+
+}

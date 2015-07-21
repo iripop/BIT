@@ -42,7 +42,7 @@ public class CreateNewMarriageVacationRequestTest {
     @Steps
     public MyRequestsSteps myRequestsSteps;
     @Test
-    public void create_a_new_marriage_request(){
+    public void createANewMarriageRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();

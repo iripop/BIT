@@ -42,7 +42,7 @@ public class CreateNewVacationWithoutPaymentRequestTest {
     public MyRequestsSteps myRequestsSteps;
     
     @Test
-    public void create_a_new_vacation_without_payment_request(){
+    public void createANewVacationWithoutPaymentRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();

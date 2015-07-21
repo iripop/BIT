@@ -34,8 +34,6 @@ public class ViewVacationsPage extends PageObject {
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(9) a")
 	private List<WebElement> statusFromTheTable;
 
-	// @FindBy(css="tr[class*='portlet-section'] td:nth-child(9) a")
-
 	@FindBy(css = "tr[class*='portlet-section'] td:nth-child(7) a")
 
 	private List<WebElement> daysnumberFromTheTable;
@@ -103,11 +101,7 @@ public class ViewVacationsPage extends PageObject {
 	public boolean checkIfTheDesiredRequestWasApprovedOrRejected(String employeeName, String startDate, String endDate,
 			String type, String status) {
 		int i = 0;
-
 		int nr = namesFromTheTable.size();
-
-		// System.out.println(nr);
-
 		boolean isCorrect = false;
 		while (i < nr) {
 
@@ -121,9 +115,6 @@ public class ViewVacationsPage extends PageObject {
 			}
 			i++;
 		}
-
-		// System.out.println(isCorrect);
-
 		return isCorrect;
 	}
 
@@ -180,7 +171,6 @@ public class ViewVacationsPage extends PageObject {
 
 		int nr = namesFromTheTable.size();
 		while (i < nr) {
-			// System.out.println("Name="+namesFromTheTable.get(i).getText());
 			if (!namesFromTheTable.get(i).getText().contains(name)) {
 				isOk = false;
 			}

@@ -18,71 +18,76 @@ import static org.junit.Assert.assertTrue;
 
 public class NewVacationRequestsSteps extends ScenarioSteps {
 
-    LogInPage logInPage;
-    NewVacationRequestPage newVacationPage;
+	LogInPage logInPage;
+	NewVacationRequestPage newVacationPage;
 
-    @Step
-    public void accessNewVacationRequestPage() {
-    	newVacationPage.clickNewVacationRequest();
-    }
-    @Step
-    public void openNewVacationPage() {
-        newVacationPage.open();
-    }
-    @Step
-    public void accessNewVacationRequestWithSuccess(){
-    	boolean found = newVacationPage.checkIfSaveButtonIsPresent();
-    	assertTrue("Save button not found",found);
-    }
+	@Step
+	public void accessNewVacationRequestPage() {
+		newVacationPage.clickNewVacationRequest();
+	}
 
- 
-    @Step
-    public void createNewSpecialVacationRequest(String text,String comment,int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	if(text.compareTo("Other")==0){
-    		newVacationPage.clickSpecialVacation();
-        	newVacationPage.selectSpecialVacationType(text);
-        	newVacationPage.addCommentRequiredAtSpecialVacation(text);
-        //	newVacationPage.choose_the_start_date(startDay,startMonth,startYear);
-        //	newVacationPage.choose_the_end_date(endDay,endMonth,endYear);
-        //	newVacationPage.save_request();
-    	}
-    	else{
-    	newVacationPage.clickSpecialVacation();
-    	newVacationPage.selectSpecialVacationType(text);
+	@Step
+	public void openNewVacationPage() {
+		newVacationPage.open();
+	}
 
-    }
-    	newVacationPage.chooseStartDate(startDay,startMonth,startYear);
-    	newVacationPage.chooseEndDate(endDay,endMonth,endYear);
-    	newVacationPage.clickSaveButton();
-    	}
+	@Step
+	public void accessNewVacationRequestWithSuccess() {
+		boolean found = newVacationPage.checkIfSaveButtonIsPresent();
+		assertTrue("Save button not found", found);
+	}
 
-    @Step
-    public void createNewHolidayRequest(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.click_holiday();
-    	newVacationPage.chooseStartDate(startDay,startMonth,startYear);
-    	newVacationPage.chooseEndDate(endDay,endMonth,endYear);
-    	newVacationPage.clickSaveButton();
-    }
-    @Step
-    public void createNewVacationWithoutPayment(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.clickVacationWithoutPayment();
-    	newVacationPage.chooseStartDate(startDay,startMonth,startYear);
-    	newVacationPage.chooseEndDate(endDay,endMonth,endYear);
-    	newVacationPage.clickSaveButton();
-    }
-    @Step
-    public void createNewSickLeaveRequest(int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.clickSickLeave();
-    	newVacationPage.chooseStartDate(startDay,startMonth,startYear);
-    	newVacationPage.chooseEndDate(endDay,endMonth,endYear);
-    	newVacationPage.clickSaveButton();
-    }
-    @Step
-    public void createNewMaternityLeaveRequest(String text,int startDay,String startMonth,int startYear,int endDay,String endMonth,int endYear){
-    	newVacationPage.clickMaternityLeave();
-    	newVacationPage.select_maternity_leave_type(text);
-    	newVacationPage.chooseStartDate(startDay,startMonth,startYear);
-    	newVacationPage.chooseEndDate(endDay,endMonth,endYear);
-    	newVacationPage.clickSaveButton();
-    }
+	@Step
+	public void createNewSpecialVacationRequest(String text, String comment, int startDay, String startMonth,
+			int startYear, int endDay, String endMonth, int endYear) {
+		if (text.compareTo("Other") == 0) {
+			newVacationPage.clickSpecialVacation();
+			newVacationPage.selectSpecialVacationType(text);
+			newVacationPage.addCommentRequiredAtSpecialVacation(text);
+		} else {
+			newVacationPage.clickSpecialVacation();
+			newVacationPage.selectSpecialVacationType(text);
+
+		}
+		newVacationPage.chooseStartDate(startDay, startMonth, startYear);
+		newVacationPage.chooseEndDate(endDay, endMonth, endYear);
+		newVacationPage.clickSaveButton();
+	}
+
+	@Step
+	public void createNewHolidayRequest(int startDay, String startMonth, int startYear, int endDay, String endMonth,
+			int endYear) {
+		newVacationPage.click_holiday();
+		newVacationPage.chooseStartDate(startDay, startMonth, startYear);
+		newVacationPage.chooseEndDate(endDay, endMonth, endYear);
+		newVacationPage.clickSaveButton();
+	}
+
+	@Step
+	public void createNewVacationWithoutPayment(int startDay, String startMonth, int startYear, int endDay,
+			String endMonth, int endYear) {
+		newVacationPage.clickVacationWithoutPayment();
+		newVacationPage.chooseStartDate(startDay, startMonth, startYear);
+		newVacationPage.chooseEndDate(endDay, endMonth, endYear);
+		newVacationPage.clickSaveButton();
+	}
+
+	@Step
+	public void createNewSickLeaveRequest(int startDay, String startMonth, int startYear, int endDay, String endMonth,
+			int endYear) {
+		newVacationPage.clickSickLeave();
+		newVacationPage.chooseStartDate(startDay, startMonth, startYear);
+		newVacationPage.chooseEndDate(endDay, endMonth, endYear);
+		newVacationPage.clickSaveButton();
+	}
+
+	@Step
+	public void createNewMaternityLeaveRequest(String text, int startDay, String startMonth, int startYear, int endDay,
+			String endMonth, int endYear) {
+		newVacationPage.clickMaternityLeave();
+		newVacationPage.select_maternity_leave_type(text);
+		newVacationPage.chooseStartDate(startDay, startMonth, startYear);
+		newVacationPage.chooseEndDate(endDay, endMonth, endYear);
+		newVacationPage.clickSaveButton();
+	}
 }

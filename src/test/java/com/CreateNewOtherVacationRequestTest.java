@@ -44,7 +44,7 @@ public class CreateNewOtherVacationRequestTest {
 
    
     @Test
-    public void create_a_new_other_request(){
+    public void createANewOtherRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();

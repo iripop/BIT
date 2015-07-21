@@ -34,7 +34,7 @@ public class FilterByFutureVacationsInMyRequestsTest {
 	public MyRequestsSteps myRequestsSteps;
 
 	@Test
-	public void filter_my_requests_by_future_vacations() {
+	public void filterMyRequestsByFutureVacations() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();
@@ -45,7 +45,7 @@ public class FilterByFutureVacationsInMyRequestsTest {
 	}
 
 	@After
-	public void close_browser() {
+	public void closeBrowser() {
 		pages.getDriver().close();
 	}
 }

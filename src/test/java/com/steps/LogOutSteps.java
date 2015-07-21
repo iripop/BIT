@@ -29,7 +29,7 @@ public class LogOutSteps extends ScenarioSteps {
 	}
 
 	@Step
-	public void log_out_with_succes() {
+	public void logOutWithSucces() {
 		boolean found = page.checkIfVacationTabIsPresent();
 		assertTrue("VacationMenu not found", found);
 	}

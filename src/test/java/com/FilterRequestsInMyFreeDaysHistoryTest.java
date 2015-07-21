@@ -16,6 +16,7 @@ import net.thucydides.core.annotations.ManagedPages;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import tools.Constants;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SerenityRunner.class)
 public class FilterRequestsInMyFreeDaysHistoryTest {
@@ -29,21 +30,17 @@ public class FilterRequestsInMyFreeDaysHistoryTest {
 	public EndUserSteps endUser;
 	@Steps
 	public MyFreeDaysHistorySteps freeDaysHistorySteps;
-	
-	
-		
-		@Test
-		public void filter_my_requests_test() {
-			endUser.openHomePage();
-	    	endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
-	    	endUser.goToVacationMenu();
-			freeDaysHistorySteps.accessMyFreeDaysHistory();
-			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation days");
-			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation Without Payment ");
-			freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("21 - 50");
-			freeDaysHistorySteps.clickApplyButtonForFiltersInMyFreeDaysHistory();
-		}
 
-		
+	@Test
+	public void filterMyRequestsInMyFreeDaysHistory() {
+		endUser.openHomePage();
+		endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
+		endUser.goToVacationMenu();
+		freeDaysHistorySteps.accessMyFreeDaysHistory();
+		freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation days");
+		freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("Vacation Without Payment ");
+		freeDaysHistorySteps.filterRequestsInMyFreeDaysHistory("21 - 50");
+		freeDaysHistorySteps.clickApplyButtonForFiltersInMyFreeDaysHistory();
+	}
 
 }

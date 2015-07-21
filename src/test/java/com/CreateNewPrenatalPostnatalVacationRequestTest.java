@@ -43,7 +43,7 @@ public class CreateNewPrenatalPostnatalVacationRequestTest {
     public MyRequestsSteps myRequestsSteps;
     
     @Test
-    public void create_a_new_prenatalPostnatal_request(){
+    public void createANewPrenatalPostnatalRequest(){
     	endUser.openHomePage();
     	endUser.logInAsUser(username, password);
     	endUser.goToVacationMenu();
@@ -55,7 +55,7 @@ public class CreateNewPrenatalPostnatalVacationRequestTest {
     }
     
     @After
-	public void close_browser(){
+	public void closeBrowser(){
 		   pages.getDriver().close();
 	}
 	

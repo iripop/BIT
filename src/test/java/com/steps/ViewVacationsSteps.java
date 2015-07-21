@@ -20,68 +20,76 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 public class ViewVacationsSteps extends ScenarioSteps {
 
-	
 	LogInPage page;
 	InboxPage inboxPage;
 	ViewVacationsPage viewVacationsPage;
+
 	@Step
-	public void check_if_the_desired_vacation_is_present(String employeeName,String startDate,String endDate,String type,String status){
-		boolean isPresent = viewVacationsPage.checkIfTheDesiredRequestWasApprovedOrRejected(employeeName, startDate, endDate, type, status);
-		assertTrue("Is not present",isPresent);
+	public void checkIfTheDesiredVacationIsPresent(String employeeName, String startDate, String endDate,
+			String type, String status) {
+		boolean isPresent = viewVacationsPage.checkIfTheDesiredRequestWasApprovedOrRejected(employeeName, startDate,
+				endDate, type, status);
+		assertTrue("Is not present", isPresent);
 	}
+
 	@Step
-	public void go_to_view_vacations_page(){
+	public void goToViewVacationsPage() {
 		viewVacationsPage.clickViewVacationsMenu();
 	}
+
 	@Step
 
-	public void filter_my_requests_step_in_view_vacations(String filter) {
-		 viewVacationsPage.selectFiltersFromListInViewVacations(filter);
+	public void filterMyRequestsStepInViewVacations(String filter) {
+		viewVacationsPage.selectFiltersFromListInViewVacations(filter);
 
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_type_in_view_vacations(String selection) {
-         viewVacationsPage. checkIfTableIsFilteredByStatusInViewVacations(selection);
-	}
-
-	@Step
-	public void check_filtering_my_requests_by_status_in_view_vacations(String selection) {
+	public void checkFilteringMyRequestsByTypeInViewVacations(String selection) {
 		viewVacationsPage.checkIfTableIsFilteredByStatusInViewVacations(selection);
 	}
 
 	@Step
-	public void check_filtering_my_requests_by_days_number_in_view_vacations(int nr1, int nr2) {
+	public void checkFilteringMyRequestsByStatusInViewVacations(String selection) {
+		viewVacationsPage.checkIfTableIsFilteredByStatusInViewVacations(selection);
+	}
+
+	@Step
+	public void checkFilteringMyRequestsByDaysNumberInViewVacations(int nr1, int nr2) {
 		viewVacationsPage.checkIfTableIsFilteredByDaysNumberInViewVacations(nr1, nr2);
 	}
 
 	@Step
-	public void apply_filter_requests() {
+	public void applyFilterRequests() {
 		viewVacationsPage.clickApplyButtonForFiltersInViewVacations();
 	}
 
-	public void type_first_name(String firstName){
+	public void typeFirstName(String firstName) {
 		viewVacationsPage.enterFirstName(firstName);
 	}
+
 	@Step
-	public void type_last_name(String lastName){
+	public void typeLastName(String lastName) {
 		viewVacationsPage.enterLastName(lastName);
 	}
+
 	@Step
-	public void click_apply_button(){
+	public void clickApplyButton() {
 		viewVacationsPage.clickApplyButton();
 	}
+
 	@StepGroup
-	public void search_vacations_by_employee_name(String lastName,String firstName){
-		type_first_name(firstName);
-		type_last_name(lastName);
-		click_apply_button();
-		check_if_the_requests_are_filtering_correct(lastName, firstName);
+	public void searchVacationsByEmployeeName(String lastName, String firstName) {
+		typeFirstName(firstName);
+		typeLastName(lastName);
+		clickApplyButton();
+		checkIfTheRequestsAreFilteringCorrect(lastName, firstName);
 	}
+
 	@Step
-	public void check_if_the_requests_are_filtering_correct(String lastName,String firstName){
+	public void checkIfTheRequestsAreFilteringCorrect(String lastName, String firstName) {
 		boolean isOk = viewVacationsPage.checkIfAllRequestsFromTheTableAreWithTheGivenName(lastName, firstName);
-		assertTrue("The requests are not filtering correct",isOk);
+		assertTrue("The requests are not filtering correct", isOk);
 	}
 
 }
