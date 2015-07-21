@@ -46,19 +46,7 @@ public class EmailTool {
 		return email;
 	}
 
-	public boolean compare(String text1, String text2) {
-		boolean found = true;
-		int  i = 0;
-		while (found) {
-			char c1 = text1.charAt(i);
-			char c2 = text2.charAt(i);
-			if (c1 != c2) {
-				found = false;
-			}
-			i++;
-		}
-		return found;
-	}
+
 
 	public String readFromFile(String path) throws IOException {
 		String text = null;

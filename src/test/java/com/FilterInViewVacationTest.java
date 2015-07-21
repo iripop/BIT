@@ -29,7 +29,7 @@ public class FilterInViewVacationTest {
 	@Steps
 	public ViewVacationsSteps viewVacationsSteps;
 	
-	@Test
+	//@Test
 	public void filter_my_requests_from_view_vacations_test() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);
@@ -42,7 +42,7 @@ public class FilterInViewVacationTest {
 		viewVacationsSteps.apply_filter_requests();
 	}
 
-	//@Test
+	@Test
 	public void check_if_filter_is_correct_in_view_vacation_page() {
 		endUser.is_the_home_page();
 		endUser.login(Constants.DMname, Constants.DMpassword);

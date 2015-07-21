@@ -49,6 +49,7 @@ public class SearchVacationsByEmployeeNameTest {
 		endUser.go_to_vacation_menu();
 		vacationsSteps.go_to_view_vacations_page();
 		vacationsSteps.search_vacations_by_employee_name("Irina", "Pop");
+		vacationsSteps.check_if_the_requests_are_filtering_correct("Irina", "Pop");
   }
 	@After
 	public void close_browser(){
