@@ -50,6 +50,7 @@ public class CreateNewHolidayVacationRequestTest {
 		newVacationSteps.accessNewVacationRequestWithSuccess();
 
 		newVacationSteps.createNewHolidayRequest(10, "November", 2015, 10, "November", 2015);
+		newVacationSteps.checkIfNewRequestWasSavedWithSuccess();
 		myRequestsSteps.withdrawnVacationRequest("Holiday", "10/11/2015", "10/11/2015", "Withdrawn");
 
 		myRequestsSteps.accessMyRequestsMenu();

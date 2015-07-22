@@ -36,6 +36,11 @@ public class NewVacationRequestsSteps extends ScenarioSteps {
 		boolean found = newVacationPage.checkIfSaveButtonIsPresent();
 		assertTrue("Save button not found", found);
 	}
+	@Step
+	public void checkIfNewRequestWasSavedWithSuccess(){
+		boolean ok = newVacationPage.checkIfRequestWasSavedWithSuccess();
+		assertTrue("Is not",ok);
+	}
 
 	@Step
 	public void createNewSpecialVacationRequest(String text, String comment, int startDay, String startMonth,

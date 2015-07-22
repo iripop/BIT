@@ -50,8 +50,10 @@ public class CreateNewChildBirthVacationRequestTest {
 		newVacationSteps.accessNewVacationRequestPage();
 		newVacationSteps.accessNewVacationRequestWithSuccess();
 		newVacationSteps.createNewSpecialVacationRequest("Child birth", "", 28, "July", 2015, 29, "July", 2015);
+		newVacationSteps.checkIfNewRequestWasSavedWithSuccess();
 		myRequestsSteps.accessMyRequestsMenu();
-		myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "28/07/2015", "29/07/2015", "Pending");
+	//	myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "28/07/2015", "29/07/2015", "Pending");
+
 
 	}
 

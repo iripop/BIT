@@ -62,6 +62,9 @@ public class NewVacationRequestPage extends PageObject {
 	@FindBy(css = "div[style*='50.84375px'] table[class='dp_header'] tr td:nth-child(2)")
 	private WebElementFacade monthAndYearAtEndDate;
 
+	@FindBy(css="div[class='portlet-msg-success']")
+	private WebElementFacade successMessage;
+	
 	MyFreeDaysPage freeDaysPage;
 
 	public void click_holiday() {
@@ -103,7 +106,11 @@ public class NewVacationRequestPage extends PageObject {
 		else
 			return false;
 	}
-
+	public boolean checkIfRequestWasSavedWithSuccess(){
+		if(successMessage.getText().compareTo(" Your request completed successfully. ")==0) return true;
+		else return false;
+	}
+	
 	public void clickSaveButton() {
 		saveButton.click();
 	}

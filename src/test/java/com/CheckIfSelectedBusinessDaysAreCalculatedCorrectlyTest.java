@@ -19,12 +19,13 @@ import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.annotations.UseTestDataFrom;
+import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 import tools.Constants;
 
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("/resources/data.csv")
-// @RunWith(ThucydidesRunner.class)
+//@RunWith(SerenityParameterizedRunner.class)
+//@UseTestDataFrom("/resources/data.csv")
+@RunWith(ThucydidesRunner.class)
 public class CheckIfSelectedBusinessDaysAreCalculatedCorrectlyTest {
 	String username, password;
 
@@ -38,12 +39,13 @@ public class CheckIfSelectedBusinessDaysAreCalculatedCorrectlyTest {
 	public NumberOfFreeDaysSteps myFreeDay;
 	@Steps
 	public EndUserSteps endUser;
+	@Steps
 	public NewVacationRequestsSteps newVacationUser;
 
 	@Test
 	public void checkSelectedBusinessDays() {
 		endUser.openHomePage();
-		endUser.logInAsUser(username, password);
+		endUser.logInAsUser(Constants.Username, Constants.Userpassword);
 		endUser.goToVacationMenu();
 		newVacationUser.accessNewVacationRequestPage();
 		myFreeDay.selectedBusinessDaysAreCorrect(14, "August", 2015, 18, "August", 2015);

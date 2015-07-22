@@ -34,7 +34,7 @@ public class CheckIfFilterIsCorrectInMyRequestsTest {
 	public MyRequestsSteps myRequestsSteps;
 
 	@Test
-	public void checkIfFilterIsCorrect() {
+	public void checkIfFilterIsCorrectInMyRequest() {
 		endUser.openHomePage();
 		endUser.logInAsDM(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();

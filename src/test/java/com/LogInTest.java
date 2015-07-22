@@ -42,15 +42,10 @@ public class LogInTest {
 
 		endUser.openHomePage();
 		endUser.logInAsUser(username, password);
-
-	}
-
-	@Test
-	public void vacationMenu() {
 		endUser.goToVacationMenu();
 		endUser.logInWithSuccess();
-
 	}
+
 
 	@After
 	public void closeBrowser() {

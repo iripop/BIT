@@ -18,9 +18,9 @@ import net.thucydides.junit.annotations.UseTestDataFrom;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import tools.Constants;
 import tools.ReadingEmail;
-@RunWith(SerenityParameterizedRunner.class)
-@UseTestDataFrom("/resources/data.csv")
-//@RunWith(ThucydidesRunner.class)
+//@RunWith(SerenityParameterizedRunner.class)
+//@UseTestDataFrom("/resources/data.csv")
+@RunWith(ThucydidesRunner.class)
 public class SearchByNameTest {
 
 
@@ -42,7 +42,7 @@ public class SearchByNameTest {
     public void searchVacationByNameInVacationReport() {
 		
         endUser.openHomePage();
-		endUser.logInAsDM(username,password);
+		endUser.logInAsDM(Constants.DMname,Constants.DMpassword);
 		endUser.goToVacationMenu();
 		searchUser.viewVacationReport();
 		searchUser.goToVacationReportWithSuccess();

@@ -46,6 +46,8 @@ public class ViewVacationsPage extends PageObject {
 
 	@FindBy(css = "input[id='_evovacation_WAR_EvoVacationportlet_viewVacationsFirstName']")
 	private WebElementFacade firstNameText;
+	
+
 
 	public void clickViewVacationsMenu() {
 

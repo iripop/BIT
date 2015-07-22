@@ -32,7 +32,7 @@ public class CheckFilterRequestsInMyFreeDaysHistoryTest {
 	public MyFreeDaysHistorySteps freeDaysHistorySteps;
 
 	@Test
-	public void check_if_filter_is_correct() {
+	public void checkIfFilterIsCorrectInMyFreeDaysHistory() {
 		endUser.openHomePage();
 		endUser.logInAsUser(Constants.DMname, Constants.DMpassword);
 		endUser.goToVacationMenu();

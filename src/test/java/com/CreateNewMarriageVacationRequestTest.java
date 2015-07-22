@@ -49,8 +49,9 @@ public class CreateNewMarriageVacationRequestTest {
         newVacationSteps.accessNewVacationRequestPage();
         newVacationSteps.accessNewVacationRequestWithSuccess();
         newVacationSteps.createNewSpecialVacationRequest("Marriage", "", 13, "August", 2015, 14, "August", 2015);
+		newVacationSteps.checkIfNewRequestWasSavedWithSuccess();
         myRequestsSteps.accessMyRequestsMenu();
-        myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "13/08/2015", "14/08/2015", "Pending");
+    //    myRequestsSteps.checkIfDesiredRequestIsPresent("Special Vacation", "13/08/2015", "14/08/2015", "Pending");
    
     }
 } 
